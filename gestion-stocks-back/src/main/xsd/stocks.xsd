@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:complexType name="dtoDividend">
+		<xs:sequence>
+			<xs:element name="unitPrice" type="xs:float" maxOccurs="1"
+				minOccurs="1">
+			</xs:element>
+			<xs:element name="percentage" type="xs:float" maxOccurs="1"
+				minOccurs="1">
+			</xs:element>
+			<xs:element name="date" type="xs:date" maxOccurs="1"
+				minOccurs="1">
+			</xs:element>
+			<xs:element name="totalPrice" type="xs:float" maxOccurs="1" minOccurs="1"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="dtoOrder">
+		<xs:sequence>
+			<xs:element name="totalPrice" type="xs:float" maxOccurs="1"
+				minOccurs="1"></xs:element>
+			<xs:element name="unitPrice" type="xs:float" maxOccurs="1"
+				minOccurs="1"></xs:element>
+			<xs:element name="taxes" type="xs:float" maxOccurs="1"
+				minOccurs="1"></xs:element>
+    	<xs:element name="date" type="xs:date" maxOccurs="1" minOccurs="1"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="dtoStock">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" maxOccurs="1"
+				minOccurs="1">
+			</xs:element>
+			<xs:element name="code" type="xs:string" maxOccurs="1"
+				minOccurs="1">
+			</xs:element>
+			<xs:element name="quantity" type="xs:int" maxOccurs="1"
+				minOccurs="1">
+			</xs:element>
+			<xs:element name="buyOrdre" type="dtoOrder" maxOccurs="1"
+				minOccurs="1">
+			</xs:element>
+			<xs:element name="sellOrder" type="dtoOrder" maxOccurs="1"
+				minOccurs="0">
+			</xs:element>
+			<xs:element name="type" type="ordreTypeEnum" maxOccurs="1"
+				minOccurs="1">
+			</xs:element>
+			<xs:element name="direction" type="directionEnum"
+				maxOccurs="1" minOccurs="1">
+			</xs:element>
+			<xs:element name="account" type="accountEnum" maxOccurs="1"
+				minOccurs="1">
+			</xs:element>
+			<xs:element name="dividends" type="dtoDividend"
+				maxOccurs="unbounded" minOccurs="0">
+			</xs:element>
+			<xs:element name="strategy" type="strategyEnum"
+				maxOccurs="1" minOccurs="1">
+			</xs:element>
+			<xs:element name="atr" type="xs:float" maxOccurs="1" minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="accountEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PEA" />
+			<xs:enumeration value="SECURITIES" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="directionEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BUY" />
+			<xs:enumeration value="SELL" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="ordreTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SRD" />
+			<xs:enumeration value="CASH" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="dtoPortfolio">
+		<xs:sequence>
+			<xs:element name="stocks" type="dtoStock" minOccurs="0"
+				maxOccurs="unbounded">
+			</xs:element>
+			<xs:element name="account" type="dtoAccount" minOccurs="0"
+				maxOccurs="unbounded">
+			</xs:element>
+			<xs:element name="movement" type="dtoMovement" maxOccurs="unbounded" minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="dtoAccount">
+		<xs:sequence>
+			<xs:element name="type" type="accountEnum" minOccurs="1"
+				maxOccurs="1">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="dtoMovement">
+		<xs:sequence>
+			<xs:element name="total" type="xs:float" minOccurs="1"
+				maxOccurs="1">
+			</xs:element>
+			<xs:element name="date" type="xs:date" minOccurs="1"
+				maxOccurs="1">
+			</xs:element>
+			<xs:element name="provision" type="xs:boolean" minOccurs="1"
+				maxOccurs="1">
+			</xs:element>
+			<xs:element name="automatic" type="xs:boolean" maxOccurs="1"
+				minOccurs="1">
+			</xs:element>
+			<xs:element name="comment" type="xs:string"></xs:element>
+			<xs:element name="account" type="accountEnum" maxOccurs="1" minOccurs="1"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="strategyEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="FEELING" />
+			<xs:enumeration value="FEELING_AT" />
+			<xs:enumeration value="COMPANY_RESULT" />
+			<xs:enumeration value="BREAK_OUT" />
+			<xs:enumeration value="MM20_TREND" />
+			<xs:enumeration value="DIVIDEND" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="dtoPortfolio" type="dtoPortfolio"></xs:element>
+</xs:schema>
+

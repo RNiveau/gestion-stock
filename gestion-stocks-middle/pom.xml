@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>net.blog.dev.gestion.stocks</groupId>
+		<artifactId>gestion-stocks-parent</artifactId>
+		<version>1.0.6-SNAPSHOT</version>
+		<relativePath>../gestion-stocks-parent/pom.xml</relativePath>
+	</parent>
+
+	<groupId>net.blog.dev.gestion.stocks</groupId>
+	<artifactId>gestion-stocks-middle</artifactId>
+	<packaging>jar</packaging>
+	<url>http://blog-dev.net</url>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.jboss.weld.se</groupId>
+			<artifactId>weld-se</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.blog.dev.gestion.stocks</groupId>
+			<artifactId>gestion-stocks-back</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jglue.cdi-unit</groupId>
+			<artifactId>cdi-unit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>

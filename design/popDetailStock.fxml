@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="197.0" prefWidth="419.0" style="&#10;" xmlns:fx="http://javafx.com/fxml">
+  <children>
+    <VBox id="VBox" alignment="CENTER" layoutX="14.0" layoutY="4.0" spacing="5.0">
+      <children>
+        <HBox id="HBox" alignment="CENTER" prefHeight="130.0" spacing="5.0">
+          <children>
+            <VBox prefHeight="200.0" prefWidth="207.0">
+              <children>
+                <HBox prefHeight="16.0" prefWidth="256.0">
+                  <children>
+                    <Label prefWidth="99.0" text="Frais bancaire" />
+                    <Label text="Label2" />
+                  </children>
+                </HBox>
+                <HBox prefHeight="16.0" prefWidth="256.0">
+                  <children>
+                    <Label prefWidth="99.0" text="Stratégie" />
+                    <Label text="Label2" />
+                  </children>
+                  <padding>
+                    <Insets top="5.0" />
+                  </padding>
+                </HBox>
+                <HBox prefHeight="16.0" prefWidth="256.0">
+                  <children>
+                    <Label prefWidth="99.0" text="Compte" />
+                    <Label text="Label2" />
+                  </children>
+                  <padding>
+                    <Insets top="5.0" />
+                  </padding>
+                </HBox>
+                <HBox prefHeight="16.0" prefWidth="256.0">
+                  <children>
+                    <Label prefWidth="99.0" text="Sens" />
+                    <Label text="Label2" />
+                  </children>
+                  <padding>
+                    <Insets top="5.0" />
+                  </padding>
+                </HBox>
+                <HBox prefHeight="16.0" prefWidth="256.0">
+                  <children>
+                    <Label prefWidth="99.0" text="Type" />
+                    <Label text="Label2" />
+                  </children>
+                  <padding>
+                    <Insets top="5.0" />
+                  </padding>
+                </HBox>
+              </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="207.0">
+              <children>
+                <HBox prefHeight="16.0" prefWidth="256.0">
+                  <children>
+                    <Label prefWidth="99.0" text="Gain 1 Atr" />
+                    <Label text="Label2" />
+                  </children>
+                </HBox>
+                <HBox prefHeight="16.0" prefWidth="256.0">
+                  <children>
+                    <Label prefWidth="99.0" text="Gain 1,5 Atr" />
+                    <Label text="Label2" />
+                  </children>
+                  <padding>
+                    <Insets top="5.0" />
+                  </padding>
+                </HBox>
+                <HBox prefHeight="16.0" prefWidth="256.0">
+                  <children>
+                    <Label prefWidth="99.0" text="Gain 2 Atr" />
+                    <Label text="Label2" />
+                  </children>
+                  <padding>
+                    <Insets top="5.0" />
+                  </padding>
+                </HBox>
+                <HBox prefHeight="16.0" prefWidth="256.0">
+                  <children>
+                    <Label prefWidth="99.0" text="Stop 1 Atr" />
+                    <Label text="Label2" />
+                  </children>
+                  <padding>
+                    <Insets top="5.0" />
+                  </padding>
+                </HBox>
+                <HBox prefHeight="16.0" prefWidth="256.0">
+                  <children>
+                    <Label prefWidth="99.0" text="Stop 1,5 Atr" />
+                    <Label text="Label2" />
+                  </children>
+                  <padding>
+                    <Insets top="5.0" />
+                  </padding>
+                </HBox>
+                <HBox prefHeight="16.0" prefWidth="256.0">
+                  <children>
+                    <Label prefWidth="99.0" text="Stop 2 Atr" />
+                    <Label text="Label2" />
+                  </children>
+                  <padding>
+                    <Insets top="5.0" />
+                  </padding>
+                </HBox>
+              </children>
+            </VBox>
+          </children>
+        </HBox>
+        <HBox prefHeight="58.0" prefWidth="419.0">
+          <children>
+            <Button mnemonicParsing="false" text="Cloturer la position" />
+            <VBox id="VBox" alignment="CENTER" spacing="5.0">
+              <children>
+                <Button mnemonicParsing="false" text="Ajouter une dividende" translateX="38.0" />
+                <Button mnemonicParsing="false" text="Voir la liste de dividendes" translateX="50.0" />
+              </children>
+            </VBox>
+          </children>
+        </HBox>
+      </children>
+    </VBox>
+  </children>
+</AnchorPane>

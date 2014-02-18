@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import net.blog.dev.gestion.stocks.jfx.TwoFloatValueFactory?>
+
+<fx:root type="javafx.scene.layout.AnchorPane" xmlns:fx="http://javafx.com/fxml"
+	stylesheets="net/blog/dev/gestion/stocks/css/style.css" 
+	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.ResultYearController">
+	<children>
+		<TableView layoutX="0.0" layoutY="0.0" fx:id="table" onMouseClicked="#openDetail" >
+			<columns>
+				<TableColumn prefWidth="75.0" text="Année">
+					<cellValueFactory>
+						<PropertyValueFactory property="year" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn maxWidth="5000.0" minWidth="10.0"
+					prefWidth="100" text="Ouverture">
+					<cellValueFactory>
+						<PropertyValueFactory property="nbrOrder" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn maxWidth="5000.0" minWidth="10.0"
+					prefWidth="100" text="Cloture dans l'année">
+					<cellValueFactory>
+						<PropertyValueFactory property="nbrOrderClosed" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn maxWidth="5000.0" minWidth="10.0"
+					prefWidth="100" text="Clotures des années précédantes">
+					<cellValueFactory>
+						<PropertyValueFactory property="nbrOrderPastYear" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn maxWidth="5000.0" minWidth="10.0"
+					prefWidth="140.0" text="Bénéfices (%)">
+					<cellValueFactory>
+						<TwoFloatValueFactory property="benefit"
+							property2="benefitPercentage" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn maxWidth="5000.0" minWidth="10.0"
+					prefWidth="150.0" text="Bénéfices - taxes (%)">
+					<cellValueFactory>
+						<TwoFloatValueFactory property="benefitWithTaxes"
+							property2="benefitWithTaxesPercentage" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn maxWidth="5000.0" minWidth="10.0"
+					prefWidth="140.0" text="Dividendes">
+					<cellValueFactory>
+						<PropertyValueFactory property="totalDividends" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn maxWidth="5000.0" minWidth="10.0"
+					prefWidth="140.0" text="Taxes">
+					<cellValueFactory>
+						<PropertyValueFactory property="taxes" />
+					</cellValueFactory>
+				</TableColumn>
+			</columns>
+		</TableView>
+	</children>
+	<fx:define>
+		<fx:include fx:id="popupDetail"
+			source="/net/blog/dev/gestion/stocks/fxml/detailResultYear.fxml" />
+	</fx:define>
+</fx:root>

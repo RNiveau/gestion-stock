@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" padding="$x1" prefHeight="134.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml">
+  <children>
+    <VBox layoutX="0.0" layoutY="0.0" prefHeight="126.0" prefWidth="288.0">
+      <children>
+        <HBox prefHeight="22.0" prefWidth="288.0">
+          <children>
+            <Label prefWidth="110.0" text="Prix total" />
+            <TextField prefWidth="200.0" />
+          </children>
+        </HBox>
+        <HBox prefHeight="22.0" prefWidth="288.0">
+          <children>
+            <Label prefWidth="110.0" text="Frais bancaire" />
+            <TextField prefWidth="200.0" />
+          </children>
+        </HBox>
+        <HBox prefHeight="56.0" prefWidth="288.0">
+          <children>
+            <Label prefWidth="110.0" text="Date" />
+            <TextField prefWidth="200.0" />
+          </children>
+        </HBox>
+        <Button mnemonicParsing="false" text="Cloturer" />
+      </children>
+      <padding>
+        <Insets left="5.0" top="5.0" fx:id="x1" />
+      </padding>
+    </VBox>
+  </children>
+</AnchorPane>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml">
+  <children>
+    <TableView layoutX="0.0" layoutY="0.0" prefHeight="222.0" prefWidth="517.0">
+      <columns>
+        <TableColumn prefWidth="75.0" text="Année" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="137.0" text="Positions ouvertes" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="140.0" text="Positions cloturés dans l'année" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="140.0" text="Positions en cours des années précédantes" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="140.0" text="Positions cloturés des années précédantes" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="140.0" text="Bénéfices" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="140.0" text="Dividendes" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="140.0" text="Montant ouverture" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="140.0" text="Montant cloture" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="140.0" text="Montant en cours" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="140.0" text="Taxes" />
+      </columns>
+    </TableView>
+  </children>
+</AnchorPane>

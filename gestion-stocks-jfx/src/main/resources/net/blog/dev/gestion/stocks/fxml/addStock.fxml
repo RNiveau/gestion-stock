@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import net.blog.dev.gestion.stocks.jfx.TableCellFactory?>
+<?import javafx.scene.control.Button?>
+
+<fx:root type="javafx.scene.layout.AnchorPane" stylesheets="net/blog/dev/gestion/stocks/css/style.css"
+	xmlns:fx="http://javafx.com/fxml"
+	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.AddStockController">
+	<VBox id="vboxAddStock" prefWidth="550.0">
+		<children>
+			<Label text="Ajouter une position" />
+			<HBox>
+				<children>
+					<Label prefWidth="150" text="Titre" />
+					<TextField fx:id="stockName" />
+					<Label prefWidth="200" translateX="10" fx:id="errorStockName" styleClass="error" />
+				</children>
+			</HBox>
+			<HBox>
+				<children>
+					<Label prefWidth="150" text="Code Titre" />
+					<TextField fx:id="stockCode" />
+					<Label prefWidth="200" translateX="10" fx:id="errorStockCode" styleClass="error" />
+				</children>
+			</HBox>
+			<HBox>
+				<children>
+					<Label prefWidth="150" text="Quantité" />
+					<TextField fx:id="quantity" />
+					<Label prefWidth="200" translateX="10" fx:id="errorQuantity" styleClass="error" />
+				</children>
+			</HBox>
+			<HBox>
+				<children>
+					<Label prefWidth="150" text="Prix total (hors frais)" />
+					<TextField fx:id="price" />
+					<Label prefWidth="200" translateX="10" fx:id="errorPrice" styleClass="error" />
+				</children>
+			</HBox>
+			<HBox>
+				<children>
+					<Label prefWidth="150" text="Frais bancaire" />
+					<TextField fx:id="taxes" />
+					<Label prefWidth="200" translateX="10" fx:id="errorTaxes" styleClass="error" />
+				</children>
+			</HBox>
+			<HBox>
+				<children>
+					<Label prefWidth="150" text="Date" />
+					<TextField fx:id="buyDate" />
+					<Label prefWidth="200" translateX="10" fx:id="errorBuyDate" styleClass="error" />
+				</children>
+			</HBox>
+			<HBox>
+				<children>
+					<Label prefWidth="150" text="ATR du jour" />
+					<TextField fx:id="atr" />
+					<Label prefWidth="200" translateX="10" fx:id="errorAtr" styleClass="error" />
+				</children>
+			</HBox>
+			<HBox>
+				<children>
+					<Label prefWidth="150" text="Type" />
+					<ChoiceBox fx:id="type">
+						<items>
+							<FXCollections fx:factory="observableArrayList">
+								<String fx:value="Comptant" />
+								<String fx:value="SRD" />
+							</FXCollections>
+						</items>
+					</ChoiceBox>
+					<Label prefWidth="200" translateX="10" fx:id="errorType" styleClass="error" />
+				</children>
+			</HBox>
+			<HBox>
+				<children>
+					<Label prefWidth="150" text="Sens" />
+					<ChoiceBox fx:id="direction">
+						<items>
+							<FXCollections fx:factory="observableArrayList">
+								<String fx:value="Achat" />
+								<String fx:value="Vente" />
+							</FXCollections>
+						</items>
+					</ChoiceBox>
+					<Label prefWidth="200" translateX="10" fx:id="errorDirection" styleClass="error" />
+				</children>
+			</HBox>
+			<HBox>
+				<children>
+					<Label prefWidth="150" text="Compte" />
+					<ChoiceBox fx:id="account">
+						<items>
+							<FXCollections fx:factory="observableArrayList">
+								<String fx:value="Compte titre" />
+								<String fx:value="PEA" />
+							</FXCollections>
+						</items>
+					</ChoiceBox>
+					<Label prefWidth="200" translateX="10" fx:id="errorAccount" styleClass="error" />
+				</children>
+			</HBox>
+			<HBox>
+				<children>
+					<Label prefWidth="150" text="Stratégie" />
+					<ChoiceBox fx:id="strategy">
+					</ChoiceBox>
+				</children>
+				<Label prefWidth="200" translateX="10" fx:id="errorStrategy" styleClass="error" />
+			</HBox>
+			<Button text="Ajouter" id="addStock" onAction="#addStock" />
+		</children>
+	</VBox>
+</fx:root>

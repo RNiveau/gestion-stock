@@ -1,0 +1,141 @@
+/**
+ * 
+ */
+package net.blog.dev.gestion.stocks.jfx.controllers;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+
+import javax.inject.Inject;
+
+import net.blog.dev.gestion.stocks.jfx.IFrontManager;
+import net.blog.dev.gestion.stocks.jfx.JfxUtils;
+import net.blog.dev.gestion.stocks.jfx.TwoFloatValueFactory;
+import net.blog.dev.gestion.stocks.middle.api.IStocksListMService;
+import net.blog.dev.gestion.stocks.middle.beans.StockListBean;
+
+/**
+ * @author Kiva
+ * 
+ */
+public class StocksListCloseController extends ScrollPane implements
+		Initializable {
+
+	@Inject
+	private IStocksListMService stocksListMService;
+
+	@Inject
+	private IFrontManager frontManager;
+
+	@FXML
+	private VBox tableListStock;
+
+	@FXML
+	private StockListTableController tableListStockController;
+
+	@FXML
+	private Pane popupDetail;
+
+	@FXML
+	private ScrollPane scrollPane;
+
+	@FXML
+	private DetailStockCloseController popupDetailController;
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		scrollPane.setPrefWidth(frontManager.getWindowParent().getWidth()
+				- JfxUtils.SPACE_LEFT_PANEL);
+
+		ObservableList<StockListBean> list = FXCollections
+				.observableArrayList();
+		list.addAll(stocksListMService.getStocksListClose());
+		final TableColumn<StockListBean, String> columnDate = new TableColumn<StockListBean, String>();
+		final PropertyValueFactory propertyDate = new PropertyValueFactory(
+				"sellDate");
+		columnDate.setCellValueFactory(propertyDate);
+		columnDate.setText("Date de vente");
+		columnDate.setPrefWidth(100);
+		tableListStockController.getStocksList().getColumns().add(columnDate);
+
+		final TableColumn<StockListBean, String> columnPrice = new TableColumn<StockListBean, String>();
+		final PropertyValueFactory propertyPrice = new PropertyValueFactory(
+				"sellPrice");
+		columnPrice.setCellValueFactory(propertyPrice);
+		columnPrice.setText("Prix total vente");
+		columnPrice.setPrefWidth(100);
+		tableListStockController.getStocksList().getColumns().add(columnPrice);
+
+		final TableColumn<StockListBean, String> columnUnitPrice = new TableColumn<StockListBean, String>();
+		final PropertyValueFactory propertyUnitPrice = new PropertyValueFactory(
+				"sellUnitPrice");
+		columnUnitPrice.setCellValueFactory(propertyUnitPrice);
+		columnUnitPrice.setText("Prix unitaire vente");
+		columnUnitPrice.setPrefWidth(100);
+		tableListStockController.getStocksList().getColumns()
+				.add(columnUnitPrice);
+
+		final TableColumn<StockListBean, String> columnGain = new TableColumn<StockListBean, String>();
+		final TwoFloatValueFactory propertyGain = new TwoFloatValueFactory();
+		propertyGain.setProperty("gain");
+		propertyGain.setProperty2("gainPercentage");
+		columnGain.setCellValueFactory(propertyGain);
+		columnGain.setText("Gain brut (%)");
+		columnGain.setPrefWidth(150);
+		tableListStockController.getStocksList().getColumns().add(columnGain);
+
+		// final TableColumn<StockListBean, String> columnGainPercentage = new
+		// TableColumn<StockListBean, String>();
+		// final PropertyValueFactory propertyGainPercentage = new
+		// PropertyValueFactory(
+		// "gainPercentage");
+		// columnGainPercentage.setCellValueFactory(propertyGainPercentage);
+		// columnGainPercentage.setText("Gain % brut");
+		// columnGainPercentage.setPrefWidth(100);
+		// tableListStockController.getStocksList().getColumns()
+		// .add(columnGainPercentage);
+
+		final TableColumn<StockListBean, String> columnGainLessTaxes = new TableColumn<StockListBean, String>();
+		final TwoFloatValueFactory propertyGainLessTaxes = new TwoFloatValueFactory();
+		propertyGainLessTaxes.setProperty("gainLessTaxes");
+		propertyGainLessTaxes.setProperty2("gainLessTaxesPercentage");
+		columnGainLessTaxes.setCellValueFactory(propertyGainLessTaxes);
+		columnGainLessTaxes.setText("Gain net (%)");
+		columnGainLessTaxes.setPrefWidth(150);
+		tableListStockController.getStocksList().getColumns()
+				.add(columnGainLessTaxes);
+
+		// final TableColumn<StockListBean, String>
+		// columnGainLessTaxesPercentage = new TableColumn<StockListBean,
+		// String>();
+		// final PropertyValueFactory propertyGainLessTaxesPercentage = new
+		// PropertyValueFactory(
+		// "");
+		// columnGainLessTaxesPercentage
+		// .setCellValueFactory(propertyGainLessTaxesPercentage);
+		// columnGainLessTaxesPercentage.setText("Gain net %");
+		// columnGainLessTaxesPercentage.setPrefWidth(100);
+		// tableListStockController.getStocksList().getColumns()
+		// .add(columnGainLessTaxesPercentage);
+
+		tableListStockController.getStocksList().setItems(list);
+		tableListStockController.setDetail(popupDetail);
+		tableListStockController
+				.setDetailStockController(popupDetailController);
+		scrollPane
+				.setPrefHeight(frontManager.getWindowParent().getHeight() - 100);
+		tableListStockController.getStocksList().setPrefHeight(
+				frontManager.getWindowParent().getHeight() - 120);
+	}
+}

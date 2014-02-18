@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.ScrollPane?>
+
+<fx:root type="javafx.scene.control.ScrollPane" fx:id="scrollPane" id="scrollStocksList"
+	xmlns:fx="http://javafx.com/fxml"
+	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.StocksListCloseController">
+	<fx:include fx:id="tableListStock"
+		source="/net/blog/dev/gestion/stocks/fxml/stocksList.fxml" />
+	<fx:define>
+		<fx:include fx:id="popupDetail"
+			source="/net/blog/dev/gestion/stocks/fxml/detailStockClose.fxml" />
+	</fx:define>
+
+</fx:root>

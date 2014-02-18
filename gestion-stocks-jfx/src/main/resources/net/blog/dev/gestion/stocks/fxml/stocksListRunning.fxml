@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import net.blog.dev.gestion.stocks.jfx.TableCellFactory?>
+
+<fx:root type="javafx.scene.layout.AnchorPane" fx:id="scrollPane" id="scrollStocksList"
+	xmlns:fx="http://javafx.com/fxml"
+	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.StocksListRunningController">
+	<fx:include fx:id="tableListStock"
+		source="/net/blog/dev/gestion/stocks/fxml/stocksList.fxml" />
+	<fx:define>
+		<fx:include fx:id="popupDetailRunning"
+			source="/net/blog/dev/gestion/stocks/fxml/detailStockRunning.fxml" />
+	</fx:define>
+
+</fx:root>

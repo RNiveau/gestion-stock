@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml">
+  <children>
+    <VBox layoutX="4.0" layoutY="1.0" prefHeight="200.0" prefWidth="393.0">
+      <children>
+        <HBox prefHeight="31.0" prefWidth="393.0">
+          <children>
+            <Label text="Fichier de sauvegarde" />
+            <TextField prefWidth="200.0">
+              <HBox.margin>
+                <Insets left="10.0" />
+              </HBox.margin>
+            </TextField>
+          </children>
+        </HBox>
+        <HBox prefHeight="38.0" prefWidth="393.0">
+          <children>
+            <Label prefWidth="138.0" text="Taux location SRD" />
+            <TextField prefWidth="200.0">
+              <HBox.margin>
+                <Insets left="10.0" />
+              </HBox.margin>
+            </TextField>
+          </children>
+        </HBox>
+        <Button mnemonicParsing="false" text="Sauvegarder" />
+      </children>
+    </VBox>
+  </children>
+</AnchorPane>

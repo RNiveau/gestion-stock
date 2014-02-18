@@ -1,0 +1,72 @@
+/**
+ * 
+ */
+package net.blog.dev.gestion.stocks.jfx.controllers;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import net.blog.dev.gestion.stocks.middle.beans.StockListBean;
+
+/**
+ * @author Kiva
+ * 
+ */
+public class DetailStockCloseController extends AbstractDetailController {
+
+	@FXML
+	private Label taxes;
+
+	@FXML
+	private Label taxesClose;
+
+	@FXML
+	private Label account;
+	@FXML
+	private Label direction;
+	@FXML
+	private Label type;
+	@FXML
+	private Label strategy;
+
+	@FXML
+	private CloseController closeStockController;
+
+	@FXML
+	private AnchorPane showDividend;
+
+	@FXML
+	private ShowDividendController showDividendController;
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.blog.dev.gestion.stocks.jfx.controllers.IDetailController#
+	 * loadFromStockListBean
+	 * (net.blog.dev.gestion.stocks.middle.beans.StockListBean)
+	 */
+	@Override
+	public void loadFromStockListBean(StockListBean bean) {
+		setDetailStockBean(getDetailStockMService().getDetailStockBean(bean));
+		taxes.setText(getDetailStockBean().getTaxes().toString());
+		taxesClose.setText(getDetailStockBean().getTaxesClose().toString());
+		strategy.setText(getBundle().getString(
+				getDetailStockBean().getStrategy()));
+		account.setText(getBundle()
+				.getString(getDetailStockBean().getAccount()));
+		type.setText(getBundle().getString(getDetailStockBean().getType()));
+		direction.setText(getBundle().getString(
+				getDetailStockBean().getDirection()));
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		setShowDividend(showDividend);
+		setShowDividendController(showDividendController);
+		super.initialize(arg0, arg1);
+	}
+
+}

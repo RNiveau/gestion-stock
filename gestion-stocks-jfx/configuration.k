@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><ns2:KConfiguration xmlns:ns2="http://blog-dev.net"><srdLoan>0.023</srdLoan><directory>/Users/Kiva/java/gestion-stocks/gestion-stocks-jfx</directory><version>1.2.0</version></ns2:KConfiguration>

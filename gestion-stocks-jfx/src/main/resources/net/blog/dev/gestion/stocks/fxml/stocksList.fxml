@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import net.blog.dev.gestion.stocks.jfx.TableCellFactory?>
+<?import javafx.scene.layout.Pane?>
+
+<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml"
+	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.StockListTableController">
+	<TableView fx:id="stocksList" onMouseClicked="#openDetail">
+		<columns>
+			<TableColumn text="Titre" prefWidth="125">
+				<cellValueFactory>
+					<PropertyValueFactory property="title" />
+				</cellValueFactory>
+			</TableColumn>
+			<TableColumn text="Quantité" prefWidth="75" fx:id="quantityColumn">
+				<cellValueFactory>
+					<PropertyValueFactory property="quantity" />
+				</cellValueFactory>
+			</TableColumn>
+			<TableColumn text="Prix unitaire" prefWidth="100">
+				<cellValueFactory>
+					<PropertyValueFactory property="unitPrice" />
+				</cellValueFactory>
+			</TableColumn>
+			<TableColumn text="Prix total" prefWidth="120">
+				<cellValueFactory>
+					<PropertyValueFactory property="price" />
+				</cellValueFactory>
+			</TableColumn>
+			<TableColumn text="Sens" prefWidth="50">
+				<cellValueFactory>
+					<PropertyValueFactory property="direction" />
+				</cellValueFactory>
+			</TableColumn>
+			<TableColumn text="Date d'achat" prefWidth="100">
+				<cellValueFactory>
+					<PropertyValueFactory property="date" />
+				</cellValueFactory>
+			</TableColumn>
+			<TableColumn text="Jours écoulés" prefWidth="100">
+				<cellValueFactory>
+					<PropertyValueFactory property="dayRunning" />
+				</cellValueFactory>
+			</TableColumn>
+		</columns>
+	</TableView>
+</fx:root>

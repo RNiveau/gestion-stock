@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://blog-dev.net" xmlns:k="http://blog-dev.net">
+
+	<xs:complexType name="KConfiguration">
+		<xs:sequence>
+			<xs:element name="srdLoan" type="xs:float"></xs:element>
+			<xs:element name="directory" type="xs:string" minOccurs="1"
+				maxOccurs="1">
+			</xs:element>
+			<xs:element name="version" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="KConfiguration" type="k:KConfiguration"></xs:element>
+
+</xs:schema>

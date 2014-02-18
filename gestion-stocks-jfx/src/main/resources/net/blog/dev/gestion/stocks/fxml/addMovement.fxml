@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import net.blog.dev.gestion.stocks.jfx.TableCellFactory?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+
+<fx:root type="javafx.scene.layout.AnchorPane" stylesheets="net/blog/dev/gestion/stocks/css/style.css"
+	xmlns:fx="http://javafx.com/fxml"
+	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.AddMovementController">
+	<VBox id="vboxAddStock" prefWidth="550.0">
+		<children>
+			<Label text="Ajouter un mouvement" />
+			<HBox>
+				<children>
+					<Label prefWidth="150" text="Montant" />
+					<TextField fx:id="total" />
+					<Label prefWidth="200" translateX="10" fx:id="errorTotal" styleClass="error" />
+				</children>
+			</HBox>
+			<HBox>
+				<children>
+					<Label prefWidth="150" text="Date" />
+					<TextField fx:id="date" />
+					<Label prefWidth="200" translateX="10" fx:id="errorDate" styleClass="error" />
+				</children>
+			</HBox>
+			<HBox>
+				<children>
+					<Label prefWidth="150" text="Compte" />
+					<ChoiceBox fx:id="account">
+						<items>
+							<FXCollections fx:factory="observableArrayList">
+								<String fx:value="Compte titre" />
+								<String fx:value="PEA" />
+							</FXCollections>
+						</items>
+					</ChoiceBox>
+					<Label prefWidth="200" translateX="10" fx:id="errorAccount" styleClass="error" />
+				</children>
+			</HBox>
+			<HBox>
+				<children>
+					<Label prefWidth="150" text="Sens" />
+					<ChoiceBox fx:id="provision">
+					</ChoiceBox>
+				</children>
+			</HBox>
+			<HBox>
+				<children>
+					<Label prefWidth="150" text="Commentaire" />
+					<TextArea fx:id="comment" />
+				</children>
+			</HBox>
+			<Button text="Ajouter" id="addStock" onAction="#addStock" />
+		</children>
+	</VBox>
+</fx:root>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root type="javafx.scene.layout.AnchorPane" xmlns:fx="http://javafx.com/fxml"
+	prefHeight="360.0" prefWidth="470.0" layoutX="15" layoutY="15"
+	stylesheets="net/blog/dev/gestion/stocks/css/style.css"
+	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.ShowDividendController">
+	<children>
+		<VBox>
+			<children>
+				<TableView layoutX="0.0" layoutY="0.0" prefHeight="250"
+					prefWidth="315" fx:id="table">
+					<columns>
+						<TableColumn minWidth="10.0"
+							prefWidth="111.0" text="Date">
+							<cellValueFactory>
+								<PropertyValueFactory property="date" />
+							</cellValueFactory>
+						</TableColumn>
+						<TableColumn prefWidth="75.0" text="Montant">
+							<cellValueFactory>
+								<PropertyValueFactory property="price" />
+							</cellValueFactory>
+						</TableColumn>
+						<TableColumn minWidth="10.0"
+							prefWidth="108.0" text="Pourcentage">
+							<cellValueFactory>
+								<PropertyValueFactory property="percentage" />
+							</cellValueFactory>
+						</TableColumn>
+					</columns>
+				</TableView>
+				<Button layoutX="15.0" translateY="10" mnemonicParsing="false" text="Fermer"
+					onAction="#close" />
+			</children>
+		</VBox>
+	</children>
+</fx:root>

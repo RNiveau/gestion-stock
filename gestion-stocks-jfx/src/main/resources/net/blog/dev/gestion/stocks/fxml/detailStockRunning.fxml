@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import net.blog.dev.gestion.stocks.jfx.TableCellFactory?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<fx:root type="javafx.scene.layout.Pane" xmlns:fx="http://javafx.com/fxml"
+	style="-fx-background-color: white;"
+	layoutX="10" layoutY="10" prefHeight="220" prefWidth="500.0"
+	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.DetailStockRunningController">
+	<children>
+		<VBox id="VBox" layoutX="10" layoutY="5" spacing="5.0" >
+			<children>
+				<HBox id="HBox" spacing="5.0">
+					<children>
+						<VBox prefHeight="140.0" prefWidth="207.0">
+							<children>
+								<HBox prefHeight="16.0" prefWidth="256.0">
+									<children>
+										<Label prefWidth="99.0" text="Frais bancaire" />
+										<Label fx:id="taxes" />
+									</children>
+								</HBox>
+								<HBox prefHeight="16.0" prefWidth="256.0">
+									<children>
+										<Label prefWidth="99.0" text="Stratégie" />
+										<Label fx:id="strategy" />
+									</children>
+									<padding>
+										<Insets top="5.0" />
+									</padding>
+								</HBox>
+								<HBox prefHeight="16.0" prefWidth="256.0">
+									<children>
+										<Label prefWidth="99.0" text="Compte" />
+										<Label fx:id="account" />
+									</children>
+									<padding>
+										<Insets top="5.0" />
+									</padding>
+								</HBox>
+								<HBox prefHeight="16.0" prefWidth="256.0">
+									<children>
+										<Label prefWidth="99.0" text="Sens" />
+										<Label fx:id="direction" />
+									</children>
+									<padding>
+										<Insets top="5.0" />
+									</padding>
+								</HBox>
+								<HBox prefHeight="16.0" prefWidth="256.0">
+									<children>
+										<Label prefWidth="99.0" text="Type" />
+										<Label fx:id="type" />
+									</children>
+									<padding>
+										<Insets top="5.0" />
+									</padding>
+								</HBox>
+								<HBox prefHeight="16.0" prefWidth="256.0" fx:id="hboxSrd" visible="false" >
+									<children>
+										<Label prefWidth="99.0" text="Estimation srd" />
+										<Label fx:id="srd" />
+									</children>
+									<padding>
+										<Insets top="5.0" />
+									</padding>
+								</HBox>
+							</children>
+						</VBox>
+						<VBox prefHeight="140" prefWidth="256.0">
+							<children>
+								<HBox prefHeight="16.0" prefWidth="256.0">
+									<children>
+										<Label prefWidth="110" text="Gain 1 Atr" />
+										<Label fx:id="gain1atr" />
+									</children>
+								</HBox>
+								<HBox prefHeight="16.0" prefWidth="256.0">
+									<children>
+										<Label prefWidth="110" text="Gain 1,5 Atr" />
+										<Label fx:id="gain15atr" />
+									</children>
+									<padding>
+										<Insets top="5.0" />
+									</padding>
+								</HBox>
+								<HBox prefHeight="16.0" prefWidth="256.0">
+									<children>
+										<Label prefWidth="110" text="Gain 2 Atr" />
+										<Label fx:id="gain2atr" />
+									</children>
+									<padding>
+										<Insets top="5.0" />
+									</padding>
+								</HBox>
+								<HBox prefHeight="16.0" prefWidth="256.0">
+									<children>
+										<Label prefWidth="110" text="Stop 1 Atr" />
+										<Label fx:id="stop1atr" />
+									</children>
+									<padding>
+										<Insets top="5.0" />
+									</padding>
+								</HBox>
+								<HBox prefHeight="16.0" prefWidth="256.0">
+									<children>
+										<Label prefWidth="110" text="Stop 1,5 Atr" />
+										<Label fx:id="stop15atr" />
+									</children>
+									<padding>
+										<Insets top="5.0" />
+									</padding>
+								</HBox>
+								<HBox prefHeight="16.0" prefWidth="256.0">
+									<children>
+										<Label prefWidth="110" text="Stop 2 Atr" />
+										<Label fx:id="stop2atr" />
+									</children>
+									<padding>
+										<Insets top="5.0" />
+									</padding>
+								</HBox>
+							</children>
+						</VBox>
+					</children>
+				</HBox>
+				<HBox prefWidth="419.0">
+					<children>
+						<Button mnemonicParsing="false" text="Cloturer la position"
+							onAction="#closeStock" />
+						<VBox id="VBox" spacing="5.0">
+							<children>
+								<Button mnemonicParsing="false" text="Ajouter une dividende"
+									onAction="#addDividend" translateX="50" />
+								<Button mnemonicParsing="false" onAction="#showDividendList"
+									text="Voir la liste de dividendes" translateX="50.0" />
+							</children>
+						</VBox>
+					</children>
+				</HBox>
+			</children>
+		</VBox>
+		
+		<fx:define>
+			<fx:include fx:id="closeStock"
+				source="/net/blog/dev/gestion/stocks/fxml/closeStock.fxml" />
+		</fx:define>
+		<fx:define>
+			<fx:include fx:id="addDividend"
+				source="/net/blog/dev/gestion/stocks/fxml/addDividend.fxml" />
+		</fx:define>
+		<fx:define>
+			<fx:include fx:id="showDividend"
+				source="/net/blog/dev/gestion/stocks/fxml/showDividends.fxml" />
+		</fx:define>
+	</children>
+</fx:root>

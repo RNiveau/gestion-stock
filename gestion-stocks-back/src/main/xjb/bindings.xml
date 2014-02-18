@@ -1,0 +1,11 @@
+<jaxb:bindings version="2.0" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	jaxb:extensionBindingPrefixes="xjc">
+	<jaxb:globalBindings> <!-- mapSimpleTypeDef="true"> -->
+		<jaxb:serializable />
+		<xjc:simple />
+		<!-- <xjc:generateElementProperty>false</xjc:generateElementProperty> -->
+		<xjc:javaType name="java.util.Date" xmlType="xsd:date"
+			adapter="net.blog.dev.gestion.stocks.jaxb.DateXmlAdapter" />
+	</jaxb:globalBindings>
+</jaxb:bindings>

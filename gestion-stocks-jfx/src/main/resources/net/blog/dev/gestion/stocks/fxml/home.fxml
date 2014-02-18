@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<fx:root type="javafx.scene.layout.AnchorPane" xmlns:fx="http://javafx.com/fxml"
+	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.HomeController"
+	stylesheets="net/blog/dev/gestion/stocks/css/style.css">
+	<children>
+		<VBox fx:id="leftPanel" id="leftPanel">
+			<children>
+				<Button onAction="#openStocksListRunning" text="Liste de positions en cours" />
+			</children>
+			<children>
+				<Button onAction="#openStocksListClose" text="Liste de positions cloturées" />
+			</children>
+			<children>
+				<Button onAction="#openListMovement" text="Liste des mouvements" />
+			</children>
+			<children>
+				<Button onAction="#openAddStock" text="Ajouter une position" />
+			</children>
+			<children>
+				<Button onAction="#openAddMovement" text="Ajouter un mouvement" />
+			</children>
+			<children>
+				<Button onAction="#openResultYear" text="Tableau de résultat" />
+			</children>
+			<children>
+				<Button onAction="#openCompareStock" text="Compare action" />
+			</children>
+			<children>
+				<Button onAction="#openHelp" text="Aide au calcul" />
+			</children>
+			<children>
+				<Button onAction="#openConfiguration" text="Configuration" />
+			</children>
+		</VBox>
+		<VBox fx:id="rightPanel" layoutX="250">
+		</VBox>
+	</children>
+</fx:root>

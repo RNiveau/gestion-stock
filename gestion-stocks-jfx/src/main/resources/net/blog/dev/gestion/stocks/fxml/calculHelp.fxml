@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<fx:root type="javafx.scene.layout.AnchorPane" xmlns:fx="http://javafx.com/fxml"
+	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.CalculHelpController"
+	stylesheets="net/blog/dev/gestion/stocks/css/style.css">
+	<children>
+		<VBox>
+			<children>
+				<Label text="Stop Atr">
+					<VBox.margin>
+						<Insets bottom="10.0" fx:id="x2" />
+					</VBox.margin>
+				</Label>
+				<HBox prefHeight="23.0" prefWidth="600.0" VBox.margin="$x2">
+					<children>
+						<Label prefWidth="67.0" text="Prix" />
+						<TextField prefWidth="67.0" fx:id="prixAtr" onKeyReleased="#calculAtr" />
+						<Label prefWidth="67.0" text="Atr" translateX="0.0">
+							<HBox.margin>
+								<Insets left="15.0" fx:id="x1" />
+							</HBox.margin>
+						</Label>
+						<TextField prefWidth="67.0" fx:id="atr" onKeyReleased="#calculAtr" />
+						<Label text="" fx:id="atrPourcentage" HBox.margin="$x1" />
+					</children>
+				</HBox>
+				<VBox prefHeight="60.0" prefWidth="600.0" fx:id="resultAtr" visible="false">
+					<children>
+						<Label text="Résultat" />
+						<HBox prefHeight="23.0" prefWidth="600.0">
+							<children>
+								<Label prefWidth="67.0" text="+ 1 Atr" />
+								<Label prefWidth="67.0" text="" fx:id="atr1" />
+								<Label prefWidth="67.0" text="+ 1,5 Atr" />
+								<Label prefWidth="67.0" text="" fx:id="atr15" />
+								<Label prefWidth="67.0" text="+ 2 Atr" />
+								<Label prefWidth="67.0" text="" fx:id="atr2" />
+							</children>
+						</HBox>
+						<HBox prefHeight="22.0" prefWidth="600.0">
+							<children>
+								<Label prefWidth="67.0" text="- 1 Atr" />
+								<Label prefWidth="67.0" text="" fx:id="atrm1" />
+								<Label prefWidth="67.0" text="- 1,5 Atr" />
+								<Label prefWidth="67.0" text="" fx:id="atrm15" />
+								<Label prefWidth="67.0" text="- 2 Atr" />
+								<Label prefWidth="67.0" text="" fx:id="atrm2" />
+							</children>
+						</HBox>
+					</children>
+				</VBox>
+				<Separator prefWidth="200.0" />
+				<Label text="Calcul pourcentage">
+					<VBox.margin>
+						<Insets bottom="10.0" top="10.0" fx:id="x3" />
+					</VBox.margin>
+				</Label>
+				<HBox prefHeight="23.0" prefWidth="600.0">
+					<children>
+						<Label prefWidth="67.0" text="Prix" />
+						<TextField prefWidth="67.0" fx:id="calculPrice" onKeyReleased="#calculPercentage" />
+						<Label prefWidth="89.0" text="Pourcentage" translateX="0.0">
+							<HBox.margin>
+								<Insets left="15.0" fx:id="x1" />
+							</HBox.margin>
+						</Label>
+						<TextField prefWidth="67.0" fx:id="calculPercentage" onKeyReleased="#calculPercentage" />
+						<Label text="" fx:id="calculResult" HBox.margin="$x1" />
+					</children>
+					<VBox.margin>
+						<Insets bottom="10.0" fx:id="x2" />
+					</VBox.margin>
+				</HBox>
+				<Separator prefWidth="200.0" />
+				<Label text="Différence entre deux prix" VBox.margin="$x3" />
+				<HBox prefHeight="23.0" prefWidth="600.0">
+					<children>
+						<Label prefWidth="67.0" text="Prix 1" onKeyReleased="#calculDiff" />
+						<TextField prefWidth="67.0" fx:id="diffPrice1" />
+						<Label prefWidth="52.0" text="Prix 2" translateX="0.0">
+							<HBox.margin>
+								<Insets left="15.0" fx:id="x1" />
+							</HBox.margin>
+						</Label>
+						<TextField prefWidth="67.0" fx:id="diffPrice2" onKeyReleased="#calculDiff" />
+						<Label text="Pourcentage" HBox.margin="$x1" fx:id="diffResult" />
+					</children>
+				</HBox>
+			</children>
+		</VBox>
+	</children>
+</fx:root>

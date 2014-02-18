@@ -1,0 +1,19 @@
+#leftPanel {
+	-fx-border-color: #000;
+	-fx-border-style: solid;
+	-fx-border-width: 0px 1px 0px 0px;
+}
+
+#detailStockRunning {
+	-fx-background-color: white;
+	-fx-background-size: cover;
+}
+
+#scrollStocksList {
+	-fx-border-width: 0px 0px 0px 0px;
+	-fx-background-color: transparent;
+}
+
+.error {
+	-fx-text-fill: #EE0000;
+}

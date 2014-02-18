@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<StackPane id="StackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml">
+  <children>
+    <VBox prefHeight="200.0" prefWidth="100.0">
+      <children>
+        <Label text="Stop Atr">
+          <VBox.margin>
+            <Insets bottom="10.0" fx:id="x2" />
+          </VBox.margin>
+        </Label>
+        <HBox prefHeight="23.0" prefWidth="600.0" VBox.margin="$x2">
+          <children>
+            <Label prefWidth="67.0" text="Prix" />
+            <TextField prefWidth="67.0" />
+            <Label prefWidth="67.0" text="Atr" translateX="0.0">
+              <HBox.margin>
+                <Insets left="15.0" fx:id="x1" />
+              </HBox.margin>
+            </Label>
+            <TextField prefWidth="67.0" />
+            <Label text="Pourcentage" HBox.margin="$x1" />
+          </children>
+        </HBox>
+        <VBox prefHeight="60.0" prefWidth="600.0">
+          <children>
+            <Label text="Résultat" />
+            <HBox prefHeight="23.0" prefWidth="600.0">
+              <children>
+                <Label prefWidth="67.0" text="+ 1 Atr" />
+                <Label prefWidth="67.0" text="+ 1 Atr" />
+                <Label prefWidth="67.0" text="+ 1,5 Atr" />
+                <Label prefWidth="67.0" text="+ 1 Atr" />
+                <Label prefWidth="67.0" text="+ 2 Atr" />
+                <Label prefWidth="67.0" text="+ 1 Atr" />
+              </children>
+            </HBox>
+            <HBox prefHeight="22.0" prefWidth="600.0">
+              <children>
+                <Label prefWidth="67.0" text="- 1 Atr" />
+                <Label prefWidth="67.0" text="+ 1 Atr" />
+                <Label prefWidth="67.0" text="- 1,5 Atr" />
+                <Label prefWidth="67.0" text="+ 1 Atr" />
+                <Label prefWidth="67.0" text="- 2 Atr" />
+                <Label prefWidth="67.0" text="+ 1 Atr" />
+              </children>
+            </HBox>
+          </children>
+        </VBox>
+        <Separator prefWidth="200.0" />
+        <Label text="Calcul pourcentage">
+          <VBox.margin>
+            <Insets bottom="10.0" top="10.0" fx:id="x3" />
+          </VBox.margin>
+        </Label>
+        <HBox prefHeight="23.0" prefWidth="600.0">
+          <children>
+            <Label prefWidth="67.0" text="Prix" />
+            <TextField prefWidth="67.0" />
+            <Label prefWidth="89.0" text="Pourcentage" translateX="0.0">
+              <HBox.margin>
+                <Insets left="15.0" fx:id="x1" />
+              </HBox.margin>
+            </Label>
+            <TextField prefWidth="67.0" />
+            <Label text="Pourcentage" HBox.margin="$x1" />
+          </children>
+          <VBox.margin>
+            <Insets bottom="10.0" fx:id="x2" />
+          </VBox.margin>
+        </HBox>
+        <Separator prefWidth="200.0" />
+        <Label text="Différence entre deux prix" VBox.margin="$x3" />
+        <HBox prefHeight="23.0" prefWidth="600.0">
+          <children>
+            <Label prefWidth="67.0" text="Prix 1" />
+            <TextField prefWidth="67.0" />
+            <Label prefWidth="52.0" text="Prix 2" translateX="0.0">
+              <HBox.margin>
+                <Insets left="15.0" fx:id="x1" />
+              </HBox.margin>
+            </Label>
+            <TextField prefWidth="67.0" />
+            <Label text="Pourcentage" HBox.margin="$x1" />
+          </children>
+        </HBox>
+      </children>
+    </VBox>
+  </children>
+</StackPane>
