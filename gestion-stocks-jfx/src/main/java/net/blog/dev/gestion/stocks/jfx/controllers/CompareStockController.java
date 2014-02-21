@@ -1,9 +1,5 @@
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
-import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,13 +11,16 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
 import javafx.scene.layout.VBox;
-
-import javax.inject.Inject;
-
 import net.blog.dev.gestion.stocks.middle.api.ICompareStockMService;
 import net.blog.dev.gestion.stocks.middle.beans.CompareStockBean;
 import net.blog.dev.gestion.stocks.middle.beans.CompareStockResultBean;
 import net.blog.dev.gestion.stocks.middle.beans.CompareStockValueBean;
+
+import javax.inject.Inject;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class CompareStockController implements Initializable {
 
@@ -38,7 +37,7 @@ public class CompareStockController implements Initializable {
 		bundle = arg1;
 		CompareStockBean compareStockBean = new CompareStockBean();
 		compareStockBean.setDuration(3);
-		compareStockBean.addValue("ACA");
+		compareStockBean.addValue("ALU");
 		compareStockBean.addValue("GLE");
 		final List<CompareStockResultBean> listCompareStock = compareStockMService
 				.getListCompareStock(compareStockBean);
@@ -48,7 +47,8 @@ public class CompareStockController implements Initializable {
 				.observableArrayList();
 		Float higher = 0f;
 		Float lower = 0f;
-		for (CompareStockResultBean compareStockResultBean : listCompareStock) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        for (CompareStockResultBean compareStockResultBean : listCompareStock) {
 			final ObservableList<Data<String, Float>> observableList = FXCollections
 					.observableArrayList();
 			if (compareStockResultBean.getHigher() > higher)
@@ -58,7 +58,7 @@ public class CompareStockController implements Initializable {
 			for (CompareStockValueBean compareStockValueBean : compareStockResultBean
 					.getListValue()) {
 				final Data<String, Float> data = new XYChart.Data<String, Float>(
-						compareStockValueBean.getDate().toString(),
+                        compareStockValueBean.getDate() != null ? dateFormat.format(compareStockValueBean.getDate()) : "",
 						compareStockValueBean.getValue());
 				observableList.add(data);
 			}

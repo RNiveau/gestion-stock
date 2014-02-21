@@ -3,11 +3,11 @@
  */
 package net.blog.dev.gestion.stocks.back.json;
 
-import java.io.Serializable;
-import java.util.Date;
-
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author Kiva
@@ -21,7 +21,7 @@ public class HistoricQuote implements Serializable {
 	 */
 	private static final long serialVersionUID = 3333460860168856346L;
 
-	@JsonProperty
+	@JsonProperty(value = "Date")
 	private Date date;
 
 	@JsonProperty
