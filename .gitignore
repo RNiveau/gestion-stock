@@ -4,3 +4,14 @@ target/*
 .classpath
 .projet
 .settings/*
+.idea/
+configuration.k
+gestion-stocks-back/gestion-stocks-back.iml
+gestion-stocks-back/target/
+gestion-stocks-jfx/gestion-stocks-jfx.iml
+gestion-stocks-jfx/target/
+gestion-stocks-middle/gestion-stocks-middle.iml
+gestion-stocks-middle/target/
+gestion-stocks-parent/gestion-stocks-parent.iml
+gestion-stocks.iml
+portfolio.k
