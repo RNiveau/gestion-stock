@@ -3,9 +3,7 @@
  */
 package net.blog.dev.gestion.stocks.jfx;
 
-import java.io.IOException;
-import java.util.ResourceBundle;
-
+import com.google.common.collect.Iterables;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,7 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 
-import com.google.common.collect.Iterables;
+import java.io.IOException;
+import java.util.ResourceBundle;
 
 /**
  * @author Kiva
@@ -30,8 +29,10 @@ public class JfxUtils {
 			loader.setController(null);
 			loader.setRoot(null);
 			loader.setResources(ResourceBundle.getBundle(BUNDLE));
+            loader.setLocation(JfxUtils.class.getResource(fxml));
+
 			Node root = null;
-			root = (Node) loader.load(JfxUtils.class.getResourceAsStream(fxml));
+			root = (Node) loader.load(JfxUtils.class.getResource(fxml).openStream());
 			return root;
 		} catch (IOException e) {
 			throw new IllegalStateException("cannot load FXML screen", e);
