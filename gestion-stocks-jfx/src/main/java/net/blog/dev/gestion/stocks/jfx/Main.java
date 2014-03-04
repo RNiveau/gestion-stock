@@ -6,13 +6,11 @@ package net.blog.dev.gestion.stocks.jfx;
 import javafx.application.Application;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
-import javax.enterprise.util.AnnotationLiteral;
-
 import net.blog.dev.gestion.stocks.back.Initialize;
-
 import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
+
+import javax.enterprise.util.AnnotationLiteral;
 
 /**
  * @author Kiva
@@ -28,7 +26,7 @@ public class Main extends Application {
 	@SuppressWarnings("serial")
 	public void start(Stage primaryStage) {
 		// Let's initialize CDI/Weld.
-		WeldContainer weldContainer = new Weld().initialize();
+        WeldContainer weldContainer = new Weld().initialize();
 		// Make the application parameters injectable with a standard CDI
 		// annotation
 		weldContainer.instance().select(ApplicationParametersProvider.class)

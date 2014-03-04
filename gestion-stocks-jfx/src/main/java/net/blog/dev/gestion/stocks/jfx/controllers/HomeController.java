@@ -1,8 +1,5 @@
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,67 +7,73 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-
-import javax.inject.Inject;
-
 import net.blog.dev.gestion.stocks.jfx.FxmlFileConstantes;
 import net.blog.dev.gestion.stocks.jfx.JfxUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.inject.Inject;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class HomeController extends AnchorPane implements Initializable {
 
-	@FXML
-	private VBox leftPanel;
+    static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-	@FXML
-	private VBox rightPanel;
+    @FXML
+    private VBox leftPanel;
 
-	@Inject
-	private FXMLLoader loader;
+    @FXML
+    private VBox rightPanel;
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		leftPanel.setPrefHeight(1024);
-	}
+    @Inject
+    private FXMLLoader loader;
 
-	public void openStocksListRunning(ActionEvent event) {
-		loadRightPane(FxmlFileConstantes.LIST_STOCKS_RUNNING);
-	}
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        logger.info("Initialize");
+        leftPanel.setPrefHeight(1024);
+    }
 
-	public void openStocksListClose(ActionEvent event) {
-		loadRightPane(FxmlFileConstantes.LIST_STOCKS_CLOSE);
-	}
+    public void openStocksListRunning(ActionEvent event) {
+        loadRightPane(FxmlFileConstantes.LIST_STOCKS_RUNNING);
+    }
 
-	public void openAddStock(ActionEvent event) {
-		loadRightPane(FxmlFileConstantes.ADD_STOCK);
-	}
+    public void openStocksListClose(ActionEvent event) {
+        loadRightPane(FxmlFileConstantes.LIST_STOCKS_CLOSE);
+    }
 
-	public void openHelp(ActionEvent event) {
-		loadRightPane(FxmlFileConstantes.CALCUL_HELP);
-	}
+    public void openAddStock(ActionEvent event) {
+        loadRightPane(FxmlFileConstantes.ADD_STOCK);
+    }
 
-	public void openConfiguration(ActionEvent event) {
-		loadRightPane(FxmlFileConstantes.CONFIGURATION);
-	}
+    public void openHelp(ActionEvent event) {
+        loadRightPane(FxmlFileConstantes.CALCUL_HELP);
+    }
 
-	public void openResultYear(ActionEvent event) {
-		loadRightPane(FxmlFileConstantes.RESULT_YEAR);
-	}
+    public void openConfiguration(ActionEvent event) {
+        loadRightPane(FxmlFileConstantes.CONFIGURATION);
+    }
 
-	public void openAddMovement(ActionEvent event) {
-		loadRightPane(FxmlFileConstantes.ADD_MOVEMENT);
-	}
+    public void openResultYear(ActionEvent event) {
+        loadRightPane(FxmlFileConstantes.RESULT_YEAR);
+    }
 
-	public void openListMovement(ActionEvent event) {
-		loadRightPane(FxmlFileConstantes.LIST_MOVEMENTS);
-	}
+    public void openAddMovement(ActionEvent event) {
+        loadRightPane(FxmlFileConstantes.ADD_MOVEMENT);
+    }
 
-	public void openCompareStock(ActionEvent event) {
-		loadRightPane(FxmlFileConstantes.COMPARE_STOCK);
-	}
+    public void openListMovement(ActionEvent event) {
+        loadRightPane(FxmlFileConstantes.LIST_MOVEMENTS);
+    }
 
-	private void loadRightPane(String fxml) {
-		Node root = JfxUtils.loadFxml(loader, fxml);
-		rightPanel.getChildren().clear();
-		rightPanel.getChildren().add(root);
-	}
+    public void openCompareStock(ActionEvent event) {
+        loadRightPane(FxmlFileConstantes.COMPARE_STOCK);
+    }
+
+    private void loadRightPane(String fxml) {
+        Node root = JfxUtils.loadFxml(loader, fxml);
+        rightPanel.getChildren().clear();
+        rightPanel.getChildren().add(root);
+    }
 }
