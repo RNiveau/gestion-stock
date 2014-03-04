@@ -3,24 +3,22 @@
  */
 package net.blog.dev.gestion.stocks.back.services.impl;
 
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
-import javax.enterprise.context.ApplicationScoped;
-
 import net.blog.dev.gestion.stocks.back.json.HistoricQuote;
 import net.blog.dev.gestion.stocks.back.json.Quote;
 import net.blog.dev.gestion.stocks.back.services.api.IQuoteBService;
 import net.blog.dev.gestion.stocks.back.services.api.IQuoteResource;
 import net.blog.dev.gestion.stocks.back.services.api.IYahooFinanceBService;
-
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
+
+import javax.enterprise.context.ApplicationScoped;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author Kiva
@@ -129,6 +127,7 @@ public class QuoteBServiceImpl implements IQuoteBService {
 		json = json.replaceAll("}}$", "");
 		ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally
 		try {
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
 			List<HistoricQuote> quotes = mapper.readValue(json,
 					new TypeReference<List<HistoricQuote>>() {
 					});
