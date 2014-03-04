@@ -1,0 +1,22 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../config/ehcache.xsd">
+    <diskStore path="java.io.tmpdir"/>
+
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="36000"
+            timeToLiveSeconds="36000"
+            memoryStoreEvictionPolicy="LRU">
+        <persistence strategy="localTempSwap"/>
+    </defaultCache>
+
+    <cache name="cache"
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="36000"
+            timeToLiveSeconds="36000"
+            memoryStoreEvictionPolicy="LRU">
+        <persistence strategy="none"/>
+    </cache>
+
+</ehcache>

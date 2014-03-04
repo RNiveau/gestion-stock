@@ -13,6 +13,10 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
+import org.joda.time.Duration;
+import org.joda.time.Instant;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.io.IOException;
@@ -27,6 +31,8 @@ import java.util.List;
 @ApplicationScoped
 public class QuoteBServiceImpl implements IQuoteBService {
 
+    static final Logger logger = LoggerFactory.getLogger(QuoteBServiceImpl.class);
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -36,6 +42,7 @@ public class QuoteBServiceImpl implements IQuoteBService {
 	 */
 	@Override
 	public Quote getQuote(String code) {
+        logger.info("getQuote {}", code);
 		final String json = executeYahooService(code);
 		ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally
 		try {
@@ -92,6 +99,7 @@ public class QuoteBServiceImpl implements IQuoteBService {
 	 */
 	@Override
 	public List<Quote> getQuotes(String... codes) {
+        logger.info("getQuotes {}", codes);
 		final String json = executeYahooService(codes);
 		ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally
 		try {
@@ -112,7 +120,9 @@ public class QuoteBServiceImpl implements IQuoteBService {
 	@Override
 	public List<HistoricQuote> getHistoricQuote(String code, Date start,
 			Date end) {
-		final IYahooFinanceBService yahooService = getYahooService();
+        logger.info("getHistoricQuote {}, {}, {}", code, start, end);
+        Date timer = Instant.now().toDate();
+        final IYahooFinanceBService yahooService = getYahooService();
 		final String query = "select%20*%20from%20yahoo.finance.historicaldata%20where%20symbol%20%3D%20%22"
 				+ code
 				+ ".PA%22%20and%20startDate%20%3D%20%22"
@@ -131,6 +141,8 @@ public class QuoteBServiceImpl implements IQuoteBService {
 			List<HistoricQuote> quotes = mapper.readValue(json,
 					new TypeReference<List<HistoricQuote>>() {
 					});
+            Date timer2 = Instant.now().toDate();
+            logger.debug("Time in method: {}",  new Duration(timer.getTime(), timer2.getTime()).getMillis());
 			return quotes;
 		} catch (JsonParseException e) {
 			System.err.println(query);

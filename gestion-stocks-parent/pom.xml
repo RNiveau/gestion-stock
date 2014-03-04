@@ -23,6 +23,7 @@
         <jackson.version>1.9.13</jackson.version>
         <commons-collections.version>3.2.1</commons-collections.version>
         <slf4j.version>1.7.6</slf4j.version>
+        <ehcache.version>2.6.8</ehcache.version>
     </properties>
 
     <distributionManagement>
@@ -50,6 +51,11 @@
                 <groupId>commons-collections</groupId>
                 <artifactId>commons-collections</artifactId>
                 <version>${commons-collections.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.ehcache</groupId>
+                <artifactId>ehcache-core</artifactId>
+                <version>${ehcache.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.hibernate</groupId>

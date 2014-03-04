@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import net.blog.dev.gestion.stocks.back.Initialize;
+import net.sf.ehcache.CacheManager;
 import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
 
@@ -27,6 +28,8 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		// Let's initialize CDI/Weld.
         WeldContainer weldContainer = new Weld().initialize();
+        CacheManager.create();
+
 		// Make the application parameters injectable with a standard CDI
 		// annotation
 		weldContainer.instance().select(ApplicationParametersProvider.class)
