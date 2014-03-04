@@ -3,25 +3,27 @@
  */
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
-import java.util.List;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
-
-import javax.inject.Inject;
-
 import net.blog.dev.gestion.stocks.middle.api.IDividendMService;
 import net.blog.dev.gestion.stocks.middle.beans.DetailStockBean;
 import net.blog.dev.gestion.stocks.middle.beans.DividendBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.inject.Inject;
+import java.util.List;
 
 /**
  * @author Kiva
  * 
  */
 public class ShowDividendController {
+
+    static final Logger logger = LoggerFactory.getLogger(ShowDividendController.class);
 
 	@FXML
 	private TableView<DividendBean> table;
@@ -34,6 +36,7 @@ public class ShowDividendController {
 	}
 
 	public void init(DetailStockBean detailStockBean) {
+        logger.info("init {}", detailStockBean);
 		final List<DividendBean> dividends = dividendMService
 				.getDividends(detailStockBean.getId());
 

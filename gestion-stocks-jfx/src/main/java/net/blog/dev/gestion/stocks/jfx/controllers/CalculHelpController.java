@@ -3,9 +3,6 @@
  */
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -14,8 +11,12 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import net.blog.dev.gestion.stocks.middle.CalculUtils;
-
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * @author Kiva
@@ -23,7 +24,9 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class CalculHelpController extends AnchorPane implements Initializable {
 
-	@FXML
+    static final Logger logger = LoggerFactory.getLogger(CalculHelpController.class);
+
+    @FXML
 	private Label atrPourcentage;
 
 	@FXML
@@ -101,6 +104,7 @@ public class CalculHelpController extends AnchorPane implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+        logger.info("Initialize {} {}", arg0, arg1);
 		resultAtr.managedProperty().bind(resultAtr.visibleProperty());
 	}
 

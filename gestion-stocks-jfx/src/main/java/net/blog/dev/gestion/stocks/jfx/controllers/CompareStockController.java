@@ -15,6 +15,8 @@ import net.blog.dev.gestion.stocks.middle.api.ICompareStockMService;
 import net.blog.dev.gestion.stocks.middle.beans.CompareStockBean;
 import net.blog.dev.gestion.stocks.middle.beans.CompareStockResultBean;
 import net.blog.dev.gestion.stocks.middle.beans.CompareStockValueBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import java.net.URL;
@@ -23,6 +25,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class CompareStockController implements Initializable {
+
+    static final Logger logger = LoggerFactory.getLogger(CompareStockController.class);
 
 	@FXML
 	private VBox graphVbox;
@@ -34,6 +38,7 @@ public class CompareStockController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+        logger.info("Initialize {} {}", arg0, arg1);
 		bundle = arg1;
 		CompareStockBean compareStockBean = new CompareStockBean();
 		compareStockBean.setDuration(3);

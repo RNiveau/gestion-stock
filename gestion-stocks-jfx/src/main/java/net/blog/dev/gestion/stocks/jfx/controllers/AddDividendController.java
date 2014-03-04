@@ -3,19 +3,19 @@
  */
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
-import java.util.Date;
-import java.util.Map;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-
-import javax.inject.Inject;
-
 import net.blog.dev.gestion.stocks.middle.Utils;
 import net.blog.dev.gestion.stocks.middle.api.IDividendMService;
 import net.blog.dev.gestion.stocks.middle.beans.AddDividendBean;
 import net.blog.dev.gestion.stocks.middle.beans.DetailStockBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.inject.Inject;
+import java.util.Date;
+import java.util.Map;
 
 /**
  * @author Kiva
@@ -23,7 +23,9 @@ import net.blog.dev.gestion.stocks.middle.beans.DetailStockBean;
  */
 public class AddDividendController {
 
-	private DetailStockBean detailStockBean;
+    static final Logger logger = LoggerFactory.getLogger(AddDividendController.class);
+
+    private DetailStockBean detailStockBean;
 
 	@Inject
 	private IDividendMService dividendMService;
@@ -50,6 +52,7 @@ public class AddDividendController {
 	}
 
 	public void init(DetailStockBean detailStockBean) {
+        logger.info("init {}", detailStockBean);
 		this.detailStockBean = detailStockBean;
 		date.setText(Utils.formatDate(new Date(), "dd/MM/yyyy"));
 	}

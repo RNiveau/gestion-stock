@@ -31,7 +31,7 @@ public class HomeController extends AnchorPane implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        logger.info("Initialize");
+        logger.info("Initialize {} {}", arg0, arg1);
         leftPanel.setPrefHeight(1024);
     }
 
@@ -72,6 +72,7 @@ public class HomeController extends AnchorPane implements Initializable {
     }
 
     private void loadRightPane(String fxml) {
+        logger.info("Go to {}", fxml);
         Node root = JfxUtils.loadFxml(loader, fxml);
         rightPanel.getChildren().clear();
         rightPanel.getChildren().add(root);

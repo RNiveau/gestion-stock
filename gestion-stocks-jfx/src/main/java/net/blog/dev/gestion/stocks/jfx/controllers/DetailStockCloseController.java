@@ -3,13 +3,15 @@
  */
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import net.blog.dev.gestion.stocks.middle.beans.StockListBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * @author Kiva
@@ -17,7 +19,9 @@ import net.blog.dev.gestion.stocks.middle.beans.StockListBean;
  */
 public class DetailStockCloseController extends AbstractDetailController {
 
-	@FXML
+    static final Logger logger = LoggerFactory.getLogger(DetailStockCloseController.class);
+
+    @FXML
 	private Label taxes;
 
 	@FXML
@@ -64,6 +68,7 @@ public class DetailStockCloseController extends AbstractDetailController {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+        logger.info("Initialize {} {}", arg0, arg1);
 		setShowDividend(showDividend);
 		setShowDividendController(showDividendController);
 		super.initialize(arg0, arg1);

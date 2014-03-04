@@ -3,14 +3,16 @@
  */
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import net.blog.dev.gestion.stocks.jfx.FrontUtils;
 import net.blog.dev.gestion.stocks.middle.beans.ResultYearBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * @author Kiva
@@ -18,7 +20,9 @@ import net.blog.dev.gestion.stocks.middle.beans.ResultYearBean;
  */
 public class DetailResultYearController implements Initializable {
 
-	@FXML
+    static final Logger logger = LoggerFactory.getLogger(DetailResultYearController.class);
+
+    @FXML
 	private Label totalInvested;
 
 	@FXML
@@ -65,6 +69,7 @@ public class DetailResultYearController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+        logger.info("Initialize {} {}", arg0, arg1);
 	}
 
 }

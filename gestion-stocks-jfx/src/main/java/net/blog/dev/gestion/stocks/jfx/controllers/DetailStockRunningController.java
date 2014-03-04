@@ -3,9 +3,6 @@
  */
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -22,12 +19,19 @@ import javafx.stage.WindowEvent;
 import net.blog.dev.gestion.stocks.jfx.FrontUtils;
 import net.blog.dev.gestion.stocks.middle.beans.DetailStockBean.StopGain;
 import net.blog.dev.gestion.stocks.middle.beans.StockListBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * @author Kiva
  * 
  */
 public class DetailStockRunningController extends AbstractDetailController {
+
+    static final Logger logger = LoggerFactory.getLogger(DetailStockRunningController.class);
 
 	@FXML
 	private Label taxes;
@@ -165,6 +169,7 @@ public class DetailStockRunningController extends AbstractDetailController {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+        logger.info("Initialize {} {}", arg0, arg1);
 		setShowDividend(showDividend);
 		setShowDividendController(showDividendController);
 		super.initialize(arg0, arg1);

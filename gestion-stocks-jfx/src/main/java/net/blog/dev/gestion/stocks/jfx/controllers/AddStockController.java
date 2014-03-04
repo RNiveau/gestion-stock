@@ -1,11 +1,5 @@
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
-import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,15 +11,23 @@ import javafx.scene.Parent;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
-import javax.inject.Inject;
-
 import net.blog.dev.gestion.stocks.jfx.FxmlFileConstantes;
 import net.blog.dev.gestion.stocks.jfx.JfxUtils;
 import net.blog.dev.gestion.stocks.middle.api.IAddStockMService;
 import net.blog.dev.gestion.stocks.middle.beans.AddStockBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.inject.Inject;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 public class AddStockController implements Initializable {
+
+    static final Logger logger = LoggerFactory.getLogger(AddStockController.class);
 
 	@FXML
 	private TextField stockName;
@@ -88,6 +90,7 @@ public class AddStockController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+        logger.info("Initialize {} {}", arg0, arg1);
 		bundle = arg1;
 		strategiesMap = new HashMap<String, String>();
 		typeMap = new HashMap<String, String>();

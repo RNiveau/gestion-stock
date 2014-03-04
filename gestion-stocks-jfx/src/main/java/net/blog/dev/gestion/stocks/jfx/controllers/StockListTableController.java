@@ -3,9 +3,6 @@
  */
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,19 +18,24 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.WindowEvent;
-
-import javax.inject.Inject;
-
 import net.blog.dev.gestion.stocks.jfx.FxmlFileConstantes;
 import net.blog.dev.gestion.stocks.jfx.IFrontManager;
 import net.blog.dev.gestion.stocks.jfx.JfxUtils;
 import net.blog.dev.gestion.stocks.middle.beans.StockListBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.inject.Inject;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * @author Kiva
  * 
  */
 public class StockListTableController extends VBox implements Initializable {
+
+    static final Logger logger = LoggerFactory.getLogger(StockListTableController.class);
 
 	@FXML
 	private TableView<StockListBean> stocksList;
@@ -112,6 +114,7 @@ public class StockListTableController extends VBox implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+        logger.info("Initialize {} {}", arg0, arg1);
 	}
 
 	/**

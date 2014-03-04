@@ -3,9 +3,6 @@
  */
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,14 +12,17 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-
-import javax.inject.Inject;
-
 import net.blog.dev.gestion.stocks.jfx.IFrontManager;
 import net.blog.dev.gestion.stocks.jfx.JfxUtils;
 import net.blog.dev.gestion.stocks.jfx.TwoFloatValueFactory;
 import net.blog.dev.gestion.stocks.middle.api.IStocksListMService;
 import net.blog.dev.gestion.stocks.middle.beans.StockListBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.inject.Inject;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * @author Kiva
@@ -30,6 +30,8 @@ import net.blog.dev.gestion.stocks.middle.beans.StockListBean;
  */
 public class StocksListCloseController extends ScrollPane implements
 		Initializable {
+
+    static final Logger logger = LoggerFactory.getLogger(StocksListCloseController.class);
 
 	@Inject
 	private IStocksListMService stocksListMService;
@@ -55,6 +57,7 @@ public class StocksListCloseController extends ScrollPane implements
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+        logger.info("Initialize {} {}", arg0, arg1);
 		scrollPane.setPrefWidth(frontManager.getWindowParent().getWidth()
 				- JfxUtils.SPACE_LEFT_PANEL);
 

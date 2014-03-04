@@ -3,10 +3,6 @@
  */
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
-import java.io.File;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,12 +10,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
-
-import javax.inject.Inject;
-
 import net.blog.dev.gestion.stocks.jfx.IFrontManager;
 import net.blog.dev.gestion.stocks.middle.api.IConfigurationMSservice;
 import net.blog.dev.gestion.stocks.middle.beans.ConfigurationBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.inject.Inject;
+import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * @author Kiva
@@ -27,6 +27,8 @@ import net.blog.dev.gestion.stocks.middle.beans.ConfigurationBean;
  */
 public class ConfigurationController extends AnchorPane implements
 		Initializable {
+
+    static final Logger logger = LoggerFactory.getLogger(ConfigurationController.class);
 
 	@FXML
 	private Tooltip tooltipDirectory;
@@ -57,6 +59,7 @@ public class ConfigurationController extends AnchorPane implements
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+        logger.info("Initialize {} {}", arg0, arg1);
 		configurationBean = configurationMSservice.getConfiguration();
 		tooltipDirectory.setText(configurationBean.getDirectory());
 		srdLoanField.setText(configurationBean.getSrdLoan().toString());

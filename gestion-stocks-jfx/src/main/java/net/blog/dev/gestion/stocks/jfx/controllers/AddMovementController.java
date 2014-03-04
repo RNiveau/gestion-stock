@@ -1,11 +1,5 @@
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
-import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,17 +12,24 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-
-import javax.inject.Inject;
-
 import net.blog.dev.gestion.stocks.jfx.FxmlFileConstantes;
 import net.blog.dev.gestion.stocks.jfx.JfxUtils;
 import net.blog.dev.gestion.stocks.middle.api.IAddMovementMService;
 import net.blog.dev.gestion.stocks.middle.beans.AddMovementBean;
-
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.inject.Inject;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 public class AddMovementController implements Initializable {
+
+    static final Logger logger = LoggerFactory.getLogger(AddMovementController.class);
 
 	@FXML
 	private TextArea comment;
@@ -67,6 +68,7 @@ public class AddMovementController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+        logger.info("Initialize {} {}", arg0, arg1);
 		bundle = arg1;
 		accountMap = new HashMap<String, String>();
 		buildProvisionBox();

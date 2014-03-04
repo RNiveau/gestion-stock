@@ -3,11 +3,6 @@
  */
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
-import java.net.URL;
-import java.util.Date;
-import java.util.Map;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
@@ -18,19 +13,26 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-
-import javax.inject.Inject;
-
 import net.blog.dev.gestion.stocks.middle.Utils;
 import net.blog.dev.gestion.stocks.middle.api.ICloseStockMService;
 import net.blog.dev.gestion.stocks.middle.beans.CloseBean;
 import net.blog.dev.gestion.stocks.middle.beans.DetailStockBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.inject.Inject;
+import java.net.URL;
+import java.util.Date;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 /**
  * @author Kiva
  * 
  */
 public class CloseController extends AnchorPane implements Initializable {
+
+    static final Logger logger = LoggerFactory.getLogger(CloseController.class);
 
 	@Inject
 	private ICloseStockMService closeStockMService;
@@ -93,12 +95,14 @@ public class CloseController extends AnchorPane implements Initializable {
 	}
 
 	public void init(DetailStockBean detailStockBean) {
+        logger.info("init {}", detailStockBean);
 		this.detailStockBean = detailStockBean;
 		date.setText(Utils.formatDate(new Date(), "dd/MM/yyyy"));
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+        logger.info("Initialize {} {}", arg0, arg1);
 		bundle = arg1;
 		errorPrice.managedProperty().bind(errorPrice.visibleProperty());
 		errorDate.managedProperty().bind(errorDate.visibleProperty());

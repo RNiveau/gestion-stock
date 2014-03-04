@@ -1,8 +1,5 @@
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,13 +12,18 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-
-import javax.inject.Inject;
-
 import net.blog.dev.gestion.stocks.middle.api.IResultYearMService;
 import net.blog.dev.gestion.stocks.middle.beans.ResultYearBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.inject.Inject;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class ResultYearController extends AnchorPane implements Initializable {
+
+    static final Logger logger = LoggerFactory.getLogger(ResultYearController.class);
 
 	@FXML
 	private TableView<ResultYearBean> table;
@@ -39,6 +41,7 @@ public class ResultYearController extends AnchorPane implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+        logger.info("Initialize {} {}", arg0, arg1);
 		ObservableList<ResultYearBean> list = FXCollections
 				.observableArrayList();
 		list.addAll(resultYearMService.getResultList());

@@ -3,9 +3,6 @@
  */
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.value.ObservableNumberValue;
 import javafx.beans.value.ObservableValue;
@@ -26,9 +23,6 @@ import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
-
-import javax.inject.Inject;
-
 import net.blog.dev.gestion.stocks.jfx.IFrontManager;
 import net.blog.dev.gestion.stocks.jfx.JfxUtils;
 import net.blog.dev.gestion.stocks.middle.Utils;
@@ -36,6 +30,12 @@ import net.blog.dev.gestion.stocks.middle.api.IDetailStockMService;
 import net.blog.dev.gestion.stocks.middle.api.IStocksListMService;
 import net.blog.dev.gestion.stocks.middle.beans.StockListBean;
 import net.blog.dev.gestion.stocks.middle.beans.StockListRunningBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.inject.Inject;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * @author Kiva
@@ -43,6 +43,8 @@ import net.blog.dev.gestion.stocks.middle.beans.StockListRunningBean;
  */
 public class StocksListRunningController extends ScrollPane implements
 		Initializable {
+
+    static final Logger logger = LoggerFactory.getLogger(StocksListRunningController.class);
 
 	@Inject
 	private IStocksListMService stocksListMService;
@@ -70,6 +72,7 @@ public class StocksListRunningController extends ScrollPane implements
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+        logger.info("Initialize {} {}", arg0, arg1);
 		scrollPane.setPrefWidth(frontManager.getWindowParent().getWidth()
 				- JfxUtils.SPACE_LEFT_PANEL);
 
