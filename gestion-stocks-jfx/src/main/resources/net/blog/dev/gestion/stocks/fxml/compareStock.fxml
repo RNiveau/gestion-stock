@@ -1,19 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.geometry.Insets?>
-
+<?import java.lang.*?>
 <fx:root type="javafx.scene.layout.AnchorPane" xmlns:fx="http://javafx.com/fxml"
-	prefHeight="134.0" prefWidth="300.0"
-	stylesheets="net/blog/dev/gestion/stocks/css/style.css"
-	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.CompareStockController">
-	<children>
-		<VBox layoutX="0.0" layoutY="0.0" fx:id="graphVbox" >
+         prefHeight="134.0" prefWidth="300.0"
+         stylesheets="net/blog/dev/gestion/stocks/css/style.css"
+         fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.CompareStockController">
+    <children>
+        <VBox>
+            <HBox>
+                <VBox fx:id="containerText">
 
-		</VBox>
-	</children>
+                </VBox>
+                <VBox>
+                    <HBox>
+                        <Label text="Durée"/>
+                        <ChoiceBox fx:id="duration">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="3"/>
+                                    <String fx:value="4"/>
+                                    <String fx:value="5"/>
+                                    <String fx:value="6"/>
+                                    <String fx:value="7"/>
+                                    <String fx:value="8"/>
+                                    <String fx:value="9"/>
+                                    <String fx:value="10"/>
+                                    <String fx:value="11"/>
+                                    <String fx:value="12"/>
+                                </FXCollections>
+                            </items>
+                        </ChoiceBox>
+                    </HBox>
+                </VBox>
+            </HBox>
+            <VBox>
+                <Button mnemonicParsing="false" text="Ajouter un code" onAction="#addCode"/>
+                <Button fx:id="runButton" mnemonicParsing="false" disable="true" text="Lancer la comparaison"
+                        onAction="#runCompare"/>
+            </VBox>
+            <VBox fx:id="graphVbox">
+
+            </VBox>
+        </VBox>
+    </children>
+
 </fx:root>
