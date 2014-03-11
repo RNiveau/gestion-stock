@@ -1,5 +1,7 @@
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -66,6 +68,18 @@ public class CompareStockController implements Initializable {
         listCodeHbox.add(buildLineCode(false));
         containerText.getChildren().add(listCodeHbox.get(0));
         containerText.getChildren().add(listCodeHbox.get(1));
+        duration.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number number2) {
+                int textFill = 0;
+                for (HBox box : listCodeHbox) {
+                    if (StringUtils.isNotBlank(((TextField) box.getChildren().get(1)).getText()))
+                        textFill++;
+                }
+                runButton.setDisable(!(textFill >= 2));
+            }
+        });
     }
 
     private HBox buildLineCode(boolean addDeleteButton) {

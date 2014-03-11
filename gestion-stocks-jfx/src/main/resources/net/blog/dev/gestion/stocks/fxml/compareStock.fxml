@@ -19,7 +19,7 @@
                 <VBox>
                     <HBox>
                         <Label text="Durée"/>
-                        <ChoiceBox fx:id="duration">
+                        <ChoiceBox fx:id="duration" >
                             <items>
                                 <FXCollections fx:factory="observableArrayList">
                                     <String fx:value="3"/>
