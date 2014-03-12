@@ -14,7 +14,7 @@
 	prefHeight="180" prefWidth="326.0"
 	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.DetailStockCloseController">
 	<children>
-		<VBox id="VBox" layoutX="10" layoutY="5" prefHeight="126"
+		<VBox id="VBox" layoutX="10" layoutY="5" prefHeight="156"
 			spacing="5.0">
 			<children>
 				<HBox id="HBox" spacing="5.0" >
@@ -60,15 +60,24 @@
 										<Insets top="5.0" />
 									</padding>
 								</HBox>
-								<HBox prefHeight="16.0">
-									<children>
-										<Label prefWidth="160" text="Type" />
-										<Label prefWidth="130" fx:id="type" />
-									</children>
-									<padding>
-										<Insets top="5.0" />
-									</padding>
-								</HBox>
+                                <HBox prefHeight="16.0">
+                                    <children>
+                                        <Label prefWidth="160" text="Type" />
+                                        <Label prefWidth="130" fx:id="type" />
+                                    </children>
+                                    <padding>
+                                        <Insets top="5.0" />
+                                    </padding>
+                                </HBox>
+                                <HBox prefHeight="16.0">
+                                    <children>
+                                        <Label prefWidth="160" text="Dividendes" />
+                                        <Label prefWidth="130" fx:id="dividends" />
+                                    </children>
+                                    <padding>
+                                        <Insets top="5.0" />
+                                    </padding>
+                                </HBox>
 							</children>
 						</VBox>
 					</children>

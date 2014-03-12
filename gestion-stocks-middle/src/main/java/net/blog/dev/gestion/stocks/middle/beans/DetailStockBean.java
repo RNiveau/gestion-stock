@@ -3,10 +3,10 @@
  */
 package net.blog.dev.gestion.stocks.middle.beans;
 
+import net.blog.dev.gestion.stocks.back.StockId;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import net.blog.dev.gestion.stocks.back.StockId;
 
 /**
  * @author Kiva
@@ -30,6 +30,11 @@ public class DetailStockBean {
 	private List<StopGain> stopGain;
 
 	private Float estimateSrd;
+
+    /**
+     * Gain par dividende
+     */
+    private Float dividends;
 
 	public static Integer GAIN_ATR_1 = 0;
 	public static Integer GAIN_ATR_15 = 1;
@@ -59,7 +64,15 @@ public class DetailStockBean {
 		this.taxes = taxes;
 	}
 
-	public class StopGain {
+    public Float getDividends() {
+        return dividends;
+    }
+
+    public void setDividends(Float dividends) {
+        this.dividends = dividends;
+    }
+
+    public class StopGain {
 		private Float price;
 
 		private Float percentage;

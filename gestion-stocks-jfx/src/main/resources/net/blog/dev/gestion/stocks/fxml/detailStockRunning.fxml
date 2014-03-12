@@ -18,7 +18,7 @@
 			<children>
 				<HBox id="HBox" spacing="5.0">
 					<children>
-						<VBox prefHeight="140.0" prefWidth="207.0">
+						<VBox prefHeight="160.0" prefWidth="207.0">
 							<children>
 								<HBox prefHeight="16.0" prefWidth="256.0">
 									<children>
@@ -62,15 +62,24 @@
 										<Insets top="5.0" />
 									</padding>
 								</HBox>
-								<HBox prefHeight="16.0" prefWidth="256.0" fx:id="hboxSrd" visible="false" >
-									<children>
-										<Label prefWidth="99.0" text="Estimation srd" />
-										<Label fx:id="srd" />
-									</children>
-									<padding>
-										<Insets top="5.0" />
-									</padding>
-								</HBox>
+                                <HBox prefHeight="16.0" prefWidth="256.0" fx:id="hboxSrd" visible="false" >
+                                    <children>
+                                        <Label prefWidth="99.0" text="Estimation srd" />
+                                        <Label fx:id="srd" />
+                                    </children>
+                                    <padding>
+                                        <Insets top="5.0" />
+                                    </padding>
+                                </HBox>
+                                <HBox prefHeight="16.0" prefWidth="256.0" >
+                                    <children>
+                                        <Label prefWidth="99.0" text="Gain par dividende" />
+                                        <Label fx:id="dividends" />
+                                    </children>
+                                    <padding>
+                                        <Insets top="5.0" />
+                                    </padding>
+                                </HBox>
 							</children>
 						</VBox>
 						<VBox prefHeight="140" prefWidth="256.0">
