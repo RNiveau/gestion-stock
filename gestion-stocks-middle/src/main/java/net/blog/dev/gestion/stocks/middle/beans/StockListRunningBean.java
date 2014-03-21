@@ -11,6 +11,8 @@ public class StockListRunningBean extends StockListBean {
 
 	private Float atr;
 
+    private Float actualPrice;
+
 	/**
 	 * @return the atr
 	 */
@@ -26,4 +28,11 @@ public class StockListRunningBean extends StockListBean {
 		this.atr = atr;
 	}
 
+    public Float getActualPrice() {
+        return actualPrice;
+    }
+
+    public void setActualPrice(Float actualPrice) {
+        this.actualPrice = actualPrice;
+    }
 }
