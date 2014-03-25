@@ -9,9 +9,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
-import javafx.event.Event;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
@@ -24,7 +23,6 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
@@ -40,6 +38,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -81,8 +80,6 @@ public class StocksListRunningController extends ScrollPane implements
 
     private TableColumn<StockListBean, Number> columnActualPrice = new TableColumn<StockListBean, Number>();
 
-    static public final EventType<WindowEvent> CLOSE_WINDOW_CLOSE_STOCK = new EventType<>();
-
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         logger.info("Initialize {} {}", arg0, arg1);
@@ -91,7 +88,8 @@ public class StocksListRunningController extends ScrollPane implements
 
         final ObservableList<StockListBean> list = FXCollections
                 .observableArrayList();
-        list.addAll(stocksListMService.getStocksListRunning());
+        final List<StockListBean> stocksListRunning = stocksListMService.getStocksListRunning();
+        list.addAll(stocksListRunning);
         final TableColumn<StockListBean, Number> columnAtr = new TableColumn<StockListBean, Number>();
         setColumnAtr(columnAtr);
         setColumnQuantity();
@@ -102,31 +100,32 @@ public class StocksListRunningController extends ScrollPane implements
         tableListStockController.setDetail(popupDetailRunning);
         tableListStockController
                 .setDetailStockController(popupDetailRunningController);
-        frontManager.getWindowParent().addEventHandler(
-                CLOSE_WINDOW_CLOSE_STOCK,
-                new EventHandler<Event>() {
 
-                    @Override
-                    public void handle(Event event) {
-                        logger.debug("Catch event {}", event);
-                        tableListStockController.getStocksList().getColumns().get(0).setVisible(false);
-                        tableListStockController.getStocksList().getColumns().get(0).setVisible(true);
-                    }
-                });
-
-        final ExecutorService executor = Executors.newFixedThreadPool(10);
-
-        for (final StockListBean stockListBean : list) {
-            executor.execute(new Task<Float>() {
+        final ExecutorService excecutor = Executors.newFixedThreadPool(4);
+        for (final StockListBean stockListBean : stocksListRunning) {
+           final Task<Float> task = new Task<Float>() {
                 @Override
                 protected Float call() throws Exception {
                     logger.debug("In jfx task for {}", stockListBean.getCode());
-                    ((StockListRunningBean)stockListBean).setActualPrice(stocksListMService.getActualPrice(stockListBean.getCode()));
-                    columnActualPrice.setVisible(false);
-                    columnActualPrice.setVisible(true);
-                    return 0f;
+                    return stocksListMService.getActualPrice(stockListBean.getCode());
+                }
+            };
+            task.setOnFailed(new EventHandler<WorkerStateEvent>() {
+                @Override
+                public void handle(WorkerStateEvent workerStateEvent) {
+                    logger.error(String.valueOf(task.getException()));
                 }
             });
+            task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+                @Override
+                public void handle(WorkerStateEvent workerStateEvent) {
+                    logger.debug("Task succed, refresh screen");
+                    ((StockListRunningBean) stockListBean).setActualPrice((Float) workerStateEvent.getSource().getValue());
+                    columnActualPrice.setVisible(false);
+                    columnActualPrice.setVisible(true);
+                }
+            });
+            excecutor.execute(task);
         }
     }
 
