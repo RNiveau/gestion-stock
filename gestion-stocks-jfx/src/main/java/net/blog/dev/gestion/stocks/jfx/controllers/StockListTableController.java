@@ -1,8 +1,10 @@
 /**
- * 
+ *
  */
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +14,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -22,6 +26,8 @@ import net.blog.dev.gestion.stocks.jfx.FxmlFileConstantes;
 import net.blog.dev.gestion.stocks.jfx.IFrontManager;
 import net.blog.dev.gestion.stocks.jfx.JfxUtils;
 import net.blog.dev.gestion.stocks.middle.beans.StockListBean;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,96 +37,116 @@ import java.util.ResourceBundle;
 
 /**
  * @author Kiva
- * 
  */
 public class StockListTableController extends VBox implements Initializable {
 
     static final Logger logger = LoggerFactory.getLogger(StockListTableController.class);
 
-	@FXML
-	private TableView<StockListBean> stocksList;
+    @FXML
+    private TableView<StockListBean> stocksList;
 
-	@FXML
-	private TableColumn<StockListBean, Integer> quantityColumn;
+    @FXML
+    private TableColumn<StockListBean, Integer> quantityColumn;
 
-	private Tooltip tooltip;
+    @FXML
+    private TextField filter;
 
-	private IDetailController detailStockController;
+    private Tooltip tooltip;
 
-	private Pane detail;
+    private IDetailController detailStockController;
 
-	@Inject
-	private FXMLLoader loader;
+    private Pane detail;
 
-	@Inject
-	private IFrontManager frontManager;
+    @Inject
+    private FXMLLoader loader;
 
-	/**
-	 * @return the stocksList
-	 */
-	public TableView<StockListBean> getStocksList() {
-		return stocksList;
-	}
+    @Inject
+    private IFrontManager frontManager;
 
-	public void openDetail(MouseEvent event) {
-		if (event.getButton().equals(MouseButton.SECONDARY)) {
-			if (tooltip == null) {
-				tooltip = new Tooltip();
-				tooltip.addEventHandler(
-						CloseController.CLOSE_WINDOW_CLOSE_STOCK,
-						new EventHandler<WindowEvent>() {
+    ObservableList<StockListBean> initialItems;
 
-							@Override
-							public void handle(WindowEvent event) {
-								// chargement de la liste des positions fermees
-								event.consume();
-								final Node newRoot = JfxUtils.loadFxml(loader,
-										FxmlFileConstantes.LIST_STOCKS_CLOSE);
-								JfxUtils.loadInMainScene(stocksList.getScene(),
-										(Parent) newRoot);
-							}
-						});
-			}
-			tooltip.show(stocksList, event.getScreenX(), event.getScreenY());
-			if (detailStockController != null) {
-				detailStockController.loadFromStockListBean(stocksList
-						.getSelectionModel().getSelectedItem());
-				setTooltipContent(detail);
-			}
-		}
-	}
+    /**
+     * @return the stocksList
+     */
+    public TableView<StockListBean> getStocksList() {
+        return stocksList;
+    }
 
-	public void setTooltipContent(Node content) {
-		final Group root = (Group) tooltip.getScene().getRoot();
-		root.getChildren().clear();
-		root.getChildren().add(content);
-	}
+    public void openDetail(MouseEvent event) {
+        if (event.getButton().equals(MouseButton.SECONDARY)) {
+            if (tooltip == null) {
+                tooltip = new Tooltip();
+                tooltip.addEventHandler(
+                        CloseController.CLOSE_WINDOW_CLOSE_STOCK,
+                        new EventHandler<WindowEvent>() {
 
-	/**
-	 * @param detailStockController
-	 *            the detailStockController to set
-	 */
-	public void setDetailStockController(IDetailController detailStockController) {
-		this.detailStockController = detailStockController;
-	}
+                            @Override
+                            public void handle(WindowEvent event) {
+                                // chargement de la liste des positions fermees
+                                event.consume();
+                                final Node newRoot = JfxUtils.loadFxml(loader,
+                                        FxmlFileConstantes.LIST_STOCKS_CLOSE);
+                                JfxUtils.loadInMainScene(stocksList.getScene(),
+                                        (Parent) newRoot);
+                            }
+                        });
+            }
+            tooltip.show(stocksList, event.getScreenX(), event.getScreenY());
+            if (detailStockController != null) {
+                detailStockController.loadFromStockListBean(stocksList
+                        .getSelectionModel().getSelectedItem());
+                setTooltipContent(detail);
+            }
+        }
+    }
 
-	/**
-	 * @param detail
-	 *            the detail to set
-	 */
-	public void setDetail(Pane detail) {
-		this.detail = detail;
-	}
+    public void setTooltipContent(Node content) {
+        final Group root = (Group) tooltip.getScene().getRoot();
+        root.getChildren().clear();
+        root.getChildren().add(content);
+    }
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+    /**
+     * @param detailStockController the detailStockController to set
+     */
+    public void setDetailStockController(IDetailController detailStockController) {
+        this.detailStockController = detailStockController;
+    }
+
+    /**
+     * @param detail the detail to set
+     */
+    public void setDetail(Pane detail) {
+        this.detail = detail;
+    }
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
         logger.info("Initialize {} {}", arg0, arg1);
-	}
+    }
 
-	/**
-	 * @return the quantityColumn
-	 */
-	public TableColumn<StockListBean, Integer> getQuantityColumn() {
-		return quantityColumn;
-	}
+    /**
+     * @return the quantityColumn
+     */
+    public TableColumn<StockListBean, Integer> getQuantityColumn() {
+        return quantityColumn;
+    }
+
+    protected TextField getFilter() {
+        return filter;
+    }
+
+    public void filter(KeyEvent event) {
+        if (initialItems == null)
+            initialItems = stocksList.getItems();
+        ObservableList<StockListBean> items = FXCollections.observableArrayList();
+        if (CollectionUtils.isNotEmpty(initialItems)) {
+            for (StockListBean initialItem : initialItems) {
+                if (StringUtils.containsIgnoreCase(initialItem.getTitle(), filter.getText()) || StringUtils.containsIgnoreCase(initialItem.getCode(), filter.getText()))
+                    items.add(initialItem);
+            }
+        }
+        stocksList.setItems(items);
+    }
+
 }
