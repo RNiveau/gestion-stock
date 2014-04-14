@@ -9,7 +9,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
@@ -101,7 +100,7 @@ public class StockListTableController extends VBox implements Initializable {
     }
 
     public void setTooltipContent(Node content) {
-        final Group root = (Group) tooltip.getScene().getRoot();
+        final Pane root = (Pane) tooltip.getScene().getRoot();
         root.getChildren().clear();
         root.getChildren().add(content);
     }

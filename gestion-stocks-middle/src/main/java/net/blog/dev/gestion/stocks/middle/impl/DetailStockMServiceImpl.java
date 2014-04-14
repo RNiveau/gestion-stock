@@ -10,7 +10,6 @@ import net.blog.dev.gestion.stocks.dto.DtoOrder;
 import net.blog.dev.gestion.stocks.dto.DtoStock;
 import net.blog.dev.gestion.stocks.dto.OrdreTypeEnum;
 import net.blog.dev.gestion.stocks.middle.CalculUtils;
-import net.blog.dev.gestion.stocks.middle.Utils;
 import net.blog.dev.gestion.stocks.middle.api.IConfigurationMSservice;
 import net.blog.dev.gestion.stocks.middle.api.IDetailStockMService;
 import net.blog.dev.gestion.stocks.middle.beans.DetailStockBean;
@@ -126,7 +125,7 @@ public class DetailStockMServiceImpl implements IDetailStockMService {
 
     private StockId generateId(StockListBean stockListBean) {
         StockId id = new StockId();
-        id.setBuyDate(Utils.getDate(stockListBean.getDate(), "dd/MM/yyyy"));
+        id.setBuyDate(stockListBean.getDate());//Utils.getDate(stockListBean.getDate(), "dd/MM/yyyy"));
         id.setCode(stockListBean.getCode());
         id.setUnitPrice(stockListBean.getUnitPrice());
         return id;

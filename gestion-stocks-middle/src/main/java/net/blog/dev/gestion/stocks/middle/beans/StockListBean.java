@@ -3,6 +3,8 @@
  */
 package net.blog.dev.gestion.stocks.middle.beans;
 
+import java.util.Date;
+
 /**
  * @author Kiva
  * 
@@ -19,7 +21,7 @@ public class StockListBean {
 
 	private Integer quantity;
 
-	private String date;
+	private Date date;
 
 	private String direction;
 
@@ -88,7 +90,7 @@ public class StockListBean {
 	/**
 	 * @return the date
 	 */
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
@@ -96,7 +98,7 @@ public class StockListBean {
 	 * @param date
 	 *            the date to set
 	 */
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

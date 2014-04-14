@@ -10,8 +10,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <path.jfx>/Users/Kiva/java/jre1.7.0_21.jre/Contents/Home/lib/jfxrt.jar</path.jfx>
-        <jfx.version>2.0</jfx.version>
         <weld.version>1.1.10.Final</weld.version>
         <hibernate-validator.version>4.3.1.Final</hibernate-validator.version>
         <commons-lang.version>3.1</commons-lang.version>
@@ -39,13 +37,6 @@
                 <groupId>org.jboss.weld.se</groupId>
                 <artifactId>weld-core-se</artifactId>
                 <version>${weld.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.oracle</groupId>
-                <artifactId>javafx</artifactId>
-                <version>${jfx.version}</version>
-                <scope>system</scope>
-                <systemPath>${path.jfx}</systemPath>
             </dependency>
             <dependency>
                 <groupId>commons-collections</groupId>
@@ -164,8 +155,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>

@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Tooltip;
@@ -63,7 +62,7 @@ public class ResultYearController extends AnchorPane implements Initializable {
 	}
 
 	public void setTooltipContent(Node content) {
-		final Group root = (Group) tooltip.getScene().getRoot();
+		final Pane root = (Pane) tooltip.getScene().getRoot();
 		root.getChildren().clear();
 		root.getChildren().add(content);
 	}

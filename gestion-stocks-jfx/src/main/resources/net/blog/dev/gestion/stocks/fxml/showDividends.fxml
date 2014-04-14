@@ -10,7 +10,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root type="javafx.scene.layout.AnchorPane" xmlns:fx="http://javafx.com/fxml"
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
 	prefHeight="360.0" prefWidth="470.0" layoutX="15" layoutY="15"
 	stylesheets="net/blog/dev/gestion/stocks/css/style.css"
 	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.ShowDividendController">
@@ -44,4 +44,4 @@
 			</children>
 		</VBox>
 	</children>
-</fx:root>
+</AnchorPane>

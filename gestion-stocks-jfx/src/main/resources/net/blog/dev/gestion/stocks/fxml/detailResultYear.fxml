@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import net.blog.dev.gestion.stocks.jfx.TableCellFactory?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<fx:root type="javafx.scene.layout.Pane" xmlns:fx="http://javafx.com/fxml"
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<Pane xmlns:fx="http://javafx.com/fxml"
 	style="-fx-background-color: white;" layoutX="10" layoutY="10"
 	prefHeight="180" prefWidth="326.0"
 	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.DetailResultYearController">
@@ -91,4 +84,4 @@
 			</children>
 		</VBox>
 	</children>
-</fx:root>
+</Pane>

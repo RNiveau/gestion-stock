@@ -6,7 +6,7 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import net.blog.dev.gestion.stocks.jfx.TableCellFactory?>
 
-<fx:root type="javafx.scene.layout.AnchorPane" fx:id="scrollPane" id="scrollStocksList"
+<AnchorPane fx:id="scrollPane" id="scrollStocksList"
 	xmlns:fx="http://javafx.com/fxml"
 	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.StocksListRunningController">
 	<fx:include fx:id="tableListStock"
@@ -16,4 +16,4 @@
 			source="/net/blog/dev/gestion/stocks/fxml/detailStockRunning.fxml" />
 	</fx:define>
 
-</fx:root>
+</AnchorPane>

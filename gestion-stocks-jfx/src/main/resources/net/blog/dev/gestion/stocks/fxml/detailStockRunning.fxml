@@ -9,7 +9,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<fx:root type="javafx.scene.layout.Pane" xmlns:fx="http://javafx.com/fxml"
+<?import javafx.scene.layout.AnchorPane?>
+<Pane xmlns:fx="http://javafx.com/fxml"
 	style="-fx-background-color: white;"
 	layoutX="10" layoutY="10" prefHeight="220" prefWidth="500.0"
 	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.DetailStockRunningController">
@@ -169,4 +170,4 @@
 				source="/net/blog/dev/gestion/stocks/fxml/showDividends.fxml" />
 		</fx:define>
 	</children>
-</fx:root>
+</Pane>

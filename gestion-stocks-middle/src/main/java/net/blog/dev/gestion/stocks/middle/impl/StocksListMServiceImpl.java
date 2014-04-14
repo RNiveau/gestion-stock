@@ -81,8 +81,9 @@ public class StocksListMServiceImpl extends AbstractMService implements
         bean.setDirection(stock.getDirection().equals(DirectionEnum.BUY) ? "A"
                 : "V");
         if (stock.getBuyOrdre() != null) {
-            bean.setDate(Utils.formatDate(stock.getBuyOrdre().getDate(),
-                    "dd/MM/yyyy"));
+            bean.setDate(stock.getBuyOrdre().getDate());
+//            Utils.formatDate(stock.getBuyOrdre().getDate(),
+//                    "dd/MM/yyyy"));
             bean.setPrice(stock.getBuyOrdre().getTotalPrice());
             bean.setUnitPrice(stock.getBuyOrdre().getUnitPrice());
             bean.setDayRunning(CalculUtils.getDayWithNow(stock.getBuyOrdre()

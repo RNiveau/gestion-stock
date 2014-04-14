@@ -15,7 +15,7 @@
 <?import net.blog.dev.gestion.stocks.jfx.TableCellFactory?>
 <?import javafx.scene.control.Button?>
 
-<fx:root type="javafx.scene.layout.AnchorPane" stylesheets="net/blog/dev/gestion/stocks/css/style.css"
+<AnchorPane stylesheets="net/blog/dev/gestion/stocks/css/style.css"
 	xmlns:fx="http://javafx.com/fxml"
 	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.AddStockController">
 	<VBox id="vboxAddStock" prefWidth="550.0">
@@ -123,4 +123,4 @@
 			<Button text="Ajouter" id="addStock" onAction="#addStock" />
 		</children>
 	</VBox>
-</fx:root>
+</AnchorPane>

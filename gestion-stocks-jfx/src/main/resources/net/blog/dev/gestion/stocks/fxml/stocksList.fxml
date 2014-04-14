@@ -4,7 +4,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml"
+<?import net.blog.dev.gestion.stocks.jfx.DateValueFactory?>
+<VBox xmlns:fx="http://javafx.com/fxml"
          fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.StockListTableController">
 
     <VBox layoutX="0.0" layoutY="0.0" >
@@ -45,7 +46,7 @@
                     </TableColumn>
                     <TableColumn text="Date d'achat" prefWidth="100">
                         <cellValueFactory>
-                            <PropertyValueFactory property="date"/>
+                            <DateValueFactory property="date"/>
                         </cellValueFactory>
                     </TableColumn>
                     <TableColumn text="Jours écoulés" prefWidth="100">
@@ -57,4 +58,4 @@
             </TableView>
         </children>
     </VBox>
-</fx:root>
+</VBox>

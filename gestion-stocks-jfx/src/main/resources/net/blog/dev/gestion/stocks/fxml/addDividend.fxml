@@ -7,7 +7,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.geometry.Insets?>
 
-<fx:root type="javafx.scene.layout.AnchorPane" xmlns:fx="http://javafx.com/fxml"
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
 	prefHeight="134.0" prefWidth="300.0"
 	stylesheets="net/blog/dev/gestion/stocks/css/style.css"
 	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.AddDividendController">
@@ -33,4 +33,4 @@
 			</padding>
 		</VBox>
 	</children>
-</fx:root>
+</AnchorPane>

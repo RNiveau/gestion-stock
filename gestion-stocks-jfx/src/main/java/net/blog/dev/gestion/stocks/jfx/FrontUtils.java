@@ -20,6 +20,5 @@ public class FrontUtils {
 	static public String formatPricePercentage(Float price) {
 		final DecimalFormat format = new DecimalFormat("#,###.###");
 		return format.format(price);
-	}
-
+    }
 }
