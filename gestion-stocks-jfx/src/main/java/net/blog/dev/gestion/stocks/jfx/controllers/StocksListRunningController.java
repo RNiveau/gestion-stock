@@ -148,20 +148,20 @@ public class StocksListRunningController extends ScrollPane implements
         quantityColumn
                 .setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<StockListBean, Integer>>() {
 
-                    @Override
-                    public void handle(
-                            CellEditEvent<StockListBean, Integer> arg0) {
-                        if (arg0.getNewValue() != null
-                                && arg0.getNewValue() > 0) {
-                            detailStockMService.updateQuantity(
-                                    arg0.getRowValue(), arg0.getNewValue());
-                            arg0.getRowValue().setQuantity(arg0.getNewValue());
-                            // force le raffraichissement du tableau
-                            quantityColumn.setVisible(false);
-                            quantityColumn.setVisible(true);
-                        }
-                    }
-                });
+            @Override
+            public void handle(
+                    CellEditEvent<StockListBean, Integer> arg0) {
+                if (arg0.getNewValue() != null
+                        && arg0.getNewValue() > 0) {
+                    detailStockMService.updateQuantity(
+                            arg0.getRowValue(), arg0.getNewValue());
+                    arg0.getRowValue().setQuantity(arg0.getNewValue());
+                    // force le raffraichissement du tableau
+                    quantityColumn.setVisible(false);
+                    quantityColumn.setVisible(true);
+                }
+            }
+        });
     }
 
     private void setColumnActualPrice() {

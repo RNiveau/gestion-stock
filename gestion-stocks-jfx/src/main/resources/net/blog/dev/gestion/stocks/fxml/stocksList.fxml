@@ -44,9 +44,9 @@
                             <PropertyValueFactory property="direction"/>
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn text="Date d'achat" prefWidth="100">
+                    <TableColumn text="Date d'achat" fx:id="dateColumn" prefWidth="100">
                         <cellValueFactory>
-                            <DateValueFactory property="date"/>
+                            <PropertyValueFactory property="date"/>
                         </cellValueFactory>
                     </TableColumn>
                     <TableColumn text="Jours écoulés" prefWidth="100">

@@ -3,6 +3,7 @@
  */
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -34,6 +35,9 @@ import javax.inject.Inject;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static net.blog.dev.gestion.stocks.jfx.FrontUtils.formatDate;
+import static net.blog.dev.gestion.stocks.jfx.FrontUtils.formatStringToDate;
+
 /**
  * @author Kiva
  */
@@ -49,6 +53,9 @@ public class StockListTableController extends VBox implements Initializable {
 
     @FXML
     private TextField filter;
+
+    @FXML
+    private TableColumn<StockListBean, String> dateColumn;
 
     private Tooltip tooltip;
 
@@ -122,6 +129,8 @@ public class StockListTableController extends VBox implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         logger.info("Initialize {} {}", arg0, arg1);
+        dateColumn.setComparator((o1, o2) -> formatStringToDate(o1, "dd/MM/yyyy").compareTo(formatStringToDate(o2, "dd/MM/yyyy")));
+        dateColumn.setCellValueFactory(value -> new SimpleStringProperty(formatDate(value.getValue().getDate(), "dd/MM/yyyy")));
     }
 
     /**
