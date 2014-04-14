@@ -1,0 +1,9 @@
+mvn clean install
+cd target/
+mv gestion-stocks-jfx-1.0.6-SNAPSHOT.jar dependency-jars/
+
+/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/bin/javafxpackager -createjar -srcdir classes -appclass net.blog.dev.gestion.stocks.jfx.Main  -outfile test -nocss2bin -classpath "dependency-jars/weld-se-1.1.10.Final.jar dependency-jars/gestion-stocks-middle-1.0.6-SNAPSHOT.jar dependency-jars/gestion-stocks-back-1.0.6-SNAPSHOT.jar dependency-jars/hibernate-validator-4.3.1.Final.jar dependency-jars/validation-api-1.0.0.GA.jar dependency-jars/jboss-logging-3.1.0.CR2.jar dependency-jars/commons-lang3-3.1.jar dependency-jars/joda-time-2.2.jar"
+
+mv test.jar dependency-jars
+
+/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/bin/javafxpackager -deploy -srcdir dependency-jars  -outdir . -outfile toto -appclass net.blog.dev.gestion.stocks.jfx.Main -native -width 34 -height 43  -v -name gestion-stocks -vendor Kiva
