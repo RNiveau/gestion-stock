@@ -9,7 +9,6 @@ import net.blog.dev.gestion.stocks.back.services.api.IQuoteBService;
 import net.blog.dev.gestion.stocks.dto.DirectionEnum;
 import net.blog.dev.gestion.stocks.dto.DtoStock;
 import net.blog.dev.gestion.stocks.middle.CalculUtils;
-import net.blog.dev.gestion.stocks.middle.Utils;
 import net.blog.dev.gestion.stocks.middle.api.IStocksListMService;
 import net.blog.dev.gestion.stocks.middle.beans.StockListBean;
 import net.blog.dev.gestion.stocks.middle.beans.StockListCloseBean;
@@ -91,8 +90,8 @@ public class StocksListMServiceImpl extends AbstractMService implements
         }
         if (stock.getSellOrder() != null) {
             StockListCloseBean closeBean = (StockListCloseBean) bean;
-            closeBean.setSellDate(Utils.formatDate(stock.getSellOrder()
-                    .getDate(), "dd/MM/yyyy"));
+            closeBean.setSellDate(stock.getSellOrder()
+                    .getDate());
             closeBean.setSellTaxes(stock.getSellOrder().getTaxes());
             closeBean.setSellPrice(stock.getSellOrder().getTotalPrice());
             closeBean.setSellUnitPrice(stock.getSellOrder().getUnitPrice());

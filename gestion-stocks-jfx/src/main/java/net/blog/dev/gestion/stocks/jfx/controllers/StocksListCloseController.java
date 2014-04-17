@@ -3,6 +3,7 @@
  */
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,12 +18,16 @@ import net.blog.dev.gestion.stocks.jfx.JfxUtils;
 import net.blog.dev.gestion.stocks.jfx.TwoFloatValueFactory;
 import net.blog.dev.gestion.stocks.middle.api.IStocksListMService;
 import net.blog.dev.gestion.stocks.middle.beans.StockListBean;
+import net.blog.dev.gestion.stocks.middle.beans.StockListCloseBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static net.blog.dev.gestion.stocks.jfx.FrontUtils.formatDate;
+import static net.blog.dev.gestion.stocks.jfx.FrontUtils.formatStringToDate;
 
 /**
  * @author Kiva
@@ -70,7 +75,10 @@ public class StocksListCloseController extends ScrollPane implements
 		columnDate.setCellValueFactory(propertyDate);
 		columnDate.setText("Date de vente");
 		columnDate.setPrefWidth(100);
-		tableListStockController.getStocksList().getColumns().add(columnDate);
+        columnDate.setComparator((o1, o2) -> formatStringToDate(o1, "dd/MM/yyyy").compareTo(formatStringToDate(o2, "dd/MM/yyyy")));
+        columnDate.setCellValueFactory(value -> new SimpleStringProperty(formatDate(((StockListCloseBean)value.getValue()).getSellDate(), "dd/MM/yyyy")));
+
+        tableListStockController.getStocksList().getColumns().add(columnDate);
 
 		final TableColumn<StockListBean, String> columnPrice = new TableColumn<StockListBean, String>();
 		final PropertyValueFactory propertyPrice = new PropertyValueFactory(

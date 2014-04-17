@@ -3,6 +3,8 @@
  */
 package net.blog.dev.gestion.stocks.middle.beans;
 
+import java.util.Date;
+
 /**
  * @author Kiva
  * 
@@ -13,7 +15,7 @@ public class StockListCloseBean extends StockListBean {
 
 	private Float sellUnitPrice;
 
-	private String sellDate;
+	private Date sellDate;
 
 	private Float sellTaxes;
 
@@ -28,7 +30,7 @@ public class StockListCloseBean extends StockListBean {
 	/**
 	 * @return the sellDate
 	 */
-	public String getSellDate() {
+	public Date getSellDate() {
 		return sellDate;
 	}
 
@@ -36,7 +38,7 @@ public class StockListCloseBean extends StockListBean {
 	 * @param sellDate
 	 *            the sellDate to set
 	 */
-	public void setSellDate(String sellDate) {
+	public void setSellDate(Date sellDate) {
 		this.sellDate = sellDate;
 	}
 
