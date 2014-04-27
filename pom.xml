@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>net.blog.dev.gestion.stocks</groupId>
 		<artifactId>gestion-stocks-parent</artifactId>
-		<version>1.0.6-SNAPSHOT</version>
+		<version>1.1.0</version>
 		<relativePath>gestion-stocks-parent/pom.xml</relativePath>
 	</parent>
 
@@ -19,6 +19,7 @@
 	</modules>
 	<scm>
 		<connection>scm:git:https://github.com/RomainN/gestion-stock</connection>
-	</scm>
+	  <tag>gestion-stocks-1.1.0</tag>
+  </scm>
 
 </project>
