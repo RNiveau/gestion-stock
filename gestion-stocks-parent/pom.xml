@@ -32,6 +32,18 @@
         </repository>
     </distributionManagement>
 
+    <repositories>
+        <repository>
+            <id>my.mvn.repo</id>
+            <url>https://raw.github.com/RomainN/git-mvn-repo/master</url>
+            <!-- use snapshot version -->
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -183,7 +195,7 @@
         </plugins>
     </build>
     <scm>
-        <connection>scm:svn:http://10.211.55.4/svn/gestion-stocks/tags/gestion-stocks-1.0.1/gestion-stocks-parent
+        <connection>scm:git:https://github.com/RomainN/gestion-stock/gestion-stock-parent
         </connection>
       <tag>HEAD</tag>
   </scm>
