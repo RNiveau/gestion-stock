@@ -3,7 +3,7 @@
 
     <groupId>net.blog.dev.gestion.stocks</groupId>
     <artifactId>gestion-stocks-parent</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <url>http://blog-dev.net</url>
 
@@ -185,6 +185,6 @@
     <scm>
         <connection>scm:svn:http://10.211.55.4/svn/gestion-stocks/tags/gestion-stocks-1.0.1/gestion-stocks-parent
         </connection>
-      <tag>gestion-stocks-1.1.0</tag>
+      <tag>HEAD</tag>
   </scm>
 </project>
