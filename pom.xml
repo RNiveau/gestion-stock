@@ -18,7 +18,7 @@
 		<module>gestion-stocks-parent</module>
 	</modules>
 	<scm>
-		<connection>scm:svn:http://10.211.55.4/svn/gestion-stocks/trunk/</connection>
+		<connection>scm:git:https://github.com/RomainN/gestion-stock</connection>
 	</scm>
 
 </project>

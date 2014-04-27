@@ -3,8 +3,9 @@
  */
 package net.blog.dev.gestion.stocks.back;
 
-import java.io.File;
-import java.io.IOException;
+import net.blog.dev.gestion.stocks.back.migration.Migration;
+import net.blog.dev.gestion.stocks.dto.DtoPortfolio;
+import net.blog.dev.gestion.stocks.dto.KConfiguration;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
@@ -14,10 +15,8 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-
-import net.blog.dev.gestion.stocks.back.migration.Migration;
-import net.blog.dev.gestion.stocks.dto.DtoPortfolio;
-import net.blog.dev.gestion.stocks.dto.KConfiguration;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * @author Kiva
