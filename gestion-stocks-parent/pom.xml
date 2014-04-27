@@ -28,7 +28,7 @@
         <repository>
             <id>internal.repo</id>
             <name>Internal Repository</name>
-            <url>${internal.repo.path}</url>
+            <url>https://raw.github.com/RomainN/git-mvn-repo/master</url>
         </repository>
     </distributionManagement>
 
