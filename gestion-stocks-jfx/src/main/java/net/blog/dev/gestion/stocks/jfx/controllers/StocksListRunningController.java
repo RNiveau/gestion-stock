@@ -28,6 +28,7 @@ import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import net.blog.dev.gestion.stocks.jfx.IFrontManager;
 import net.blog.dev.gestion.stocks.jfx.JfxUtils;
+import net.blog.dev.gestion.stocks.jfx.PoolThreadManager;
 import net.blog.dev.gestion.stocks.middle.Utils;
 import net.blog.dev.gestion.stocks.middle.api.IDetailStockMService;
 import net.blog.dev.gestion.stocks.middle.api.IStocksListMService;
@@ -41,7 +42,6 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * @author Kiva
@@ -101,7 +101,7 @@ public class StocksListRunningController extends ScrollPane implements
         tableListStockController
                 .setDetailStockController(popupDetailRunningController);
 
-        final ExecutorService excecutor = Executors.newFixedThreadPool(4);
+        final ExecutorService excecutor = PoolThreadManager.getPoolThread();
         for (final StockListBean stockListBean : stocksListRunning) {
            final Task<Float> task = new Task<Float>() {
                 @Override

@@ -59,7 +59,9 @@ public class Main extends Application {
 
     @Override
     public void stop() {
-        logger.debug("Application stoped");
+        logger.debug("Application is stopping");
+        PoolThreadManager.killPoolThread();
+        logger.debug("Application stopped");
     }
 
 }
