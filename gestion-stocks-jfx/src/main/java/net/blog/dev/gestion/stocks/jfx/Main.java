@@ -10,6 +10,8 @@ import net.blog.dev.gestion.stocks.back.Initialize;
 import net.blog.dev.gestion.stocks.core.KWeldContainer;
 import net.sf.ehcache.CacheManager;
 import org.jboss.weld.environment.se.WeldContainer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.enterprise.util.AnnotationLiteral;
 
@@ -19,6 +21,8 @@ import javax.enterprise.util.AnnotationLiteral;
  */
 public class Main extends Application {
 
+    private static Logger logger = LoggerFactory.getLogger(Main.class);
+
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -26,6 +30,7 @@ public class Main extends Application {
 	@Override
 	@SuppressWarnings("serial")
 	public void start(Stage primaryStage) {
+        logger.debug("Application is starting");
 		// Let's initialize CDI/Weld.
         WeldContainer weldContainer = KWeldContainer.getInstance();
         CacheManager.create();
@@ -49,6 +54,12 @@ public class Main extends Application {
 		primaryStage.setX(Screen.getPrimary().getVisualBounds().getMinX());
 		primaryStage.setY(Screen.getPrimary().getVisualBounds().getMinY());
 		primaryStage.setTitle("KStocks");
+        logger.debug("Application started");
 	}
+
+    @Override
+    public void stop() {
+        logger.debug("Application stoped");
+    }
 
 }
