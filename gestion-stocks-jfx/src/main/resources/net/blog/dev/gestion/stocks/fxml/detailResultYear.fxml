@@ -16,7 +16,7 @@
 							<children>
 								<HBox prefHeight="16.0" prefWidth="326">
 									<children>
-										<Label prefWidth="160" text="Investi dans l'année" />
+										<Label prefWidth="220" text="Investi dans l'année" />
 										<Label prefWidth="130" fx:id="totalInvested" />
 									</children>
 									<padding>
@@ -25,7 +25,7 @@
 								</HBox>
 								<HBox prefHeight="16.0">
 									<children>
-										<Label prefWidth="160" text="Cloturé dans l'année" />
+										<Label prefWidth="220" text="Cloturé dans l'année" />
 										<Label prefWidth="130" fx:id="totalSold" />
 									</children>
 									<padding>
@@ -34,7 +34,7 @@
 								</HBox>
 								<HBox prefHeight="16.0">
 									<children>
-										<Label prefWidth="160" text="Reste investi" />
+										<Label prefWidth="220" text="Reste investi" />
 										<Label prefWidth="130" fx:id="totalRunning" />
 									</children>
 									<padding>
@@ -43,7 +43,7 @@
 								</HBox>
 								<HBox prefHeight="16.0">
 									<children>
-										<Label prefWidth="160" text="Reste investi des années passées" />
+										<Label prefWidth="220" text="Reste investi des années passées" />
 										<Label prefWidth="130" fx:id="totalRunningLastYear" />
 									</children>
 									<padding>
@@ -52,7 +52,7 @@
 								</HBox>
 								<HBox prefHeight="16.0">
 									<children>
-										<Label prefWidth="160" text="Budget" />
+										<Label prefWidth="220" text="Budget" />
 										<Label prefWidth="130" fx:id="budget" />
 									</children>
 									<padding>
@@ -61,7 +61,7 @@
 								</HBox>
 								<HBox prefHeight="16.0">
 									<children>
-										<Label prefWidth="160" text="Benifices / Budget" />
+										<Label prefWidth="220" text="Benifices / Budget" />
 										<Label prefWidth="130" fx:id="benefitOnBudget" />
 									</children>
 									<padding>
@@ -70,7 +70,7 @@
 								</HBox>
 								<HBox prefHeight="16.0">
 									<children>
-										<Label prefWidth="160" text="Benifices / Budget avec taxes" />
+										<Label prefWidth="220" text="Benifices / Budget avec taxes" />
 										<Label prefWidth="130" fx:id="benefitOnBudgetWithTaxes" />
 									</children>
 									<padding>
