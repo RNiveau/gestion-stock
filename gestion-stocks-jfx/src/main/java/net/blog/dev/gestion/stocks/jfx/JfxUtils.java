@@ -10,8 +10,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 /**
@@ -24,11 +28,18 @@ public class JfxUtils {
 
 	static private final String BUNDLE = "net.blog.dev.gestion.stocks.bundles.messages";
 
+    static private final Logger logger = LoggerFactory.getLogger(JfxUtils.class);
+
 	static public Node loadFxml(FXMLLoader loader, String fxml) {
 		try {
 			loader.setController(null);
 			loader.setRoot(null);
-			loader.setResources(ResourceBundle.getBundle(BUNDLE));
+            try {
+			    loader.setResources(ResourceBundle.getBundle(BUNDLE));
+            } catch (MissingResourceException e) {
+                logger.warn("Bundle for locale is not available {}, load US file by default", Locale.getDefault());
+                loader.setResources(ResourceBundle.getBundle(BUNDLE, Locale.US));
+            }
             loader.setLocation(JfxUtils.class.getResource(fxml));
 
 			Node root = null;
