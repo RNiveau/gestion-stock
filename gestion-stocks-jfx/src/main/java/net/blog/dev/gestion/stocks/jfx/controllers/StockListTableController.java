@@ -97,12 +97,16 @@ public class StockListTableController extends VBox implements Initializable {
                             }
                         });
             }
-            tooltip.show(stocksList, event.getScreenX(), event.getScreenY());
             if (detailStockController != null) {
                 detailStockController.loadFromStockListBean(stocksList
                         .getSelectionModel().getSelectedItem());
                 setTooltipContent(detail);
             }
+            try {
+                Thread.currentThread().sleep(100l);
+            } catch (InterruptedException e) {
+            }
+            tooltip.show(stocksList, event.getScreenX(), event.getScreenY());
         }
     }
 
