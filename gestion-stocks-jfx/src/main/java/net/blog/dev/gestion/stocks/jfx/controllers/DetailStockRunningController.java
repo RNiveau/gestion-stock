@@ -16,7 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import net.blog.dev.gestion.stocks.jfx.FrontUtils;
+import net.blog.dev.gestion.stocks.jfx.utils.FrontUtils;
 import net.blog.dev.gestion.stocks.middle.beans.DetailStockBean.StopGain;
 import net.blog.dev.gestion.stocks.middle.beans.StockListBean;
 import org.slf4j.Logger;

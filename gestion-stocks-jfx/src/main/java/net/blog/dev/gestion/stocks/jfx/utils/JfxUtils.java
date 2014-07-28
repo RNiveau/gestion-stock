@@ -1,7 +1,7 @@
 /**
  * 
  */
-package net.blog.dev.gestion.stocks.jfx;
+package net.blog.dev.gestion.stocks.jfx.utils;
 
 import com.google.common.collect.Iterables;
 import javafx.collections.ObservableList;

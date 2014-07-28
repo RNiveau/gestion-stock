@@ -1,4 +1,4 @@
-package net.blog.dev.gestion.stocks.jfx;
+package net.blog.dev.gestion.stocks.jfx.ui;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.adapter.ReadOnlyJavaBeanFloatProperty;
@@ -6,6 +6,7 @@ import javafx.beans.property.adapter.ReadOnlyJavaBeanFloatPropertyBuilder;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.util.Callback;
+import net.blog.dev.gestion.stocks.jfx.utils.FrontUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

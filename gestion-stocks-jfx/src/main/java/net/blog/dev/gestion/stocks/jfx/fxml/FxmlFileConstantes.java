@@ -1,7 +1,7 @@
 /**
  * 
  */
-package net.blog.dev.gestion.stocks.jfx;
+package net.blog.dev.gestion.stocks.jfx.fxml;
 
 /**
  * @author Kiva

@@ -7,7 +7,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import net.blog.dev.gestion.stocks.jfx.TwoFloatValueFactory?>
+<?import net.blog.dev.gestion.stocks.jfx.ui.TwoFloatValueFactory?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
 	stylesheets="net/blog/dev/gestion/stocks/css/style.css" 

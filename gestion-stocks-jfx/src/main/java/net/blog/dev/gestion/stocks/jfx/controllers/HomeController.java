@@ -7,8 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import net.blog.dev.gestion.stocks.jfx.FxmlFileConstantes;
-import net.blog.dev.gestion.stocks.jfx.JfxUtils;
+import net.blog.dev.gestion.stocks.jfx.fxml.FxmlFileConstantes;
+import net.blog.dev.gestion.stocks.jfx.utils.JfxUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

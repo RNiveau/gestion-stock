@@ -22,9 +22,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.WindowEvent;
-import net.blog.dev.gestion.stocks.jfx.FxmlFileConstantes;
+import net.blog.dev.gestion.stocks.jfx.fxml.FxmlFileConstantes;
 import net.blog.dev.gestion.stocks.jfx.IFrontManager;
-import net.blog.dev.gestion.stocks.jfx.JfxUtils;
+import net.blog.dev.gestion.stocks.jfx.utils.JfxUtils;
 import net.blog.dev.gestion.stocks.middle.beans.StockListBean;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -35,8 +35,8 @@ import javax.inject.Inject;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static net.blog.dev.gestion.stocks.jfx.FrontUtils.formatDate;
-import static net.blog.dev.gestion.stocks.jfx.FrontUtils.formatStringToDate;
+import static net.blog.dev.gestion.stocks.jfx.utils.FrontUtils.formatDate;
+import static net.blog.dev.gestion.stocks.jfx.utils.FrontUtils.formatStringToDate;
 
 /**
  * @author Kiva

@@ -8,6 +8,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import net.blog.dev.gestion.stocks.back.Initialize;
 import net.blog.dev.gestion.stocks.core.KWeldContainer;
+import net.blog.dev.gestion.stocks.jfx.annotation.Startup;
 import net.sf.ehcache.CacheManager;
 import org.jboss.weld.environment.se.WeldContainer;
 import org.slf4j.Logger;

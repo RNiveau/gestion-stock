@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import net.blog.dev.gestion.stocks.jfx.TableCellFactory?>
 <?import javafx.scene.control.Button?>
 
 <AnchorPane stylesheets="net/blog/dev/gestion/stocks/css/style.css"

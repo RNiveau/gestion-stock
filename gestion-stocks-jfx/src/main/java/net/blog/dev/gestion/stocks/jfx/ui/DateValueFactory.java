@@ -1,4 +1,4 @@
-package net.blog.dev.gestion.stocks.jfx;
+package net.blog.dev.gestion.stocks.jfx.ui;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;

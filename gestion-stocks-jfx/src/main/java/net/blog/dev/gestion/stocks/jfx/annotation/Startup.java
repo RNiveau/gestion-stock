@@ -1,7 +1,7 @@
 /**
  * 
  */
-package net.blog.dev.gestion.stocks.jfx;
+package net.blog.dev.gestion.stocks.jfx.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package net.blog.dev.gestion.stocks.jfx;
+package net.blog.dev.gestion.stocks.jfx.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +18,10 @@ import java.util.Date;
 public class FrontUtils {
 
     static final Logger logger = LoggerFactory.getLogger(FrontUtils.class);
+
+    static final String GREEN = "#09bf31";
+
+    static final String RED = "#f40c0c";
 
 	/**
 	 * Formatage des prix et pourcentage

@@ -6,7 +6,7 @@ package net.blog.dev.gestion.stocks.jfx.controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import net.blog.dev.gestion.stocks.jfx.FrontUtils;
+import net.blog.dev.gestion.stocks.jfx.utils.FrontUtils;
 import net.blog.dev.gestion.stocks.middle.beans.ResultYearBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -74,7 +74,6 @@ public class DetailResultYearController implements Initializable {
                 .getBenefitDividendsOnBudget()) + " %");
         benefitDividendsOnBudgetWithTaxes.setText(FrontUtils.formatPricePercentage(bean
                 .getBenefitDividendsOnBudgetWithTaxes()) + " %");
-
 	}
 
 	@Override

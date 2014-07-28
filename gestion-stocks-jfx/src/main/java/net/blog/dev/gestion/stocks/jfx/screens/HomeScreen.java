@@ -10,10 +10,10 @@ import javafx.stage.Stage;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
-import net.blog.dev.gestion.stocks.jfx.FxmlFileConstantes;
+import net.blog.dev.gestion.stocks.jfx.fxml.FxmlFileConstantes;
 import net.blog.dev.gestion.stocks.jfx.IFrontManager;
-import net.blog.dev.gestion.stocks.jfx.JfxUtils;
-import net.blog.dev.gestion.stocks.jfx.Startup;
+import net.blog.dev.gestion.stocks.jfx.utils.JfxUtils;
+import net.blog.dev.gestion.stocks.jfx.annotation.Startup;
 
 /**
  * @author Kiva

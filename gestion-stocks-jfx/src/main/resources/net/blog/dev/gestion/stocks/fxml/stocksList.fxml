@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import net.blog.dev.gestion.stocks.jfx.DateValueFactory?>
+<?import net.blog.dev.gestion.stocks.jfx.ui.DateValueFactory?>
 <VBox xmlns:fx="http://javafx.com/fxml"
          fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.StockListTableController">
 

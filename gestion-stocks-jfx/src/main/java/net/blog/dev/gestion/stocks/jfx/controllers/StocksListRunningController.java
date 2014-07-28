@@ -22,13 +22,14 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import net.blog.dev.gestion.stocks.jfx.IFrontManager;
-import net.blog.dev.gestion.stocks.jfx.JfxUtils;
+import net.blog.dev.gestion.stocks.jfx.utils.JfxUtils;
 import net.blog.dev.gestion.stocks.jfx.PoolThreadManager;
-import net.blog.dev.gestion.stocks.jfx.TwoFloatValueFactory;
+import net.blog.dev.gestion.stocks.jfx.ui.TwoFloatValueFactory;
 import net.blog.dev.gestion.stocks.middle.CalculUtils;
 import net.blog.dev.gestion.stocks.middle.Utils;
 import net.blog.dev.gestion.stocks.middle.api.IDetailStockMService;
@@ -79,7 +80,7 @@ public class StocksListRunningController extends ScrollPane implements
     @FXML
     private DetailStockRunningController popupDetailRunningController;
 
-    private TableColumn<StockListBean, Number> columnActualPrice = new TableColumn<StockListBean, Number>();
+    private TableColumn<StockListBean, String> columnActualPrice = new TableColumn<StockListBean, String>();
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -174,6 +175,23 @@ public class StocksListRunningController extends ScrollPane implements
         propertyActualPrice.setProperty("actualPrice");
         propertyActualPrice.setProperty2("percentageBetweenActualAndBuy");
         columnActualPrice.setCellValueFactory(propertyActualPrice);
+//        columnActualPrice.setCellFactory(new Callback<TableColumn<StockListBean, String>, TableCell<StockListBean, String>>() {
+//            @Override
+//            public TableCell<StockListBean, String> call(TableColumn<StockListBean, String> stockListBeanStringTableColumn) {
+//                return new TableCell<StockListBean, String>() {
+//                    @Override
+//                    public void updateItem(String item, boolean empty) {
+//                        super.updateItem(item, empty);
+//                        if (!isEmpty()) {
+//
+//                            this.setTextFill(Color.RED);
+//                            // Get fancy and change color based on data
+//                        }
+//                        setText(item);
+//                    }
+//                };
+//            }
+//        });
         columnActualPrice.setText("Prix actuel (%)");
         columnActualPrice.setPrefWidth(150);
         tableListStockController.getStocksList().getColumns()
