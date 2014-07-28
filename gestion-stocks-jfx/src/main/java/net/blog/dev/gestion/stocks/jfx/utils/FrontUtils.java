@@ -17,11 +17,11 @@ import java.util.Date;
  */
 public class FrontUtils {
 
-    static final Logger logger = LoggerFactory.getLogger(FrontUtils.class);
+    private static final Logger logger = LoggerFactory.getLogger(FrontUtils.class);
 
-    static final String GREEN = "#09bf31";
+    public static final String GREEN = "#09bf31";
 
-    static final String RED = "#f40c0c";
+    public static final String RED = "#f40c0c";
 
 	/**
 	 * Formatage des prix et pourcentage
