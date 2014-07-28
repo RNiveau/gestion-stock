@@ -106,17 +106,6 @@ public class StocksListCloseController extends ScrollPane implements
 		columnGain.setPrefWidth(150);
 		tableListStockController.getStocksList().getColumns().add(columnGain);
 
-		// final TableColumn<StockListBean, String> columnGainPercentage = new
-		// TableColumn<StockListBean, String>();
-		// final PropertyValueFactory propertyGainPercentage = new
-		// PropertyValueFactory(
-		// "gainPercentage");
-		// columnGainPercentage.setCellValueFactory(propertyGainPercentage);
-		// columnGainPercentage.setText("Gain % brut");
-		// columnGainPercentage.setPrefWidth(100);
-		// tableListStockController.getStocksList().getColumns()
-		// .add(columnGainPercentage);
-
 		final TableColumn<StockListBean, String> columnGainLessTaxes = new TableColumn<StockListBean, String>();
 		final TwoFloatValueFactory propertyGainLessTaxes = new TwoFloatValueFactory();
 		propertyGainLessTaxes.setProperty("gainLessTaxes");
@@ -126,19 +115,6 @@ public class StocksListCloseController extends ScrollPane implements
 		columnGainLessTaxes.setPrefWidth(150);
 		tableListStockController.getStocksList().getColumns()
 				.add(columnGainLessTaxes);
-
-		// final TableColumn<StockListBean, String>
-		// columnGainLessTaxesPercentage = new TableColumn<StockListBean,
-		// String>();
-		// final PropertyValueFactory propertyGainLessTaxesPercentage = new
-		// PropertyValueFactory(
-		// "");
-		// columnGainLessTaxesPercentage
-		// .setCellValueFactory(propertyGainLessTaxesPercentage);
-		// columnGainLessTaxesPercentage.setText("Gain net %");
-		// columnGainLessTaxesPercentage.setPrefWidth(100);
-		// tableListStockController.getStocksList().getColumns()
-		// .add(columnGainLessTaxesPercentage);
 
 		tableListStockController.getStocksList().setItems(list);
 		tableListStockController.setDetail(popupDetail);
