@@ -43,9 +43,15 @@ public class DetailResultYearController implements Initializable {
 	@FXML
 	private Label benefitOnBudgetWithTaxes;
 
+    @FXML
+    private Label benefitDividendsOnBudget;
+
+    @FXML
+    private Label benefitDividendsOnBudgetWithTaxes;
+
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.blog.dev.gestion.stocks.jfx.controllers.IDetailController#
 	 * loadFromStockListBean
 	 * (net.blog.dev.gestion.stocks.middle.beans.StockListBean)
@@ -59,11 +65,15 @@ public class DetailResultYearController implements Initializable {
 				.getTotalRunning()));
 		totalRunningLastYear.setText(FrontUtils.formatPricePercentage(bean
 				.getTotalRunningPastYear()));
-		budget.setText(bean.getBudget().toString());
+		budget.setText(FrontUtils.formatPricePercentage(bean.getBudget()));
 		benefitOnBudget.setText(FrontUtils.formatPricePercentage(bean
 				.getBenefitOnBudget()) + " %");
 		benefitOnBudgetWithTaxes.setText(FrontUtils.formatPricePercentage(bean
 				.getBenefitOnBudgetWithTaxes()) + " %");
+        benefitDividendsOnBudget.setText(FrontUtils.formatPricePercentage(bean
+                .getBenefitDividendsOnBudget()) + " %");
+        benefitDividendsOnBudgetWithTaxes.setText(FrontUtils.formatPricePercentage(bean
+                .getBenefitDividendsOnBudgetWithTaxes()) + " %");
 
 	}
 
@@ -72,4 +82,11 @@ public class DetailResultYearController implements Initializable {
         logger.info("Initialize {} {}", arg0, arg1);
 	}
 
+    public Label getBenefitDividendsOnBudget() {
+        return benefitDividendsOnBudget;
+    }
+
+    public Label getBenefitDividendsOnBudgetWithTaxes() {
+        return benefitDividendsOnBudgetWithTaxes;
+    }
 }

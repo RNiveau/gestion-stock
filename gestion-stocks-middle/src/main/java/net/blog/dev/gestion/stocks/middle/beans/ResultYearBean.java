@@ -239,4 +239,16 @@ public class ResultYearBean {
 		return budget == null ? 0f : CalculUtils.getPercentageIntoValues(
 				getBenefitWithTaxes(), budget);
 	}
+
+    public Float getBenefitDividendsOnBudget() {
+        return budget == null ? 0f : CalculUtils.getPercentageIntoValues(
+                getBenefit() + getTotalDividends(), budget);
+    }
+
+
+    public Float getBenefitDividendsOnBudgetWithTaxes() {
+        return budget == null ? 0f : CalculUtils.getPercentageIntoValues(
+                getBenefitWithTaxes()  + getTotalDividends(), budget);
+    }
+
 }

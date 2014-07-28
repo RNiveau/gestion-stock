@@ -1,87 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<Pane xmlns:fx="http://javafx.com/fxml"
-	style="-fx-background-color: white;" layoutX="10" layoutY="10"
-	prefHeight="180" prefWidth="326.0"
-	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.DetailResultYearController">
-	<children>
-		<VBox id="VBox" layoutX="10" layoutY="5" prefHeight="126"
-			spacing="5.0">
-			<children>
-				<HBox id="HBox" spacing="5.0" >
-					<children>
-						<VBox prefHeight="150.0">
-							<children>
-								<HBox prefHeight="16.0" prefWidth="326">
-									<children>
-										<Label prefWidth="220" text="Investi dans l'année" />
-										<Label prefWidth="130" fx:id="totalInvested" />
-									</children>
-									<padding>
-										<Insets top="5.0" />
-									</padding>
-								</HBox>
-								<HBox prefHeight="16.0">
-									<children>
-										<Label prefWidth="220" text="Cloturé dans l'année" />
-										<Label prefWidth="130" fx:id="totalSold" />
-									</children>
-									<padding>
-										<Insets top="5.0" />
-									</padding>
-								</HBox>
-								<HBox prefHeight="16.0">
-									<children>
-										<Label prefWidth="220" text="Reste investi" />
-										<Label prefWidth="130" fx:id="totalRunning" />
-									</children>
-									<padding>
-										<Insets top="5.0" />
-									</padding>
-								</HBox>
-								<HBox prefHeight="16.0">
-									<children>
-										<Label prefWidth="220" text="Reste investi des années passées" />
-										<Label prefWidth="130" fx:id="totalRunningLastYear" />
-									</children>
-									<padding>
-										<Insets top="5.0" />
-									</padding>
-								</HBox>
-								<HBox prefHeight="16.0">
-									<children>
-										<Label prefWidth="220" text="Budget" />
-										<Label prefWidth="130" fx:id="budget" />
-									</children>
-									<padding>
-										<Insets top="5.0" />
-									</padding>
-								</HBox>
-								<HBox prefHeight="16.0">
-									<children>
-										<Label prefWidth="220" text="Benifices / Budget" />
-										<Label prefWidth="130" fx:id="benefitOnBudget" />
-									</children>
-									<padding>
-										<Insets top="5.0" />
-									</padding>
-								</HBox>
-								<HBox prefHeight="16.0">
-									<children>
-										<Label prefWidth="220" text="Benifices / Budget avec taxes" />
-										<Label prefWidth="130" fx:id="benefitOnBudgetWithTaxes" />
-									</children>
-									<padding>
-										<Insets top="5.0" />
-									</padding>
-								</HBox>
-							</children>
-						</VBox>
-					</children>
-				</HBox>
-			</children>
-		</VBox>
-	</children>
+
+<Pane layoutX="10" layoutY="10" prefHeight="206.0" prefWidth="367.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.DetailResultYearController">
+    <children>
+        <VBox layoutX="10" layoutY="5">
+            <children>
+                <HBox prefHeight="16.0" prefWidth="326">
+                    <children>
+                        <Label prefWidth="240" text="Investi dans l'année" />
+                        <Label fx:id="totalInvested" prefWidth="130" />
+                    </children>
+                    <padding>
+                        <Insets top="5.0" />
+                    </padding>
+                </HBox>
+                <HBox prefHeight="16.0">
+                    <children>
+                        <Label prefWidth="240" text="Cloturé dans l'année" />
+                        <Label fx:id="totalSold" prefWidth="130" />
+                    </children>
+                    <padding>
+                        <Insets top="5.0" />
+                    </padding>
+                </HBox>
+                <HBox prefHeight="16.0">
+                    <children>
+                        <Label prefWidth="240" text="Reste investi" />
+                        <Label fx:id="totalRunning" prefWidth="130" />
+                    </children>
+                    <padding>
+                        <Insets top="5.0" />
+                    </padding>
+                </HBox>
+                <HBox prefHeight="16.0">
+                    <children>
+                        <Label prefWidth="240" text="Reste investi des années passées" />
+                        <Label fx:id="totalRunningLastYear" prefWidth="130" />
+                    </children>
+                    <padding>
+                        <Insets top="5.0" />
+                    </padding>
+                </HBox>
+                <HBox prefHeight="16.0">
+                    <children>
+                        <Label prefWidth="240" text="Budget" />
+                        <Label fx:id="budget" prefWidth="130" />
+                    </children>
+                    <padding>
+                        <Insets top="5.0" />
+                    </padding>
+                </HBox>
+                <HBox prefHeight="16.0">
+                    <children>
+                        <Label prefWidth="240" text="Benefices / Budget" />
+                        <Label fx:id="benefitOnBudget" prefWidth="130" />
+                    </children>
+                    <padding>
+                        <Insets top="5.0" />
+                    </padding>
+                </HBox>
+                <HBox prefHeight="16.0">
+                    <children>
+                        <Label prefWidth="240" text="Benefices / Budget TTC" />
+                        <Label fx:id="benefitOnBudgetWithTaxes" prefWidth="130" />
+                    </children>
+                    <padding>
+                        <Insets top="5.0" />
+                    </padding>
+                </HBox>
+                <HBox prefHeight="16.0">
+                    <children>
+                        <Label prefWidth="240" text="Benefices + dividendes / Budget " />
+                        <Label fx:id="benefitDividendsOnBudget" prefWidth="130" />
+                    </children>
+                    <padding>
+                        <Insets top="5.0" />
+                    </padding>
+                </HBox>
+                <HBox prefHeight="16.0">
+                    <children>
+                        <Label prefHeight="16.0" prefWidth="240" text="Benefices + dividendes / Budget TTC" />
+                        <Label fx:id="benefitDividendsOnBudgetWithTaxes" prefWidth="130" />
+                    </children>
+                    <padding>
+                        <Insets top="5.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
 </Pane>
