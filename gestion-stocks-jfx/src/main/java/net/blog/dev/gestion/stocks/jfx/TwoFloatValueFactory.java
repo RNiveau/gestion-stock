@@ -6,63 +6,75 @@ import javafx.beans.property.adapter.ReadOnlyJavaBeanFloatPropertyBuilder;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.util.Callback;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class TwoFloatValueFactory<S, T> implements
-		Callback<CellDataFeatures<S, T>, ObservableValue<T>> {
+        Callback<CellDataFeatures<S, T>, ObservableValue<T>> {
 
-	private String property;
+    static private Logger logger = LoggerFactory.getLogger(TwoFloatValueFactory.class);
 
-	private String property2;
+    private String property;
 
-	/**
-	 * @return the property
-	 */
-	public String getProperty() {
-		return property;
-	}
+    private String property2;
 
-	/**
-	 * @param property
-	 *            the property to set
-	 */
-	public void setProperty(String property) {
-		this.property = property;
-	}
+    /**
+     * @return the property
+     */
+    public String getProperty() {
+        return property;
+    }
 
-	public ObservableValue<T> call(CellDataFeatures<S, T> cell) {
-		ReadOnlyJavaBeanFloatPropertyBuilder builder = ReadOnlyJavaBeanFloatPropertyBuilder
-				.create();
-		builder.bean(cell.getValue());
-		builder.name(getProperty());
-		try {
-			ReadOnlyJavaBeanFloatProperty build = builder.build();
-			final String float1 = FrontUtils.formatPricePercentage(build.get());
+    /**
+     * @param property the property to set
+     */
+    public void setProperty(String property) {
+        this.property = property;
+    }
 
-			builder = ReadOnlyJavaBeanFloatPropertyBuilder.create();
-			builder.bean(cell.getValue());
-			builder.name(getProperty2());
-			build = builder.build();
-			final String float2 = FrontUtils.formatPricePercentage(build.get());
-			return (ObservableValue<T>) new SimpleStringProperty(float1 + " ("
-					+ float2 + " %)");
-		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+    public ObservableValue<T> call(CellDataFeatures<S, T> cell) {
+        ReadOnlyJavaBeanFloatPropertyBuilder builder = ReadOnlyJavaBeanFloatPropertyBuilder
+                .create();
+        builder.bean(cell.getValue());
+        builder.name(getProperty());
+        try {
+            ReadOnlyJavaBeanFloatProperty build = builder.build();
+            try {
+                build.get();
+            } catch (NullPointerException e) {
+                return (ObservableValue<T>) new SimpleStringProperty("");
+            }
+            final String float1 = FrontUtils.formatPricePercentage(build.get());
 
-	/**
-	 * @return the property2
-	 */
-	public String getProperty2() {
-		return property2;
-	}
+            builder = ReadOnlyJavaBeanFloatPropertyBuilder.create();
+            builder.bean(cell.getValue());
+            builder.name(getProperty2());
+            build = builder.build();
+            try {
+                build.get();
+            } catch (NullPointerException e) {
+                return (ObservableValue<T>) new SimpleStringProperty(float1);
+            }
+            final String float2 = FrontUtils.formatPricePercentage(build.get());
+            return (ObservableValue<T>) new SimpleStringProperty(float1 + " ("
+                    + float2 + " %)");
+        } catch (NoSuchMethodException e) {
+            logger.error(e.getMessage());
+        }
+        return null;
+    }
 
-	/**
-	 * @param property2
-	 *            the property2 to set
-	 */
-	public void setProperty2(String property2) {
-		this.property2 = property2;
-	}
+    /**
+     * @return the property2
+     */
+    public String getProperty2() {
+        return property2;
+    }
+
+    /**
+     * @param property2 the property2 to set
+     */
+    public void setProperty2(String property2) {
+        this.property2 = property2;
+    }
 }

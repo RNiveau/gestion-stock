@@ -18,7 +18,6 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableColumn.CellEditEvent;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -29,6 +28,8 @@ import javafx.util.converter.IntegerStringConverter;
 import net.blog.dev.gestion.stocks.jfx.IFrontManager;
 import net.blog.dev.gestion.stocks.jfx.JfxUtils;
 import net.blog.dev.gestion.stocks.jfx.PoolThreadManager;
+import net.blog.dev.gestion.stocks.jfx.TwoFloatValueFactory;
+import net.blog.dev.gestion.stocks.middle.CalculUtils;
 import net.blog.dev.gestion.stocks.middle.Utils;
 import net.blog.dev.gestion.stocks.middle.api.IDetailStockMService;
 import net.blog.dev.gestion.stocks.middle.api.IStocksListMService;
@@ -102,8 +103,8 @@ public class StocksListRunningController extends ScrollPane implements
                 .setDetailStockController(popupDetailRunningController);
 
         final ExecutorService excecutor = PoolThreadManager.getPoolThread();
-        for (final StockListBean stockListBean : stocksListRunning) {
-           final Task<Float> task = new Task<Float>() {
+        stocksListRunning.stream().forEach(stockListBean -> {
+            final Task<Float> task = new Task<Float>() {
                 @Override
                 protected Float call() throws Exception {
                     logger.debug("In jfx task for {}", stockListBean.getCode());
@@ -121,12 +122,16 @@ public class StocksListRunningController extends ScrollPane implements
                 public void handle(WorkerStateEvent workerStateEvent) {
                     logger.debug("Task succed, refresh screen");
                     ((StockListRunningBean) stockListBean).setActualPrice((Float) workerStateEvent.getSource().getValue());
+                    ((StockListRunningBean) stockListBean).setPercentageBetweenActualAndBuy(
+                            CalculUtils.getPercentageBetweenTwoValues(stockListBean.getUnitPrice(), ((StockListRunningBean) stockListBean).getActualPrice()));
+                    if (stockListBean.getUnitPrice() >  ((StockListRunningBean) stockListBean).getActualPrice())
+                        ((StockListRunningBean) stockListBean).setPercentageBetweenActualAndBuy(-1 * ((StockListRunningBean) stockListBean).getPercentageBetweenActualAndBuy());
                     columnActualPrice.setVisible(false);
                     columnActualPrice.setVisible(true);
                 }
             });
             excecutor.execute(task);
-        }
+        });
     }
 
     /**
@@ -148,29 +153,31 @@ public class StocksListRunningController extends ScrollPane implements
         quantityColumn
                 .setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<StockListBean, Integer>>() {
 
-            @Override
-            public void handle(
-                    CellEditEvent<StockListBean, Integer> arg0) {
-                if (arg0.getNewValue() != null
-                        && arg0.getNewValue() > 0) {
-                    detailStockMService.updateQuantity(
-                            arg0.getRowValue(), arg0.getNewValue());
-                    arg0.getRowValue().setQuantity(arg0.getNewValue());
-                    // force le raffraichissement du tableau
-                    quantityColumn.setVisible(false);
-                    quantityColumn.setVisible(true);
-                }
-            }
-        });
+                    @Override
+                    public void handle(
+                            CellEditEvent<StockListBean, Integer> arg0) {
+                        if (arg0.getNewValue() != null
+                                && arg0.getNewValue() > 0) {
+                            detailStockMService.updateQuantity(
+                                    arg0.getRowValue(), arg0.getNewValue());
+                            arg0.getRowValue().setQuantity(arg0.getNewValue());
+                            // force le raffraichissement du tableau
+                            quantityColumn.setVisible(false);
+                            quantityColumn.setVisible(true);
+                        }
+                    }
+                });
     }
 
     private void setColumnActualPrice() {
-        final PropertyValueFactory propertyUnitPrice = new PropertyValueFactory(
-                "actualPrice");
-        columnActualPrice.setCellValueFactory(propertyUnitPrice);
-        columnActualPrice.setText("Prix actuel");
-        columnActualPrice.setPrefWidth(100);
-        tableListStockController.getStocksList().getColumns().add(columnActualPrice);
+        final TwoFloatValueFactory propertyActualPrice = new TwoFloatValueFactory();
+        propertyActualPrice.setProperty("actualPrice");
+        propertyActualPrice.setProperty2("percentageBetweenActualAndBuy");
+        columnActualPrice.setCellValueFactory(propertyActualPrice);
+        columnActualPrice.setText("Prix actuel (%)");
+        columnActualPrice.setPrefWidth(150);
+        tableListStockController.getStocksList().getColumns()
+                .add(columnActualPrice);
     }
 
     /**

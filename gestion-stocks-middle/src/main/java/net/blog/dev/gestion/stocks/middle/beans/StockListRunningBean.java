@@ -13,6 +13,8 @@ public class StockListRunningBean extends StockListBean {
 
     private Float actualPrice;
 
+    private Float percentageBetweenActualAndBuy;
+
 	/**
 	 * @return the atr
 	 */
@@ -34,5 +36,13 @@ public class StockListRunningBean extends StockListBean {
 
     public void setActualPrice(Float actualPrice) {
         this.actualPrice = actualPrice;
+    }
+
+    public Float getPercentageBetweenActualAndBuy() {
+        return percentageBetweenActualAndBuy;
+    }
+
+    public void setPercentageBetweenActualAndBuy(Float percentageBetweenActualAndBuy) {
+        this.percentageBetweenActualAndBuy = percentageBetweenActualAndBuy;
     }
 }
