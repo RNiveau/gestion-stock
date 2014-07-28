@@ -51,13 +51,18 @@ public class ResultYearController extends AnchorPane implements Initializable {
 		if (event.getButton().equals(MouseButton.SECONDARY)) {
 			if (tooltip == null) {
 				tooltip = new Tooltip();
-			}
-			tooltip.show(table, event.getScreenX(), event.getScreenY());
+            }
 			if (popupDetailController != null) {
 				popupDetailController.loadFromResultYearBean(table
-						.getSelectionModel().getSelectedItem());
+                        .getSelectionModel().getSelectedItem());
 				setTooltipContent(popupDetail);
 			}
+            try {
+                Thread.currentThread().sleep(200);
+            } catch (InterruptedException e) {
+                logger.warn(e.getMessage());
+            }
+            tooltip.show(table, event.getScreenX(), event.getScreenY());
 		}
 	}
 
