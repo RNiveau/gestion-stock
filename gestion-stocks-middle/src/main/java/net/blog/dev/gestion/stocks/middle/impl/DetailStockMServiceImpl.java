@@ -10,7 +10,7 @@ import net.blog.dev.gestion.stocks.dto.DtoOrder;
 import net.blog.dev.gestion.stocks.dto.DtoStock;
 import net.blog.dev.gestion.stocks.dto.OrdreTypeEnum;
 import net.blog.dev.gestion.stocks.middle.CalculUtils;
-import net.blog.dev.gestion.stocks.middle.api.IConfigurationMSservice;
+import net.blog.dev.gestion.stocks.middle.api.IConfigurationMService;
 import net.blog.dev.gestion.stocks.middle.api.IDetailStockMService;
 import net.blog.dev.gestion.stocks.middle.beans.DetailStockBean;
 import net.blog.dev.gestion.stocks.middle.beans.StockListBean;
@@ -29,7 +29,7 @@ public class DetailStockMServiceImpl implements IDetailStockMService {
     private IStockDao stockDao;
 
     @Inject
-    private IConfigurationMSservice configurationMSservice;
+    private IConfigurationMService configurationMSservice;
 
     @Override
     public DetailStockBean getDetailStockBean(StockListBean stockListBean) {

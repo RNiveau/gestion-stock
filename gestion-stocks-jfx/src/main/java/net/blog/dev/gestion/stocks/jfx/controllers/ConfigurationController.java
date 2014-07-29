@@ -4,14 +4,21 @@
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import net.blog.dev.gestion.stocks.jfx.IFrontManager;
-import net.blog.dev.gestion.stocks.middle.api.IConfigurationMSservice;
+import net.blog.dev.gestion.stocks.middle.api.IConfigurationMService;
 import net.blog.dev.gestion.stocks.middle.beans.ConfigurationBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,16 +40,28 @@ public class ConfigurationController extends AnchorPane implements
 	@FXML
 	private Tooltip tooltipDirectory;
 
-	@FXML
-	private TextField srdLoanField;
+    @FXML
+    private TextField srdLoanField;
 
-	private ConfigurationBean configurationBean = new ConfigurationBean();
+    @FXML
+    private TextField idDropboxField;
+
+    private ConfigurationBean configurationBean = new ConfigurationBean();
 
 	@Inject
-	private IConfigurationMSservice configurationMSservice;
+	private IConfigurationMService configurationMSservice;
 
 	@Inject
 	private IFrontManager frontManager;
+
+    @FXML
+    private AnchorPane dropbox;
+
+
+    private Stage popUpDropbox;
+
+    @FXML
+    private DropboxController dropboxController;
 
 	public void openFileChoose(ActionEvent event) {
 		final ConfigurationBean configuration = configurationMSservice
@@ -60,14 +79,32 @@ public class ConfigurationController extends AnchorPane implements
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
         logger.info("Initialize {} {}", arg0, arg1);
-		configurationBean = configurationMSservice.getConfiguration();
-		tooltipDirectory.setText(configurationBean.getDirectory());
-		srdLoanField.setText(configurationBean.getSrdLoan().toString());
+        init();
 	}
 
-	public void save(ActionEvent event) {
+    private void init() {
+        configurationBean = configurationMSservice.getConfiguration();
+        tooltipDirectory.setText(configurationBean.getDirectory());
+        srdLoanField.setText(configurationBean.getSrdLoan().toString());
+        idDropboxField.setText(configurationBean.getIdDropbox());
+        idDropboxField.setEditable(false);
+    }
+
+    public void save(ActionEvent event) {
 		configurationBean.setSrdLoan(Float.parseFloat(srdLoanField.getText()));
 		configurationMSservice.setConfiguration(configurationBean);
 	}
 
+    public void openDropbox(ActionEvent actionEvent) {
+        if (popUpDropbox == null) {
+            popUpDropbox = new Stage();
+            popUpDropbox.initModality(Modality.WINDOW_MODAL);
+            popUpDropbox.initOwner(frontManager.getWindowParent());
+            popUpDropbox.setScene(new Scene(new Group(dropbox)));
+        }
+        popUpDropbox.show();
+        popUpDropbox.addEventHandler(
+                CloseController.CLOSE_WINDOW_CLOSE_STOCK, event -> init());
+        dropboxController.init();
+    }
 }

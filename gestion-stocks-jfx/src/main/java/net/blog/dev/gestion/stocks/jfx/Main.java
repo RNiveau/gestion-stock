@@ -3,6 +3,9 @@
  */
 package net.blog.dev.gestion.stocks.jfx;
 
+import com.dropbox.core.DbxAppInfo;
+import com.dropbox.core.DbxRequestConfig;
+import com.dropbox.core.DbxWebAuthNoRedirect;
 import javafx.application.Application;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -15,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.enterprise.util.AnnotationLiteral;
+import java.util.Locale;
 
 /**
  * @author Kiva
@@ -56,7 +60,7 @@ public class Main extends Application {
 		primaryStage.setY(Screen.getPrimary().getVisualBounds().getMinY());
 		primaryStage.setTitle("KStocks");
         logger.debug("Application started");
-	}
+    }
 
     @Override
     public void stop() {

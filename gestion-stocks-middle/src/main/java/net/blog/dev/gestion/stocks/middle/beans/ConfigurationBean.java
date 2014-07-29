@@ -13,6 +13,8 @@ public class ConfigurationBean {
 
 	private Float srdLoan;
 
+    private String idDropbox;
+
 	/**
 	 * @return the directory
 	 */
@@ -43,4 +45,11 @@ public class ConfigurationBean {
 		this.srdLoan = srdLoan;
 	}
 
+    public String getIdDropbox() {
+        return idDropbox;
+    }
+
+    public void setIdDropbox(String idDropbox) {
+        this.idDropbox = idDropbox;
+    }
 }

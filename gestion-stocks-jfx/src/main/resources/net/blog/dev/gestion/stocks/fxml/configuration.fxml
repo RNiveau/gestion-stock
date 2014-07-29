@@ -1,36 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
+<AnchorPane stylesheets="net/blog/dev/gestion/stocks/css/style.css" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.ConfigurationController">
+    <children>
+        <VBox layoutX="4.0" layoutY="1.0" prefHeight="200.0" prefWidth="500">
+            <children>
+                <HBox prefHeight="31.0">
+                    <children>
+                        <Label prefWidth="180.0" text="Répertoire de sauvegarde"/>
+                        <Button mnemonicParsing="false" onAction="#openFileChoose" text="Parcourir">
+                            <tooltip>
+                                <Tooltip fx:id="tooltipDirectory"/>
+                            </tooltip>
+                        </Button>
+                    </children>
+                </HBox>
+                <HBox prefHeight="38.0">
+                    <children>
+                        <Label prefWidth="180.0" text="Taux location SRD"/>
+                        <TextField fx:id="srdLoanField" prefHeight="26.0" prefWidth="75.0"/>
+                    </children>
+                </HBox>
+                <HBox prefHeight="38.0">
+                    <children>
+                        <Label prefWidth="180.0" text="Code autorisation Dropbox"/>
+                        <TextField fx:id="idDropboxField" prefHeight="26.0" prefWidth="162.0"/>
+                        <Button mnemonicParsing="false" onAction="#openDropbox" text="Configurer">
+                            <HBox.margin>
+                                <Insets left="10.0"/>
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+                <Button mnemonicParsing="false" onAction="#save" text="Sauvegarder"/>
+            </children>
+        </VBox>
+    </children>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-	fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.ConfigurationController"
-	stylesheets="net/blog/dev/gestion/stocks/css/style.css">
-	<children>
-		<VBox layoutX="4.0" layoutY="1.0" prefHeight="200.0" prefWidth="500">
-			<children>
-				<HBox prefHeight="31.0">
-					<children>
-						<Label prefWidth="180.0" text="Répertoire de sauvegarde" />
-						<Button mnemonicParsing="false" text="Parcourir" onAction="#openFileChoose">
-							<tooltip>
-								<Tooltip fx:id="tooltipDirectory" />
-							</tooltip>
-						</Button>
-					</children>
-				</HBox>
-				<HBox prefHeight="38.0">
-					<children>
-						<Label prefWidth="180.0" text="Taux location SRD" />
-						<TextField prefWidth="200.0" fx:id="srdLoanField" />
-					</children>
-				</HBox>
-				<Button mnemonicParsing="false" text="Sauvegarder" onAction="#save" />
-			</children>
-		</VBox>
-	</children>
+    <fx:define>
+        <fx:include fx:id="dropbox"
+                    source="/net/blog/dev/gestion/stocks/fxml/dropbox.fxml"/>
+    </fx:define>
+
 </AnchorPane>
