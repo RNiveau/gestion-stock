@@ -34,4 +34,6 @@ public interface FxmlFileConstantes {
 	static String RESULT_YEAR = "/net/blog/dev/gestion/stocks/fxml/resultYear.fxml";
 
 	static String COMPARE_STOCK = "/net/blog/dev/gestion/stocks/fxml/compareStock.fxml";
+
+    static String LOADING = "/net/blog/dev/gestion/stocks/fxml/loading.fxml";
 }
