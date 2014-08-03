@@ -10,8 +10,10 @@ import javafx.application.Application;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import net.blog.dev.gestion.stocks.back.Initialize;
+import net.blog.dev.gestion.stocks.back.dropbox.IDropboxService;
 import net.blog.dev.gestion.stocks.core.KWeldContainer;
 import net.blog.dev.gestion.stocks.jfx.annotation.Startup;
+import net.blog.dev.gestion.stocks.middle.api.IConfigurationMService;
 import net.sf.ehcache.CacheManager;
 import org.jboss.weld.environment.se.WeldContainer;
 import org.slf4j.Logger;
@@ -66,6 +68,8 @@ public class Main extends Application {
     public void stop() {
         logger.debug("Application is stopping");
         PoolThreadManager.killPoolThread();
+        IConfigurationMService configurationMService = KWeldContainer.getInstance().instance().select(IConfigurationMService.class).get();
+        configurationMService.saveOnExit();
         logger.debug("Application stopped");
     }
 

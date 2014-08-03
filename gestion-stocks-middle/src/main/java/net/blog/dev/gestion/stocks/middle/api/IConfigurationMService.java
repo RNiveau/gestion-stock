@@ -18,4 +18,6 @@ public interface IConfigurationMService {
     String getDropboxUrl();
 
     void saveDropboxAccount(String code);
+
+    void saveOnExit();
 }

@@ -8,4 +8,6 @@ public interface IDropboxService {
     String getUrl();
 
     String authorized(String code);
+
+    void saveFile(String idDropbox);
 }

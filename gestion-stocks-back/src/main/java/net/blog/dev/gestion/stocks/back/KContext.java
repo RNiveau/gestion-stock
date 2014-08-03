@@ -56,9 +56,7 @@ public class KContext {
 		loadKConfiguration(configurationFile);
 
 		// Chargement du fichier de sauvegarde
-		String directionSaveFile = kConfiguration.getDirectory();
-		if (directionSaveFile == null)
-			directionSaveFile = userDir;
+        String directionSaveFile = getDirectorySave();
 		File tmpSaveFile = new File(directionSaveFile);
 		if (!tmpSaveFile.exists())
 			throw new BackException("Can't initialize application");
@@ -82,7 +80,15 @@ public class KContext {
 			initialisation.fire("");
 	}
 
-	/**
+    private String getDirectorySave() {
+        String userDir = System.getProperty("user.dir");
+        String directionSaveFile = kConfiguration.getDirectory();
+        if (directionSaveFile == null)
+            directionSaveFile = userDir;
+        return directionSaveFile;
+    }
+
+    /**
 	 * 
 	 */
 	private void loadSaveFile() {
