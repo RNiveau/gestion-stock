@@ -132,6 +132,7 @@
 			<xs:enumeration value="BREAK_OUT" />
 			<xs:enumeration value="MM20_TREND" />
 			<xs:enumeration value="DIVIDEND" />
+            <xs:enumeration value="RSI_DYNAMIC" />
 		</xs:restriction>
 	</xs:simpleType>
 
