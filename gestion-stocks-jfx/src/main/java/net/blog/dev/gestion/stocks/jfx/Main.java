@@ -4,10 +4,8 @@
 package net.blog.dev.gestion.stocks.jfx;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import net.blog.dev.gestion.stocks.back.Initialize;
 import net.blog.dev.gestion.stocks.core.KWeldContainer;
 import net.blog.dev.gestion.stocks.jfx.annotation.Loading;
@@ -19,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.enterprise.util.AnnotationLiteral;
+import java.util.concurrent.ExecutorService;
 
 /**
  * @author Kiva
@@ -60,17 +59,26 @@ public class Main extends Application {
                 .getHeight());
         primaryStage.setX(Screen.getPrimary().getVisualBounds().getMinX());
         primaryStage.setY(Screen.getPrimary().getVisualBounds().getMinY());
+
+        primaryStage.setOnCloseRequest(event -> {
+
+            event.consume();
+            weldContainer.event()
+                    .select(Stage.class, new AnnotationLiteral<Loading>() {
+                    }).fire(primaryStage);
+            final ExecutorService excecutor = PoolThreadManager.getPoolThread();
+            excecutor.execute(() -> {
+                logger.debug("Application is stopping");
+                PoolThreadManager.killPoolThread();
+                IConfigurationMService configurationMService = KWeldContainer.getInstance().instance().select(IConfigurationMService.class).get();
+                configurationMService.saveOnExit();
+                logger.debug("Application stopped");
+                System.exit(0);
+            });
+
+        });
         primaryStage.setTitle("KStocks");
         logger.debug("Application started");
-    }
-
-    @Override
-    public void stop() {
-        logger.debug("Application is stopping");
-        PoolThreadManager.killPoolThread();
-        IConfigurationMService configurationMService = KWeldContainer.getInstance().instance().select(IConfigurationMService.class).get();
-        configurationMService.saveOnExit();
-        logger.debug("Application stopped");
     }
 
 }
