@@ -23,11 +23,12 @@ public class LoadingScreen extends AbstractScreen {
     @Inject
     private IFrontManager frontManager;
 
-    public void openLoadingScreen(@Observes @Loading Stage primaryStage) {
-        Stage loading = new Stage();
+    public Stage openLoadingScreen(@Observes @Loading Stage primaryStage) {
+        final Stage loading = new Stage();
         loading.initModality(Modality.WINDOW_MODAL);
-        loading.initOwner(frontManager.getWindowParent());
+        loading.initOwner(primaryStage == null ? frontManager.getWindowParent() : primaryStage);
         loading.setScene(new Scene(new Group(JfxUtils.loadFxml(getFxmlLoader(), FxmlFileConstantes.LOADING))));
         loading.show();
+        return loading;
     }
 }

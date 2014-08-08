@@ -36,6 +36,11 @@
                         </Button>
                     </children>
                 </HBox>
+                <HBox prefHeight="38.0" fx:id="hboxGetDropbox">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#getDropbox" text="Récupérer le fichier depuis dropbox" />
+                    </children>
+                </HBox>
                 <Button mnemonicParsing="false" onAction="#save" text="Sauvegarder"/>
             </children>
         </VBox>

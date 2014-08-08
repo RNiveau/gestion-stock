@@ -6,6 +6,8 @@ package net.blog.dev.gestion.stocks.back;
 import net.blog.dev.gestion.stocks.back.migration.Migration;
 import net.blog.dev.gestion.stocks.dto.DtoPortfolio;
 import net.blog.dev.gestion.stocks.dto.KConfiguration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
@@ -25,7 +27,9 @@ import java.io.IOException;
 @ApplicationScoped
 public class KContext {
 
-	static private String SAVE_FILENAME = "portfolio.k";
+	static public String SAVE_FILENAME = "portfolio.k";
+
+    static private Logger logger = LoggerFactory.getLogger(KContext.class);
 
 	private File saveFile;
 
@@ -91,13 +95,15 @@ public class KContext {
     /**
 	 * 
 	 */
-	private void loadSaveFile() {
+	public void loadSaveFile() {
 		JAXBContext jaxbContext;
+        logger.debug("Load save file");
 		try {
 			jaxbContext = JAXBContext.newInstance(DtoPortfolio.class);
 			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 			portfolio = (DtoPortfolio) unmarshaller.unmarshal(saveFile);
 		} catch (JAXBException e) {
+            logger.error("Can't read save file");
 			throw new BackException("Can't initialize application");
 		}
 	}

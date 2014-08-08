@@ -8,10 +8,7 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
@@ -68,10 +65,9 @@ public class DropboxServiceImpl implements IDropboxService {
         FileInputStream inputStream = null;
         try {
             inputStream = new FileInputStream(inputFile);
-            final DbxClient client = new DbxClient(new DbxRequestConfig("KStocks/1.0", Locale.getDefault().toString()), idDropbox);
-            final String fileName = "portfolio.k";
+            final DbxClient client = getDbxClient(idDropbox);
             final InputStream dropboxStream = inputStream;
-            List<DbxEntry> dbxEntries = client.searchFileAndFolderNames("/", fileName);
+            List<DbxEntry> dbxEntries = client.searchFileAndFolderNames("/", KContext.SAVE_FILENAME);
             Optional<DbxEntry> dropboxFile = dbxEntries.stream().findFirst();
             dropboxFile.ifPresent(file -> {
                 try {
@@ -82,12 +78,9 @@ public class DropboxServiceImpl implements IDropboxService {
                 }
             });
             if (!dropboxFile.isPresent()) {
-                client.uploadFile("/" + fileName,
+                client.uploadFile("/" + KContext.SAVE_FILENAME,
                         DbxWriteMode.add(), inputFile.length(), inputStream);
             }
-//            File target = new File("Copy of House.jpeg");
-//            OutputStream out = new FileOutputStream(target);
-//            client.getFile(fileName, null, new BufferedOutputStream());
         } catch (IOException | DbxException e) {
             logger.warn("Error on upload file : {}", e.getMessage());
         } finally {
@@ -98,5 +91,22 @@ public class DropboxServiceImpl implements IDropboxService {
                 logger.warn("Error on upload file : {}", e.getMessage());
             }
         }
+    }
+
+    private DbxClient getDbxClient(String idDropbox) {
+        return new DbxClient(new DbxRequestConfig("KStocks/1.0", Locale.getDefault().toString()), idDropbox);
+    }
+
+    @Override
+    public boolean getPortfolio(String idDropbox) {
+        logger.debug("Get portfolio from dropbox");
+        final DbxClient client = getDbxClient(idDropbox);
+        try {
+            client.getFile("/" + KContext.SAVE_FILENAME, null, new FileOutputStream(context.getSaveFile()));
+        } catch (DbxException | IOException e) {
+            logger.warn("Error when get file from dropbox {}", e);
+            return false;
+        }
+        return true;
     }
 }

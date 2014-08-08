@@ -31,6 +31,8 @@ public class JfxUtils {
     static private final Logger logger = LoggerFactory.getLogger(JfxUtils.class);
 
 	static public Node loadFxml(FXMLLoader loader, String fxml) {
+        if (loader == null)
+            loader = new FXMLLoader();
 		try {
 			loader.setController(null);
 			loader.setRoot(null);

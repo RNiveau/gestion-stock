@@ -20,4 +20,7 @@ public interface IConfigurationMService {
     void saveDropboxAccount(String code);
 
     void saveOnExit();
+
+    void getFromDropbox();
+
 }

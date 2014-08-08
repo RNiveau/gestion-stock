@@ -10,4 +10,6 @@ public interface IDropboxService {
     String authorized(String code);
 
     void saveFile(String idDropbox);
+
+    boolean getPortfolio(String idDropbox);
 }

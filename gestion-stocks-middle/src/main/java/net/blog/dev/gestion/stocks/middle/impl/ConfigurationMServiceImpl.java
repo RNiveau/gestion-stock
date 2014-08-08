@@ -73,4 +73,15 @@ public class ConfigurationMServiceImpl implements IConfigurationMService {
             dropboxService.saveFile(configuration.getIdDropbox());
         }
     }
+
+    @Override
+    public void getFromDropbox() {
+        final KConfiguration configuration = context.getConfiguration();
+        if (StringUtils.isNotBlank(configuration.getIdDropbox())) {
+            if (dropboxService.getPortfolio(configuration.getIdDropbox())) {
+                context.loadSaveFile();
+            }
+        }
+
+    }
 }
