@@ -62,7 +62,7 @@ public class CloseController extends AnchorPane implements Initializable {
 
 	DetailStockBean detailStockBean;
 
-	static public final EventType<WindowEvent> CLOSE_WINDOW_CLOSE_STOCK = new EventType<>();
+	static public final EventType<WindowEvent> CLOSE_WINDOW_CLOSE_STOCK = new EventType<>("CLOSE_WINDOW_CLOSE_STOCK");
 
 	public void closeStock(ActionEvent event) {
 		final CloseBean closeBean = new CloseBean();
