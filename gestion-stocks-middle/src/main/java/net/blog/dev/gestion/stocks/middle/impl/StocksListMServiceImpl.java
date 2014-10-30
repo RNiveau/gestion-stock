@@ -36,22 +36,6 @@ public class StocksListMServiceImpl extends AbstractMService implements
     @Inject
     private IQuoteBService quoteBService;
 
-//    final ExecutorService executor = Executors.newFixedThreadPool(10);
-//CallBackTask callBackTask = new CallBackTask(new IRunnableTask<Float>() {
-//
-//    private Float result;
-//
-//    @Override
-//    public void run() {
-//    }
-//
-//    @Override
-//    public Float getResult() {
-//        return result;
-//    }
-//}, new CallBackCurrentPrice((StockListRunningBean) bean));
-//    executor.execute(callBackTask);
-
     @Override
     public List<StockListBean> getStocksListRunning() {
         final List<DtoStock> listStocks = stockDao.getListStocks();
@@ -62,6 +46,35 @@ public class StocksListMServiceImpl extends AbstractMService implements
                 listBean.add(generateStockListBean(stock, false));
         }
         return listBean;
+    }
+
+    @Override
+    public List<StockListBean> getStocksListRunning(boolean group) {
+        List<StockListBean> stocksListRunning = getStocksListRunning();
+        if (!group)
+            return stocksListRunning;
+
+        List<StockListBean> grouped = new ArrayList<>();
+        stocksListRunning.stream().forEach(stock -> {
+            StockListBean stockRunning =
+                    grouped.stream()
+                            .filter((element) -> element.getCode().equals(stock.getCode()) && element.getDirection().equals(stock.getDirection()))
+                            .findFirst()
+                            .orElseGet(() -> {
+                                StockListRunningBean stockListRunningBean = new StockListRunningBean();
+                                stockListRunningBean.setCode(stock.getCode());
+                                stockListRunningBean.setTitle(stock.getTitle());
+                                stockListRunningBean.setQuantity(0);
+                                stockListRunningBean.setPrice(0f);
+                                stockListRunningBean.setDirection(stock.getDirection());
+                                grouped.add(stockListRunningBean);
+                                return stockListRunningBean;
+                            });
+            stockRunning.setQuantity(stockRunning.getQuantity() + stock.getQuantity());
+            stockRunning.setPrice(stockRunning.getPrice() + stock.getPrice());
+        });
+        grouped.stream().forEach(stock -> stock.setUnitPrice(stock.getPrice() / stock.getQuantity()));
+        return grouped;
     }
 
     private StockListBean generateStockListBean(final DtoStock stock,
@@ -164,6 +177,53 @@ public class StocksListMServiceImpl extends AbstractMService implements
                         true));
         }
         return listBean;
+    }
+
+    @Override
+    public List<StockListCloseBean> getStocksListClose(boolean group) {
+        List<StockListCloseBean> stocksListClose = getStocksListClose();
+        if (!group)
+            return stocksListClose;
+
+        List<StockListCloseBean> grouped = new ArrayList<>();
+        stocksListClose.stream().forEach(stock -> {
+            StockListCloseBean stockClose =
+                    grouped.stream()
+                            .filter((element) -> element.getCode().equals(stock.getCode()) && element.getDirection().equals(stock.getDirection()))
+                            .findFirst()
+                            .orElseGet(() -> {
+                                StockListCloseBean stockListCloseBean = new StockListCloseBean();
+                                stockListCloseBean.setCode(stock.getCode());
+                                stockListCloseBean.setTitle(stock.getTitle());
+                                stockListCloseBean.setQuantity(0);
+                                stockListCloseBean.setPrice(0f);
+                                stockListCloseBean.setGain(0f);
+                                stockListCloseBean.setGainLessTaxes(0f);
+                                stockListCloseBean.setSellPrice(0f);
+                                stockListCloseBean.setSellTaxes(0f);
+                                stockListCloseBean.setDirection(stock.getDirection());
+                                grouped.add(stockListCloseBean);
+                                return stockListCloseBean;
+                            });
+            stockClose.setQuantity(stockClose.getQuantity() + stock.getQuantity());
+            stockClose.setPrice(stockClose.getPrice() + stock.getPrice());
+            stockClose.setGain(stockClose.getGain() + stock.getGain());
+            stockClose.setSellPrice(stockClose.getSellPrice() + stock.getSellPrice());
+            stockClose.setSellTaxes(stockClose.getSellTaxes() + stock.getSellTaxes());
+        });
+        grouped.stream().forEach(stock -> {
+            stock.setUnitPrice(stock.getPrice() / stock.getQuantity());
+            stock.setSellUnitPrice(stock.getSellPrice() / stock.getQuantity());
+            stock.setGainPercentage(CalculUtils.getPercentageBetweenTwoValues(stock.getPrice(), stock.getSellPrice()));
+            if (stock.getDirection().equals(DirectionEnum.BUY.value())) {
+                if (stock.getPrice() < stock.getSellPrice())
+                    stock.setGainPercentage(stock.getGainPercentage() * -1);
+            } else {
+                if (stock.getPrice() > stock.getSellPrice())
+                    stock.setGainPercentage(stock.getGainPercentage() * -1);
+            }
+        });
+        return grouped;
     }
 
     @Override

@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.cell.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import net.blog.dev.gestion.stocks.jfx.ui.DateValueFactory?>
@@ -14,6 +15,11 @@
                 <children>
                     <Label prefWidth="85.0" text="Filtre: "/>
                     <TextField prefWidth="200.0" fx:id="filter" onKeyTyped="#filter" />
+                    <Label prefWidth="85.0" text="Grouper: ">
+                        <HBox.margin>
+                            <Insets left="15.0" fx:id="x1" />
+                        </HBox.margin>
+                    </Label> <CheckBox fx:id="group"  onAction="#group" />
                 </children>
             </HBox>
 

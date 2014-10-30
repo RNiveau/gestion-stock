@@ -34,7 +34,7 @@ import static net.blog.dev.gestion.stocks.jfx.utils.FrontUtils.formatStringToDat
  * 
  */
 public class StocksListCloseController extends ScrollPane implements
-		Initializable {
+		Initializable, IGroupStockController {
 
     static final Logger logger = LoggerFactory.getLogger(StocksListCloseController.class);
 
@@ -63,6 +63,7 @@ public class StocksListCloseController extends ScrollPane implements
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
         logger.info("Initialize {} {}", arg0, arg1);
+        tableListStockController.setGroupStockController(this);
 		scrollPane.setPrefWidth(frontManager.getWindowParent().getWidth()
 				- JfxUtils.SPACE_LEFT_PANEL);
 
@@ -125,4 +126,12 @@ public class StocksListCloseController extends ScrollPane implements
 		tableListStockController.getStocksList().setPrefHeight(
 				frontManager.getWindowParent().getHeight() - 120);
 	}
+
+    @Override
+    public void group(boolean group) {
+        final ObservableList<StockListBean> list = FXCollections
+                .observableArrayList();
+        list.addAll(stocksListMService.getStocksListClose(group));
+        tableListStockController.getStocksList().setItems(list);
+    }
 }

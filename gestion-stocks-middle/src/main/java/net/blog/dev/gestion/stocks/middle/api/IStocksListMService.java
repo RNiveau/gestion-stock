@@ -16,7 +16,11 @@ public interface IStocksListMService {
 
 	List<StockListBean> getStocksListRunning();
 
+    List<StockListBean> getStocksListRunning(boolean group);
+
 	List<StockListCloseBean> getStocksListClose();
+
+    List<StockListCloseBean> getStocksListClose(boolean group);
 
     Float getActualPrice(String code);
 }

@@ -16,7 +16,8 @@ public class NegPosTableCell<T, S> extends TableCell<T, S> {
         if (!isEmpty()) {
             this.setTextFill(Color.web(item.toString().contains("-") ? FrontUtils.RED : FrontUtils.GREEN));
             setText(item.toString());
-        }
+        } else
+            setText("");
     }
 
 

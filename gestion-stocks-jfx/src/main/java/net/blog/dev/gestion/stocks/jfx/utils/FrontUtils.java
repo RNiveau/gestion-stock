@@ -35,6 +35,8 @@ public class FrontUtils {
     }
 
     static public String formatDate(Date date, String format) {
+        if (date == null)
+            return "";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
         return simpleDateFormat.format(date);
     }

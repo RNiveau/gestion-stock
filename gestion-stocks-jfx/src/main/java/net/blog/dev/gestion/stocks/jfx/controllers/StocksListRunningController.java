@@ -49,7 +49,7 @@ import java.util.concurrent.ExecutorService;
  * @author Kiva
  */
 public class StocksListRunningController extends ScrollPane implements
-        Initializable {
+        Initializable, IGroupStockController {
 
     static final Logger logger = LoggerFactory.getLogger(StocksListRunningController.class);
 
@@ -85,6 +85,7 @@ public class StocksListRunningController extends ScrollPane implements
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         logger.info("Initialize {} {}", arg0, arg1);
+        tableListStockController.setGroupStockController(this);
         scrollPane.setPrefWidth(frontManager.getWindowParent().getWidth()
                 - JfxUtils.SPACE_LEFT_PANEL);
 
@@ -102,7 +103,10 @@ public class StocksListRunningController extends ScrollPane implements
         tableListStockController.setDetail(popupDetailRunning);
         tableListStockController
                 .setDetailStockController(popupDetailRunningController);
+        getActualPrice(stocksListRunning);
+    }
 
+    private void getActualPrice(List<StockListBean> stocksListRunning) {
         final ExecutorService excecutor = PoolThreadManager.getPoolThread();
         stocksListRunning.stream().forEach(stockListBean -> {
             final Task<Float> task = new Task<Float>() {
@@ -244,5 +248,15 @@ public class StocksListRunningController extends ScrollPane implements
                         ((StockListRunningBean) stockListBean).setAtr(atr);
                     }
                 });
+    }
+
+    @Override
+    public void group(boolean group) {
+        final ObservableList<StockListBean> list = FXCollections
+                .observableArrayList();
+        list.addAll(stocksListMService.getStocksListRunning(group));
+        tableListStockController.getStocksList().setItems(list);
+        tableListStockController.getStocksList().setEditable(!group);
+        getActualPrice(list);
     }
 }

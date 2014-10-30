@@ -6,24 +6,22 @@ package net.blog.dev.gestion.stocks.jfx.controllers;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.WindowEvent;
-import net.blog.dev.gestion.stocks.jfx.fxml.FxmlFileConstantes;
 import net.blog.dev.gestion.stocks.jfx.IFrontManager;
+import net.blog.dev.gestion.stocks.jfx.fxml.FxmlFileConstantes;
 import net.blog.dev.gestion.stocks.jfx.utils.JfxUtils;
 import net.blog.dev.gestion.stocks.middle.beans.StockListBean;
 import org.apache.commons.collections.CollectionUtils;
@@ -55,6 +53,9 @@ public class StockListTableController extends VBox implements Initializable {
     private TextField filter;
 
     @FXML
+    private CheckBox group;
+
+    @FXML
     private TableColumn<StockListBean, String> dateColumn;
 
     private Tooltip tooltip;
@@ -70,6 +71,8 @@ public class StockListTableController extends VBox implements Initializable {
     private IFrontManager frontManager;
 
     ObservableList<StockListBean> initialItems;
+
+    private IGroupStockController groupStockController;
 
     /**
      * @return the stocksList
@@ -148,6 +151,12 @@ public class StockListTableController extends VBox implements Initializable {
         return filter;
     }
 
+    public void group(ActionEvent actionEvent) {
+        groupStockController.group(group.isSelected());
+        initialItems = null;
+        filter(null);
+    }
+
     public void filter(KeyEvent event) {
         if (initialItems == null)
             initialItems = stocksList.getItems();
@@ -161,4 +170,7 @@ public class StockListTableController extends VBox implements Initializable {
         stocksList.setItems(items);
     }
 
+    public void setGroupStockController(IGroupStockController groupStockController) {
+        this.groupStockController = groupStockController;
+    }
 }
