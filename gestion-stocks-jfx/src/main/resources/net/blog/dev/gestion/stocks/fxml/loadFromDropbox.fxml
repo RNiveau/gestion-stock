@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="97.0" prefWidth="405.0" stylesheets="net/blog/dev/gestion/stocks/css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.CheckDropBoxFileController">
+   <children>
+      <Label layoutX="14.0" layoutY="23.0" text="Un fichier dropbox plus récent est disponible, le télécharger" />
+      <Button layoutX="99.0" layoutY="49.0" onAction="#ok" mnemonicParsing="false" text="Oui" />
+      <Button layoutX="254.0" layoutY="49.0" onAction="#ko" mnemonicParsing="false" text="Non" />
+   </children>
+</AnchorPane>

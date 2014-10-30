@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.io.*;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
@@ -97,6 +98,7 @@ public class DropboxServiceImpl implements IDropboxService {
         return new DbxClient(new DbxRequestConfig("KStocks/1.0", Locale.getDefault().toString()), idDropbox);
     }
 
+
     @Override
     public boolean getPortfolio(String idDropbox) {
         logger.debug("Get portfolio from dropbox");
@@ -108,5 +110,24 @@ public class DropboxServiceImpl implements IDropboxService {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public Date getModifiedDatePortfolio(String idDropbox) {
+        final DbxClient client = getDbxClient(idDropbox);
+        List<DbxEntry> dbxEntries = null;
+        try {
+            dbxEntries = client.searchFileAndFolderNames("/", KContext.SAVE_FILENAME);
+            Optional<DbxEntry> dropboxFile = dbxEntries.stream().findFirst();
+            final Date modifiedDate = new Date();
+            dropboxFile.ifPresent(file -> {
+                if (file instanceof DbxEntry.File)
+                    modifiedDate.setTime(((DbxEntry.File)file).lastModified.getTime());
+            });
+            return modifiedDate;
+        } catch (DbxException exception) {
+            logger.warn("getModifiedDatePortfolio failed {}", exception.getMessage());
+        }
+        return null;
     }
 }

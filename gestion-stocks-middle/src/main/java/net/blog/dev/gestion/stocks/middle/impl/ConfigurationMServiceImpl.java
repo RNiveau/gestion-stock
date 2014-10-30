@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import java.util.Date;
 
 /**
  * @author Kiva
@@ -82,6 +83,19 @@ public class ConfigurationMServiceImpl implements IConfigurationMService {
                 context.loadSaveFile();
             }
         }
+    }
 
+    @Override
+    public boolean newerFileExist() {
+        final KConfiguration configuration = context.getConfiguration();
+        if (StringUtils.isNotBlank(configuration.getIdDropbox())) {
+            Date modifiedDateDropboxPortfolio = dropboxService.getModifiedDatePortfolio(configuration.getIdDropbox());
+            long modifiedDateLocalPortfolio = context.getSaveFile().lastModified();
+            // date dropbox is newer local date
+            logger.debug("Date dropbox={}, date local={}", modifiedDateDropboxPortfolio, new Date(modifiedDateLocalPortfolio));
+            // 10 s
+            return modifiedDateDropboxPortfolio.getTime() - modifiedDateLocalPortfolio  > 10000;
+        }
+        return false;
     }
 }

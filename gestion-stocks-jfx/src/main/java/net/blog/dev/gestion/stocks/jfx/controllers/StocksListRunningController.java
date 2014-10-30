@@ -22,15 +22,14 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import net.blog.dev.gestion.stocks.jfx.IFrontManager;
-import net.blog.dev.gestion.stocks.jfx.ui.NegPosTableCell;
-import net.blog.dev.gestion.stocks.jfx.utils.JfxUtils;
 import net.blog.dev.gestion.stocks.jfx.PoolThreadManager;
+import net.blog.dev.gestion.stocks.jfx.ui.NegPosTableCell;
 import net.blog.dev.gestion.stocks.jfx.ui.TwoFloatValueFactory;
+import net.blog.dev.gestion.stocks.jfx.utils.JfxUtils;
 import net.blog.dev.gestion.stocks.middle.CalculUtils;
 import net.blog.dev.gestion.stocks.middle.Utils;
 import net.blog.dev.gestion.stocks.middle.api.IDetailStockMService;
@@ -123,13 +122,15 @@ public class StocksListRunningController extends ScrollPane implements
                 @Override
                 public void handle(WorkerStateEvent workerStateEvent) {
                     logger.debug("Task succed, refresh screen");
-                    ((StockListRunningBean) stockListBean).setActualPrice((Float) workerStateEvent.getSource().getValue());
-                    ((StockListRunningBean) stockListBean).setPercentageBetweenActualAndBuy(
-                            CalculUtils.getPercentageBetweenTwoValues(stockListBean.getUnitPrice(), ((StockListRunningBean) stockListBean).getActualPrice()));
-                    if (stockListBean.getUnitPrice() >  ((StockListRunningBean) stockListBean).getActualPrice())
-                        ((StockListRunningBean) stockListBean).setPercentageBetweenActualAndBuy(-1 * ((StockListRunningBean) stockListBean).getPercentageBetweenActualAndBuy());
-                    columnActualPrice.setVisible(false);
-                    columnActualPrice.setVisible(true);
+                    if (workerStateEvent.getSource().getValue() != null) {
+                        ((StockListRunningBean) stockListBean).setActualPrice((Float) workerStateEvent.getSource().getValue());
+                        ((StockListRunningBean) stockListBean).setPercentageBetweenActualAndBuy(
+                                CalculUtils.getPercentageBetweenTwoValues(stockListBean.getUnitPrice(), ((StockListRunningBean) stockListBean).getActualPrice()));
+                        if (stockListBean.getUnitPrice() > ((StockListRunningBean) stockListBean).getActualPrice())
+                            ((StockListRunningBean) stockListBean).setPercentageBetweenActualAndBuy(-1 * ((StockListRunningBean) stockListBean).getPercentageBetweenActualAndBuy());
+                        columnActualPrice.setVisible(false);
+                        columnActualPrice.setVisible(true);
+                    }
                 }
             });
             excecutor.execute(task);

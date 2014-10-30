@@ -23,4 +23,6 @@ public interface IConfigurationMService {
 
     void getFromDropbox();
 
+    boolean newerFileExist();
+
 }

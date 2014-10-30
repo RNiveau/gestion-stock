@@ -7,6 +7,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import net.blog.dev.gestion.stocks.jfx.IFrontManager;
 import net.blog.dev.gestion.stocks.jfx.annotation.Loading;
 import net.blog.dev.gestion.stocks.jfx.fxml.FxmlFileConstantes;
@@ -23,7 +24,7 @@ public class LoadingScreen extends AbstractScreen {
     @Inject
     private IFrontManager frontManager;
 
-    public Stage openLoadingScreen(@Observes @Loading Stage primaryStage) {
+    public Stage openLoadingScreen(@Observes @Loading Window primaryStage) {
         final Stage loading = new Stage();
         loading.initModality(Modality.WINDOW_MODAL);
         loading.initOwner(primaryStage == null ? frontManager.getWindowParent() : primaryStage);
