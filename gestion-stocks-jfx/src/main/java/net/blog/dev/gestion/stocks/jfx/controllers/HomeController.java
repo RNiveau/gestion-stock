@@ -71,6 +71,10 @@ public class HomeController extends AnchorPane implements Initializable {
         loadRightPane(FxmlFileConstantes.COMPARE_STOCK);
     }
 
+    public void openStrategies(ActionEvent event) {
+        loadRightPane(FxmlFileConstantes.STRATEGIES);
+    }
+
     private void loadRightPane(String fxml) {
         logger.info("Go to {}", fxml);
         Node root = JfxUtils.loadFxml(loader, fxml);

@@ -38,4 +38,6 @@ public interface FxmlFileConstantes {
     static String LOADING = "/net/blog/dev/gestion/stocks/fxml/loading.fxml";
 
     static String LOAD_FROM_DROPBOX = "/net/blog/dev/gestion/stocks/fxml/loadFromDropbox.fxml";
+
+    static String STRATEGIES = "/net/blog/dev/gestion/stocks/fxml/strategies.fxml";
 }

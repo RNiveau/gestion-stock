@@ -1,7 +1,5 @@
 package net.blog.dev.gestion.stocks.jfx.controllers;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +19,6 @@ import org.slf4j.LoggerFactory;
 import javax.inject.Inject;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -96,23 +93,12 @@ public class AddStockController implements Initializable {
 		typeMap = new HashMap<String, String>();
 		directionMap = new HashMap<String, String>();
 		accountMap = new HashMap<String, String>();
-		fillChoiseBox(strategy, addStockMService.getListStrategies(),
-				strategiesMap);
-		fillChoiseBox(type, addStockMService.getListOrderType(), typeMap);
-		fillChoiseBox(direction, addStockMService.getListDirection(),
-				directionMap);
-		fillChoiseBox(account, addStockMService.getListAccount(), accountMap);
-	}
-
-	private void fillChoiseBox(ChoiceBox<String> choiseBox,
-			List<String> listChoise, Map<String, String> mapChoise) {
-		ObservableList<String> observableArrayList = FXCollections
-				.observableArrayList();
-		for (String choise : listChoise) {
-			mapChoise.put(bundle.getString(choise), choise);
-			observableArrayList.add(bundle.getString(choise));
-		}
-		choiseBox.setItems(observableArrayList);
+        JfxUtils.fillChoiseBox(strategy, addStockMService.getListStrategies(),
+				strategiesMap, bundle);
+        JfxUtils.fillChoiseBox(type, addStockMService.getListOrderType(), typeMap, bundle);
+        JfxUtils.fillChoiseBox(direction, addStockMService.getListDirection(),
+				directionMap, bundle);
+		JfxUtils.fillChoiseBox(account, addStockMService.getListAccount(), accountMap, bundle);
 	}
 
 	public void addStock(ActionEvent event) {

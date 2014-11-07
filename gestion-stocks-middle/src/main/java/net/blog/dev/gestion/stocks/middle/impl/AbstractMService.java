@@ -3,15 +3,14 @@
  */
 package net.blog.dev.gestion.stocks.middle.impl;
 
+import net.blog.dev.gestion.stocks.dto.DtoMovement;
+import net.blog.dev.gestion.stocks.dto.DtoStock;
+import org.joda.time.DateTime;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import net.blog.dev.gestion.stocks.dto.DtoMovement;
-import net.blog.dev.gestion.stocks.dto.DtoStock;
-
-import org.joda.time.DateTime;
 
 /**
  * @author Kiva
@@ -73,6 +72,9 @@ public abstract class AbstractMService {
 		for (Enum<?> enu : enums)
 			list.add(enu.name());
 		return list;
-	}
+    }
+
+
+
 
 }
