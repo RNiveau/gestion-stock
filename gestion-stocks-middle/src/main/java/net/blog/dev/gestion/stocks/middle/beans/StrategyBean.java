@@ -9,32 +9,27 @@ public class StrategyBean {
 
     private String strategy;
 
-    private Float benefitsBuy;
+    private Float benefitsBuy = 0f;
 
-    private Float benefitsAverageBuy;
+    private Float benefitsAverageBuy = 0f;
 
-    private Float benefitsSell;
+    private Float benefitsSell = 0f;
 
-    private Float benefitsAverageSell;
+    private Float benefitsAverageSell = 0f;
 
-    private Duration duration;
+    private Duration durationBuy = Duration.ofNanos(1);
 
-    private Integer nbrBuy;
+    private Duration durationSell = Duration.ofNanos(1);
 
-    private Integer nbrSell;
+    private Integer nbrBuy = 0;
 
-    private Float dividends;
+    private Integer nbrSell = 0;
 
+    private Integer positionRunning = 0;
 
-    public StrategyBean() {
-        benefitsBuy = 0f;
-        benefitsAverageBuy = 0f;
-        benefitsAverageSell = 0f;
-        benefitsSell = 0f;
-        nbrBuy = 0;
-        nbrSell = 0;
-        dividends = 0f;
-    }
+    private Float moneyRunning = 0f;
+
+    private Float dividends = 0f;
 
     public Float getDividends() {
         return dividends;
@@ -60,12 +55,12 @@ public class StrategyBean {
         this.nbrBuy = nbrBuy;
     }
 
-    public Duration getDuration() {
-        return duration;
+    public Duration getDurationBuy() {
+        return durationBuy;
     }
 
-    public void setDuration(Duration duration) {
-        this.duration = duration;
+    public void setDurationBuy(Duration durationBuy) {
+        this.durationBuy = durationBuy;
     }
 
     public Float getBenefitsAverageSell() {
@@ -108,6 +103,27 @@ public class StrategyBean {
         this.strategy = strategy;
     }
 
+    public Integer getPositionRunning() {
+        return positionRunning;
+    }
 
+    public void setPositionRunning(Integer positionRunning) {
+        this.positionRunning = positionRunning;
+    }
 
+    public Float getMoneyRunning() {
+        return moneyRunning;
+    }
+
+    public void setMoneyRunning(Float moneyRunning) {
+        this.moneyRunning = moneyRunning;
+    }
+
+    public Duration getDurationSell() {
+        return durationSell;
+    }
+
+    public void setDurationSell(Duration durationSell) {
+        this.durationSell = durationSell;
+    }
 }

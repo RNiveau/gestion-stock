@@ -46,19 +46,32 @@
                   <Insets left="10.0" top="10.0" />
                </padding>
             </HBox>
-            <HBox>
-               <children>
-                  <Label text="Durée moyenne">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="duration" />
-               </children>
-               <padding>
-                  <Insets left="10.0" top="10.0" />
-               </padding>
-            </HBox>
+             <HBox>
+                 <children>
+                     <Label text="Durée moyenne achat">
+                         <HBox.margin>
+                             <Insets right="5.0" />
+                         </HBox.margin>
+                     </Label>
+                     <Label fx:id="durationBuy" />
+                 </children>
+                 <padding>
+                     <Insets left="10.0" top="10.0" />
+                 </padding>
+             </HBox>
+             <HBox>
+                 <children>
+                     <Label text="Durée moyenne vente">
+                         <HBox.margin>
+                             <Insets right="5.0" />
+                         </HBox.margin>
+                     </Label>
+                     <Label fx:id="durationSell" />
+                 </children>
+                 <padding>
+                     <Insets left="10.0" top="10.0" />
+                 </padding>
+             </HBox>
              <HBox>
                  <children>
                      <Label text="Gain moyen achat">
@@ -111,21 +124,46 @@
                      <Insets left="10.0" top="10.0" />
                  </padding>
              </HBox>
-            <HBox>
-               <children>
-                  <Label text="Dividendes">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="dividends" />
-               </children>
-               <padding>
-                  <Insets left="10.0" top="10.0" />
-               </padding>
-            </HBox>
+             <HBox>
+                 <children>
+                     <Label text="Dividendes">
+                         <HBox.margin>
+                             <Insets right="5.0" />
+                         </HBox.margin>
+                     </Label>
+                     <Label fx:id="dividends" />
+                 </children>
+                 <padding>
+                     <Insets left="10.0" top="10.0" />
+                 </padding>
+             </HBox>
+             <HBox>
+                 <children>
+                     <Label text="Positions engagées">
+                         <HBox.margin>
+                             <Insets right="5.0" />
+                         </HBox.margin>
+                     </Label>
+                     <Label fx:id="positionRunning" />
+                 </children>
+                 <padding>
+                     <Insets left="10.0" top="10.0" />
+                 </padding>
+             </HBox>
+             <HBox>
+                 <children>
+                     <Label text="Montant engagé">
+                         <HBox.margin>
+                             <Insets right="5.0" />
+                         </HBox.margin>
+                     </Label>
+                     <Label fx:id="moneyRunning" />
+                 </children>
+                 <padding>
+                     <Insets left="10.0" top="10.0" />
+                 </padding>
+             </HBox>
          </children>
-          position engagé / montant engagé
       </VBox>
    </children>
 </AnchorPane>

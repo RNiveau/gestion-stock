@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import net.blog.dev.gestion.stocks.jfx.utils.FrontUtils;
 import net.blog.dev.gestion.stocks.jfx.utils.JfxUtils;
 import net.blog.dev.gestion.stocks.middle.api.IAddStockMService;
 import net.blog.dev.gestion.stocks.middle.api.IStrategiesMService;
@@ -38,7 +39,10 @@ public class StrategiesController implements Initializable {
     public Label nbrSell;
 
     @FXML
-    public Label duration;
+    public Label durationBuy;
+
+    @FXML
+    public Label durationSell;
 
     @FXML
     public Label benefitsBuy;
@@ -54,6 +58,12 @@ public class StrategiesController implements Initializable {
 
     @FXML
     public Label benefitsAverageSell;
+
+    @FXML
+    public Label positionRunning;
+
+    @FXML
+    public Label moneyRunning;
 
     @Inject
     private IStrategiesMService strategiesMService;
@@ -76,5 +86,15 @@ public class StrategiesController implements Initializable {
         StrategyBean strategy = strategiesMService.getStrategy(strategiesMap.get(strategies.getValue()));
         benefitsBuy.setText(strategy.getBenefitsBuy().toString());
         nbrBuy.setText(strategy.getNbrBuy().toString());
+        nbrSell.setText(strategy.getNbrSell().toString());
+        benefitsBuy.setText(FrontUtils.formatPricePercentage(strategy.getBenefitsBuy()));
+        benefitsSell.setText(FrontUtils.formatPricePercentage(strategy.getBenefitsSell()));
+        benefitsAverageBuy.setText(FrontUtils.formatPricePercentage(strategy.getBenefitsAverageBuy()));
+        benefitsAverageSell.setText(FrontUtils.formatPricePercentage(strategy.getBenefitsAverageSell()));
+        dividends.setText(FrontUtils.formatPricePercentage(strategy.getDividends()));
+        positionRunning.setText(strategy.getPositionRunning().toString());
+        moneyRunning.setText(FrontUtils.formatPricePercentage(strategy.getMoneyRunning()));
+        durationBuy.setText(Integer.toString((int) strategy.getDurationBuy().toDays()));
+        durationSell.setText(Integer.toString((int) strategy.getDurationSell().toDays()));
     }
 }
