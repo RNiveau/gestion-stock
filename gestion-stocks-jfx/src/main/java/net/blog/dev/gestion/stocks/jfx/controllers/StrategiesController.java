@@ -65,6 +65,12 @@ public class StrategiesController implements Initializable {
     @FXML
     public Label moneyRunning;
 
+    @FXML
+    public Label moneyAverageBuy;
+
+    @FXML
+    public Label moneyAverageSell;
+
     @Inject
     private IStrategiesMService strategiesMService;
 
@@ -89,12 +95,14 @@ public class StrategiesController implements Initializable {
         nbrSell.setText(strategy.getNbrSell().toString());
         benefitsBuy.setText(FrontUtils.formatPricePercentage(strategy.getBenefitsBuy()));
         benefitsSell.setText(FrontUtils.formatPricePercentage(strategy.getBenefitsSell()));
-        benefitsAverageBuy.setText(FrontUtils.formatPricePercentage(strategy.getBenefitsAverageBuy()));
-        benefitsAverageSell.setText(FrontUtils.formatPricePercentage(strategy.getBenefitsAverageSell()));
+        benefitsAverageBuy.setText(FrontUtils.formatPricePercentage(strategy.getBenefitsAverageBuy()) + " (" + FrontUtils.formatPricePercentage(strategy.getBenefitsAverageBuyPercentage()) + " %)");
+        benefitsAverageSell.setText(FrontUtils.formatPricePercentage(strategy.getBenefitsAverageSell())+ " ("+FrontUtils.formatPricePercentage(strategy.getBenefitsAverageSellPercentage())+" %)");
         dividends.setText(FrontUtils.formatPricePercentage(strategy.getDividends()));
         positionRunning.setText(strategy.getPositionRunning().toString());
         moneyRunning.setText(FrontUtils.formatPricePercentage(strategy.getMoneyRunning()));
         durationBuy.setText(Integer.toString((int) strategy.getDurationBuy().toDays()));
         durationSell.setText(Integer.toString((int) strategy.getDurationSell().toDays()));
+        moneyAverageBuy.setText(FrontUtils.formatPricePercentage(strategy.getMoneyAverageBuy()));
+        moneyAverageSell.setText(FrontUtils.formatPricePercentage(strategy.getMoneyAverageSell()));
     }
 }

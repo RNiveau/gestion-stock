@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.StrategiesController" stylesheets="net/blog/dev/gestion/stocks/css/style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane stylesheets="net/blog/dev/gestion/stocks/css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.blog.dev.gestion.stocks.jfx.controllers.StrategiesController">
    <children>
       <VBox>
          <children>
@@ -17,30 +18,28 @@
                         <Insets right="5.0" />
                      </HBox.margin>
                   </Label>
-                  <ChoiceBox prefWidth="150.0" fx:id="strategies" />
-                  <Button mnemonicParsing="false" text="Analyser" onAction="#run"/>
+                  <ChoiceBox fx:id="strategies" prefWidth="150.0" />
+                  <Button mnemonicParsing="false" onAction="#run" text="Analyser" />
                </children>
                <padding>
                   <Insets left="10.0" top="10.0" />
                </padding>
             </HBox>
+            <Label text="Achat" underline="true">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
             <HBox>
                <children>
-                  <Label text="Nombre d'ordres d'achat" />
-                  <Label fx:id="nbrBuy"/>
-               </children>
-               <padding>
-                  <Insets left="10.0" top="10.0" />
-               </padding>
-            </HBox>
-            <HBox>
-               <children>
-                  <Label text="Nombre d'ordres de vente">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="nbrSell" />
+                  <Label text="Nombre d'ordres" />
+                  <Label fx:id="nbrBuy" />
                </children>
                <padding>
                   <Insets left="10.0" top="10.0" />
@@ -48,7 +47,7 @@
             </HBox>
              <HBox>
                  <children>
-                     <Label text="Durée moyenne achat">
+                     <Label text="Durée moyenne">
                          <HBox.margin>
                              <Insets right="5.0" />
                          </HBox.margin>
@@ -59,22 +58,22 @@
                      <Insets left="10.0" top="10.0" />
                  </padding>
              </HBox>
+            <HBox>
+               <children>
+                  <Label text="Position moyenne">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="moneyAverageBuy" />
+               </children>
+               <padding>
+                  <Insets left="10.0" top="10.0" />
+               </padding>
+            </HBox>
              <HBox>
                  <children>
-                     <Label text="Durée moyenne vente">
-                         <HBox.margin>
-                             <Insets right="5.0" />
-                         </HBox.margin>
-                     </Label>
-                     <Label fx:id="durationSell" />
-                 </children>
-                 <padding>
-                     <Insets left="10.0" top="10.0" />
-                 </padding>
-             </HBox>
-             <HBox>
-                 <children>
-                     <Label text="Gain moyen achat">
+                     <Label text="Gain moyen">
                          <HBox.margin>
                              <Insets right="5.0" />
                          </HBox.margin>
@@ -87,38 +86,12 @@
              </HBox>
              <HBox>
                  <children>
-                     <Label text="Gain total achat">
+                     <Label text="Gain total">
                          <HBox.margin>
                              <Insets right="5.0" />
                          </HBox.margin>
                      </Label>
                      <Label fx:id="benefitsBuy" />
-                 </children>
-                 <padding>
-                     <Insets left="10.0" top="10.0" />
-                 </padding>
-             </HBox>
-             <HBox>
-                 <children>
-                     <Label text="Gain moyen vente">
-                         <HBox.margin>
-                             <Insets right="5.0" />
-                         </HBox.margin>
-                     </Label>
-                     <Label fx:id="benefitsAverageSell" />
-                 </children>
-                 <padding>
-                     <Insets left="10.0" top="10.0" />
-                 </padding>
-             </HBox>
-             <HBox>
-                 <children>
-                     <Label text="Gain total vente">
-                         <HBox.margin>
-                             <Insets right="5.0" />
-                         </HBox.margin>
-                     </Label>
-                     <Label fx:id="benefitsSell" />
                  </children>
                  <padding>
                      <Insets left="10.0" top="10.0" />
@@ -137,6 +110,96 @@
                      <Insets left="10.0" top="10.0" />
                  </padding>
              </HBox>
+            <Label text="Vente" underline="true">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="10.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <HBox>
+               <children>
+                  <Label text="Nombre d'ordres">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="nbrSell" />
+               </children>
+               <padding>
+                  <Insets left="10.0" top="10.0" />
+               </padding>
+            </HBox>
+             <HBox>
+                 <children>
+                     <Label text="Durée moyenne">
+                         <HBox.margin>
+                             <Insets right="5.0" />
+                         </HBox.margin>
+                     </Label>
+                     <Label fx:id="durationSell" />
+                 </children>
+                 <padding>
+                     <Insets left="10.0" top="10.0" />
+                 </padding>
+             </HBox>
+            <HBox>
+               <children>
+                  <Label text="Position moyenne">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="moneyAverageSell" />
+               </children>
+               <padding>
+                  <Insets left="10.0" top="10.0" />
+               </padding>
+            </HBox>
+             <HBox>
+                 <children>
+                     <Label text="Gain moyen">
+                         <HBox.margin>
+                             <Insets right="5.0" />
+                         </HBox.margin>
+                     </Label>
+                     <Label fx:id="benefitsAverageSell" />
+                 </children>
+                 <padding>
+                     <Insets left="10.0" top="10.0" />
+                 </padding>
+             </HBox>
+             <HBox>
+                 <children>
+                     <Label text="Gain total">
+                         <HBox.margin>
+                             <Insets right="5.0" />
+                         </HBox.margin>
+                     </Label>
+                     <Label fx:id="benefitsSell" />
+                 </children>
+                 <padding>
+                     <Insets left="10.0" top="10.0" />
+                 </padding>
+             </HBox>
+            <Label text="En cours" underline="true">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
              <HBox>
                  <children>
                      <Label text="Positions engagées">

@@ -3,6 +3,7 @@ package net.blog.dev.gestion.stocks.middle.impl;
 import net.blog.dev.gestion.stocks.back.daos.IStockDao;
 import net.blog.dev.gestion.stocks.dto.DirectionEnum;
 import net.blog.dev.gestion.stocks.dto.DtoStock;
+import net.blog.dev.gestion.stocks.middle.CalculUtils;
 import net.blog.dev.gestion.stocks.middle.api.IStrategiesMService;
 import net.blog.dev.gestion.stocks.middle.beans.StockListCloseBean;
 import net.blog.dev.gestion.stocks.middle.beans.StrategyBean;
@@ -40,6 +41,7 @@ public class StrategiesMServiceImpl implements IStrategiesMService {
                     if (stock.getDirection().equals(DirectionEnum.BUY)) {
                         strategyBean.setNbrBuy(strategyBean.getNbrBuy() + 1);
                         strategyBean.setBenefitsBuy(strategyBean.getBenefitsBuy() + stockListBean.getGain());
+                        strategyBean.setMoneyAverageBuy(strategyBean.getMoneyAverageBuy() + stockListBean.getPrice());
                         strategyBean.setDividends((float) (strategyBean.getDividends() + stock.getDividends().stream().mapToDouble(dividend -> dividend.getTotalPrice()).sum()));
                         strategyBean.setDurationBuy(strategyBean.getDurationBuy().plus(
                                 Duration.between(
@@ -48,6 +50,7 @@ public class StrategiesMServiceImpl implements IStrategiesMService {
                     } else {
                         strategyBean.setNbrSell(strategyBean.getNbrSell() + 1);
                         strategyBean.setBenefitsSell(strategyBean.getBenefitsSell() + stockListBean.getGain());
+                        strategyBean.setMoneyAverageSell(strategyBean.getMoneyAverageSell() + stockListBean.getPrice());
                         strategyBean.setDurationSell(strategyBean.getDurationSell().plus(
                                 Duration.between(
                                         stockListBean.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(),
@@ -61,10 +64,14 @@ public class StrategiesMServiceImpl implements IStrategiesMService {
                 });
         if (strategyBean.getNbrBuy() > 0) {
             strategyBean.setBenefitsAverageBuy(strategyBean.getBenefitsBuy() / strategyBean.getNbrBuy());
+            strategyBean.setMoneyAverageBuy(strategyBean.getMoneyAverageBuy() / strategyBean.getNbrBuy());
+            strategyBean.setBenefitsAverageBuyPercentage(CalculUtils.getPercentageIntoValues(strategyBean.getBenefitsAverageBuy(), strategyBean.getMoneyAverageBuy()));
             strategyBean.setDurationBuy(Duration.ofDays(strategyBean.getDurationBuy().toDays() / strategyBean.getNbrBuy()));
         }
         if (strategyBean.getNbrSell() > 0) {
             strategyBean.setBenefitsAverageSell(strategyBean.getBenefitsSell() / strategyBean.getNbrSell());
+            strategyBean.setMoneyAverageSell(strategyBean.getMoneyAverageSell() / strategyBean.getNbrSell());
+            strategyBean.setBenefitsAverageSellPercentage(CalculUtils.getPercentageIntoValues(strategyBean.getBenefitsAverageSell(), strategyBean.getMoneyAverageSell()));
             strategyBean.setDurationSell(Duration.ofDays(strategyBean.getDurationSell().toDays() / strategyBean.getNbrSell()));
         }
 

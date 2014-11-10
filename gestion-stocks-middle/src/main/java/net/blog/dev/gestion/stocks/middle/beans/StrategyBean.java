@@ -13,9 +13,13 @@ public class StrategyBean {
 
     private Float benefitsAverageBuy = 0f;
 
+    private Float benefitsAverageBuyPercentage = 0f;
+
     private Float benefitsSell = 0f;
 
     private Float benefitsAverageSell = 0f;
+
+    private Float benefitsAverageSellPercentage = 0f;
 
     private Duration durationBuy = Duration.ofNanos(1);
 
@@ -30,6 +34,10 @@ public class StrategyBean {
     private Float moneyRunning = 0f;
 
     private Float dividends = 0f;
+
+    private Float moneyAverageBuy = 0f;
+
+    private Float moneyAverageSell = 0f;
 
     public Float getDividends() {
         return dividends;
@@ -125,5 +133,37 @@ public class StrategyBean {
 
     public void setDurationSell(Duration durationSell) {
         this.durationSell = durationSell;
+    }
+
+    public Float getMoneyAverageBuy() {
+        return moneyAverageBuy;
+    }
+
+    public void setMoneyAverageBuy(Float moneyAverageBuy) {
+        this.moneyAverageBuy = moneyAverageBuy;
+    }
+
+    public Float getMoneyAverageSell() {
+        return moneyAverageSell;
+    }
+
+    public void setMoneyAverageSell(Float moneyAverageSell) {
+        this.moneyAverageSell = moneyAverageSell;
+    }
+
+    public Float getBenefitsAverageBuyPercentage() {
+        return benefitsAverageBuyPercentage;
+    }
+
+    public void setBenefitsAverageBuyPercentage(Float benefitsAverageBuyPercentage) {
+        this.benefitsAverageBuyPercentage = benefitsAverageBuyPercentage;
+    }
+
+    public Float getBenefitsAverageSellPercentage() {
+        return benefitsAverageSellPercentage;
+    }
+
+    public void setBenefitsAverageSellPercentage(Float benefitsAverageSellPercentage) {
+        this.benefitsAverageSellPercentage = benefitsAverageSellPercentage;
     }
 }
