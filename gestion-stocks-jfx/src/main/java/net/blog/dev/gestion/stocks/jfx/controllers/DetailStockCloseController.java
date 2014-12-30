@@ -40,9 +40,6 @@ public class DetailStockCloseController extends AbstractDetailController {
     private Label dividends;
 
 	@FXML
-	private CloseController closeStockController;
-
-	@FXML
 	private AnchorPane showDividend;
 
 	@FXML

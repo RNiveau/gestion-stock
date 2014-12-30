@@ -6,7 +6,6 @@ package net.blog.dev.gestion.stocks.middle.impl;
 import net.blog.dev.gestion.stocks.back.daos.IStockDao;
 import net.blog.dev.gestion.stocks.back.json.Quote;
 import net.blog.dev.gestion.stocks.back.services.api.IQuoteBService;
-import net.blog.dev.gestion.stocks.dto.DirectionEnum;
 import net.blog.dev.gestion.stocks.dto.DtoStock;
 import net.blog.dev.gestion.stocks.middle.CalculUtils;
 import net.blog.dev.gestion.stocks.middle.api.IStocksListMService;
@@ -114,6 +113,8 @@ public class StocksListMServiceImpl extends AbstractMService implements
                                 stockListCloseBean.setPrice(0f);
                                 stockListCloseBean.setGain(0f);
                                 stockListCloseBean.setGainLessTaxes(0f);
+                                stockListCloseBean.setGainLessTaxesPercentage(0f);
+                                stockListCloseBean.setGainPercentage(0f);
                                 stockListCloseBean.setSellPrice(0f);
                                 stockListCloseBean.setSellTaxes(0f);
                                 stockListCloseBean.setDirection(stock.getDirection());
@@ -133,11 +134,11 @@ public class StocksListMServiceImpl extends AbstractMService implements
             stock.setUnitPrice(stock.getPrice() / stock.getQuantity());
             stock.setSellUnitPrice(stock.getSellPrice() / stock.getQuantity());
             stock.setGainPercentage(CalculUtils.getPercentageBetweenTwoValues(stock.getPrice(), stock.getSellPrice()));
-            if (stock.getDirection().equals(DirectionEnum.BUY.value())) {
-                if (stock.getPrice() < stock.getSellPrice())
+            if (stock.getDirection().equals("A")) {
+                if (stock.getPrice() > stock.getSellPrice())
                     stock.setGainPercentage(stock.getGainPercentage() * -1);
             } else {
-                if (stock.getPrice() > stock.getSellPrice())
+                if (stock.getPrice() < stock.getSellPrice())
                     stock.setGainPercentage(stock.getGainPercentage() * -1);
             }
         });
