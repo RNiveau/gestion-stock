@@ -73,8 +73,4 @@ public abstract class AbstractMService {
 			list.add(enu.name());
 		return list;
     }
-
-
-
-
 }

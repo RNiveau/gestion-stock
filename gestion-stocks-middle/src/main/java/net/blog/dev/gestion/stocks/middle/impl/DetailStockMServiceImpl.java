@@ -14,6 +14,8 @@ import net.blog.dev.gestion.stocks.middle.api.IConfigurationMService;
 import net.blog.dev.gestion.stocks.middle.api.IDetailStockMService;
 import net.blog.dev.gestion.stocks.middle.beans.DetailStockBean;
 import net.blog.dev.gestion.stocks.middle.beans.StockListBean;
+import net.blog.dev.gestion.stocks.middle.beans.StockListCloseBean;
+import net.blog.dev.gestion.stocks.middle.helpers.api.IStockHelper;
 import org.apache.commons.collections.CollectionUtils;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -27,6 +29,9 @@ public class DetailStockMServiceImpl implements IDetailStockMService {
 
     @Inject
     private IStockDao stockDao;
+
+    @Inject
+    private IStockHelper stockHelper;
 
     @Inject
     private IConfigurationMService configurationMSservice;
@@ -83,6 +88,7 @@ public class DetailStockMServiceImpl implements IDetailStockMService {
             }
             if (stock.getSellOrder() != null) {
                 detailStockBean.setTaxesClose(stock.getSellOrder().getTaxes());
+                detailStockBean.setTaxesPercentage(CalculUtils.getPercentageBetweenTwoValues(((StockListCloseBean) stockListBean).getGain(), ((StockListCloseBean) stockListBean).getGainLessTaxes()));
             }
         }
         return detailStockBean;

@@ -39,6 +39,14 @@ public class StrategyBean {
 
     private Float moneyAverageSell = 0f;
 
+    private Float taxeBuy = 0f;
+
+    private Float taxeSell = 0f;
+
+    private Float taxeBuyPercentage = 0f;
+
+    private Float taxeSellPercentage = 0f;
+
     public Float getDividends() {
         return dividends;
     }
@@ -165,5 +173,37 @@ public class StrategyBean {
 
     public void setBenefitsAverageSellPercentage(Float benefitsAverageSellPercentage) {
         this.benefitsAverageSellPercentage = benefitsAverageSellPercentage;
+    }
+
+    public Float getTaxeBuy() {
+        return taxeBuy;
+    }
+
+    public void setTaxeBuy(Float taxeBuy) {
+        this.taxeBuy = taxeBuy;
+    }
+
+    public Float getTaxeSell() {
+        return taxeSell;
+    }
+
+    public void setTaxeSell(Float taxeSell) {
+        this.taxeSell = taxeSell;
+    }
+
+    public Float getTaxeBuyPercentage() {
+        return taxeBuyPercentage;
+    }
+
+    public void setTaxeBuyPercentage(Float taxeBuyPercentage) {
+        this.taxeBuyPercentage = taxeBuyPercentage;
+    }
+
+    public Float getTaxeSellPercentage() {
+        return taxeSellPercentage;
+    }
+
+    public void setTaxeSellPercentage(Float taxeSellPercentage) {
+        this.taxeSellPercentage = taxeSellPercentage;
     }
 }

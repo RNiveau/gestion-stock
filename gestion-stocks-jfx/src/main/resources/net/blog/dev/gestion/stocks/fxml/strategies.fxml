@@ -99,6 +99,19 @@
              </HBox>
              <HBox>
                  <children>
+                     <Label text="Pourcentage taxe total">
+                         <HBox.margin>
+                             <Insets right="5.0" />
+                         </HBox.margin>
+                     </Label>
+                     <Label fx:id="taxeBuy" />
+                 </children>
+                 <padding>
+                     <Insets left="10.0" top="10.0" />
+                 </padding>
+             </HBox>
+             <HBox>
+                 <children>
                      <Label text="Dividendes">
                          <HBox.margin>
                              <Insets right="5.0" />
@@ -181,6 +194,19 @@
                          </HBox.margin>
                      </Label>
                      <Label fx:id="benefitsSell" />
+                 </children>
+                 <padding>
+                     <Insets left="10.0" top="10.0" />
+                 </padding>
+             </HBox>
+             <HBox>
+                 <children>
+                     <Label text="Pourcentage taxe total">
+                         <HBox.margin>
+                             <Insets right="5.0" />
+                         </HBox.margin>
+                     </Label>
+                     <Label fx:id="taxeSell" />
                  </children>
                  <padding>
                      <Insets left="10.0" top="10.0" />

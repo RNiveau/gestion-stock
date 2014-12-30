@@ -43,6 +43,7 @@ public class StrategiesMServiceImpl implements IStrategiesMService {
                         strategyBean.setBenefitsBuy(strategyBean.getBenefitsBuy() + stockListBean.getGain());
                         strategyBean.setMoneyAverageBuy(strategyBean.getMoneyAverageBuy() + stockListBean.getPrice());
                         strategyBean.setDividends((float) (strategyBean.getDividends() + stock.getDividends().stream().mapToDouble(dividend -> dividend.getTotalPrice()).sum()));
+                        strategyBean.setTaxeBuy(strategyBean.getTaxeBuy() + stock.getBuyOrdre().getTaxes() + stock.getSellOrder().getTaxes());
                         strategyBean.setDurationBuy(strategyBean.getDurationBuy().plus(
                                 Duration.between(
                                         stockListBean.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(),
@@ -51,6 +52,7 @@ public class StrategiesMServiceImpl implements IStrategiesMService {
                         strategyBean.setNbrSell(strategyBean.getNbrSell() + 1);
                         strategyBean.setBenefitsSell(strategyBean.getBenefitsSell() + stockListBean.getGain());
                         strategyBean.setMoneyAverageSell(strategyBean.getMoneyAverageSell() + stockListBean.getPrice());
+                        strategyBean.setTaxeSell(strategyBean.getTaxeSell() + stock.getBuyOrdre().getTaxes() + stock.getSellOrder().getTaxes());
                         strategyBean.setDurationSell(strategyBean.getDurationSell().plus(
                                 Duration.between(
                                         stockListBean.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(),
@@ -67,12 +69,15 @@ public class StrategiesMServiceImpl implements IStrategiesMService {
             strategyBean.setMoneyAverageBuy(strategyBean.getMoneyAverageBuy() / strategyBean.getNbrBuy());
             strategyBean.setBenefitsAverageBuyPercentage(CalculUtils.getPercentageIntoValues(strategyBean.getBenefitsAverageBuy(), strategyBean.getMoneyAverageBuy()));
             strategyBean.setDurationBuy(Duration.ofDays(strategyBean.getDurationBuy().toDays() / strategyBean.getNbrBuy()));
+            strategyBean.setTaxeBuyPercentage(CalculUtils.getPercentageIntoValues(strategyBean.getTaxeBuy(), strategyBean.getBenefitsBuy()));
+
         }
         if (strategyBean.getNbrSell() > 0) {
             strategyBean.setBenefitsAverageSell(strategyBean.getBenefitsSell() / strategyBean.getNbrSell());
             strategyBean.setMoneyAverageSell(strategyBean.getMoneyAverageSell() / strategyBean.getNbrSell());
             strategyBean.setBenefitsAverageSellPercentage(CalculUtils.getPercentageIntoValues(strategyBean.getBenefitsAverageSell(), strategyBean.getMoneyAverageSell()));
             strategyBean.setDurationSell(Duration.ofDays(strategyBean.getDurationSell().toDays() / strategyBean.getNbrSell()));
+            strategyBean.setTaxeSellPercentage(CalculUtils.getPercentageIntoValues(strategyBean.getTaxeSell(), strategyBean.getBenefitsSell()));
         }
 
         return strategyBean;

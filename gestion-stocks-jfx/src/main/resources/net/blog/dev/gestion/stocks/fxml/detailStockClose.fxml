@@ -19,13 +19,28 @@
 										<Label prefWidth="160" text="Frais bancaire ouverture" />
 										<Label prefWidth="130" fx:id="taxes" />
 									</children>
+                                    <padding>
+                                        <Insets top="5.0" />
+                                    </padding>
 								</HBox>
-								<HBox prefHeight="16.0">
-									<children>
-										<Label prefWidth="160" text="Frais bancaire cloture" />
-										<Label prefWidth="130" fx:id="taxesClose" />
-									</children>
-								</HBox>
+                                <HBox prefHeight="16.0">
+                                    <children>
+                                        <Label prefWidth="160" text="Frais bancaire cloture" />
+                                        <Label prefWidth="130" fx:id="taxesClose" />
+                                    </children>
+                                    <padding>
+                                        <Insets top="5.0" />
+                                    </padding>
+                                </HBox>
+                                <HBox prefHeight="16.0">
+                                    <children>
+                                        <Label prefWidth="160" text="Pourcentage frais sur benefice" />
+                                        <Label prefWidth="130" fx:id="taxesPercentage" />
+                                    </children>
+                                    <padding>
+                                        <Insets top="5.0" />
+                                    </padding>
+                                </HBox>
 								<HBox prefHeight="16.0">
 									<children>
 										<Label prefWidth="160" text="Stratégie" />

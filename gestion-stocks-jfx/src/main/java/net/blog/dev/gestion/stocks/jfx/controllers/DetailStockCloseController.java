@@ -45,6 +45,8 @@ public class DetailStockCloseController extends AbstractDetailController {
 	@FXML
 	private ShowDividendController showDividendController;
 
+    @FXML
+    private Label taxesPercentage;
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -57,6 +59,7 @@ public class DetailStockCloseController extends AbstractDetailController {
 		setDetailStockBean(getDetailStockMService().getDetailStockBean(bean));
 		taxes.setText(getDetailStockBean().getTaxes().toString());
 		taxesClose.setText(getDetailStockBean().getTaxesClose().toString());
+        taxesPercentage.setText(getDetailStockBean().getTaxesPercentage().toString());
 		strategy.setText(getBundle().getString(
 				getDetailStockBean().getStrategy()));
         dividends.setText(getDetailStockBean().getDividends().toString() + " %");

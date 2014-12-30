@@ -71,6 +71,12 @@ public class StrategiesController implements Initializable {
     @FXML
     public Label moneyAverageSell;
 
+    @FXML
+    public Label taxeBuy;
+
+    @FXML
+    public Label taxeSell;
+
     @Inject
     private IStrategiesMService strategiesMService;
 
@@ -104,5 +110,7 @@ public class StrategiesController implements Initializable {
         durationSell.setText(Integer.toString((int) strategy.getDurationSell().toDays()));
         moneyAverageBuy.setText(FrontUtils.formatPricePercentage(strategy.getMoneyAverageBuy()));
         moneyAverageSell.setText(FrontUtils.formatPricePercentage(strategy.getMoneyAverageSell()));
+        taxeBuy.setText(FrontUtils.formatPricePercentage(strategy.getTaxeBuyPercentage()) + " %");
+        taxeSell.setText(FrontUtils.formatPricePercentage(strategy.getTaxeSellPercentage()) + " %");
     }
 }
