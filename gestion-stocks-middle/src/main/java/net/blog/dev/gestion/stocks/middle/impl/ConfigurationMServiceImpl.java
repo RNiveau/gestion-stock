@@ -93,8 +93,8 @@ public class ConfigurationMServiceImpl implements IConfigurationMService {
             long modifiedDateLocalPortfolio = context.getSaveFile().lastModified();
             // date dropbox is newer local date
             logger.debug("Date dropbox={}, date local={}", modifiedDateDropboxPortfolio, new Date(modifiedDateLocalPortfolio));
-            // 10 s
-            return modifiedDateDropboxPortfolio.getTime() - modifiedDateLocalPortfolio  > 10000;
+            // 5m
+            return modifiedDateDropboxPortfolio.getTime() - modifiedDateLocalPortfolio  > 1000 * 60 * 5;
         }
         return false;
     }
