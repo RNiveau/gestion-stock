@@ -62,36 +62,41 @@ public class DropboxServiceImpl implements IDropboxService {
     @Override
     public void saveFile(String idDropbox) {
         logger.debug("Save portfolio in dropbox");
-        final File inputFile = context.getSaveFile();
-        FileInputStream inputStream = null;
-        try {
-            inputStream = new FileInputStream(inputFile);
-            final DbxClient client = getDbxClient(idDropbox);
-            final InputStream dropboxStream = inputStream;
-            List<DbxEntry> dbxEntries = client.searchFileAndFolderNames("/", KContext.SAVE_FILENAME);
-            Optional<DbxEntry> dropboxFile = dbxEntries.stream().findFirst();
-            dropboxFile.ifPresent(file -> {
+        if (context.needToSave()) {
+            logger.debug("Need to save in dropbox");
+            final File inputFile = context.getSaveFile();
+            FileInputStream inputStream = null;
+            try {
+                inputStream = new FileInputStream(inputFile);
+                final DbxClient client = getDbxClient(idDropbox);
+                final InputStream dropboxStream = inputStream;
+                List<DbxEntry> dbxEntries = client.searchFileAndFolderNames("/", KContext.SAVE_FILENAME);
+                Optional<DbxEntry> dropboxFile = dbxEntries.stream().findFirst();
+                dropboxFile.ifPresent(file -> {
+                    try {
+                        client.uploadFile(file.path,
+                                DbxWriteMode.update(file.asFile().rev), inputFile.length(), dropboxStream);
+                    } catch (DbxException | IOException e) {
+                        logger.warn("Error on upload file : {}", e.getMessage());
+                    }
+                });
+                if (!dropboxFile.isPresent()) {
+                    client.uploadFile("/" + KContext.SAVE_FILENAME,
+                            DbxWriteMode.add(), inputFile.length(), inputStream);
+                }
+            } catch (IOException | DbxException e) {
+                logger.warn("Error on upload file : {}", e.getMessage());
+            } finally {
                 try {
-                    client.uploadFile(file.path,
-                            DbxWriteMode.update(file.asFile().rev), inputFile.length(), dropboxStream);
-                } catch (DbxException | IOException e) {
+                    if (inputStream != null)
+                        inputStream.close();
+                } catch (IOException e) {
                     logger.warn("Error on upload file : {}", e.getMessage());
                 }
-            });
-            if (!dropboxFile.isPresent()) {
-                client.uploadFile("/" + KContext.SAVE_FILENAME,
-                        DbxWriteMode.add(), inputFile.length(), inputStream);
-            }
-        } catch (IOException | DbxException e) {
-            logger.warn("Error on upload file : {}", e.getMessage());
-        } finally {
-            try {
-                if (inputStream != null)
-                    inputStream.close();
-            } catch (IOException e) {
-                logger.warn("Error on upload file : {}", e.getMessage());
             }
         }
+        else
+            logger.debug("Not need to save in dropbox");
     }
 
     private DbxClient getDbxClient(String idDropbox) {
