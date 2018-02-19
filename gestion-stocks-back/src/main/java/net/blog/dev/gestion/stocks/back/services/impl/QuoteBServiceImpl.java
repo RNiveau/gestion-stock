@@ -3,11 +3,14 @@
  */
 package net.blog.dev.gestion.stocks.back.services.impl;
 
+import net.blog.dev.gestion.stocks.back.KContext;
 import net.blog.dev.gestion.stocks.back.json.HistoricQuote;
 import net.blog.dev.gestion.stocks.back.json.Quote;
+import net.blog.dev.gestion.stocks.back.services.api.IAlphaAvantageBService;
 import net.blog.dev.gestion.stocks.back.services.api.IQuoteBService;
 import net.blog.dev.gestion.stocks.back.services.api.IQuoteResource;
 import net.blog.dev.gestion.stocks.back.services.api.IYahooFinanceBService;
+import net.blog.dev.gestion.stocks.back.services.beans.AlphaAvantageWrapper;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
@@ -21,6 +24,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,6 +39,10 @@ public class QuoteBServiceImpl implements IQuoteBService {
     static final Logger logger = LoggerFactory.getLogger(QuoteBServiceImpl.class);
 
     private Cache cache;
+
+    @Inject
+    private KContext context;
+
 
     @PostConstruct
     private void init() {
@@ -60,10 +68,13 @@ public class QuoteBServiceImpl implements IQuoteBService {
         }
         logger.info("getQuote not in cache => {}", code);
         Date timer = Instant.now().toDate();
-        final String json = executeYahooService(code);
+        final String json = executeAlphaService(code);
         ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally
         try {
-            Quote quote = mapper.readValue(json, Quote.class);
+            AlphaAvantageWrapper alphaAvantageWrapper = mapper.readValue(json, AlphaAvantageWrapper.class);
+            Quote quote = new Quote();
+            quote.setLastTradePriceOnly(alphaAvantageWrapper.getQuotes().get(0).getClose());
+            quote.setSymbol(code);
             Date timer2 = Instant.now().toDate();
             logger.debug("Time in method: {}", new Duration(timer.getTime(), timer2.getTime()).getMillis());
             return quote;
@@ -98,6 +109,11 @@ public class QuoteBServiceImpl implements IQuoteBService {
         return quote;
     }
 
+    private String executeAlphaService(String... codes) {
+        IAlphaAvantageBService factory = getAlphaAvantageBService();
+        return factory.getQuote("TIME_SERIES_DAILY", codes[0]+".PA", context.getConfiguration().getAlphaAvantageApiKey()).getQuote().toString();
+    }
+
     /**
      * @return
      */
@@ -105,6 +121,13 @@ public class QuoteBServiceImpl implements IQuoteBService {
         final IYahooFinanceBService factory = JAXRSClientFactory.create(
                 "http://query.yahooapis.com/v1/public/",
                 IYahooFinanceBService.class);
+        return factory;
+    }
+
+    private IAlphaAvantageBService getAlphaAvantageBService() {
+        final IAlphaAvantageBService factory = JAXRSClientFactory.create(
+                "https://www.alphavantage.co",
+                IAlphaAvantageBService.class);
         return factory;
     }
 

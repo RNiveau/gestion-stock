@@ -19,11 +19,11 @@ public class Main {
 
 		final QuoteBServiceImpl quoteBServiceImpl = new QuoteBServiceImpl();
 		final Quote quote = quoteBServiceImpl.getQuote("ACA");
-		System.out.println(quote.getSymbol() + quote.getBid());
+		System.out.println(quote.getSymbol() + quote.getOpen());
 
 		final List<Quote> quotes = quoteBServiceImpl.getQuotes("ACA", "KN");
 		for (Quote q : quotes)
-			System.out.println(q.getSymbol() + q.getBid());
+			System.out.println(q.getSymbol() + q.getOpen());
 
 		final List<HistoricQuote> historicQuote = quoteBServiceImpl
 				.getHistoricQuote("ACA", new DateTime(2012, 7, 31, 1, 1)
