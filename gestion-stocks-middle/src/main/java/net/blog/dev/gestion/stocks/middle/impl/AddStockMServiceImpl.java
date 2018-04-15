@@ -45,7 +45,7 @@ public class AddStockMServiceImpl extends AbstractMService implements
 		stock.setDirection(EnumUtils.getEnum(DirectionEnum.class,
 				bean.getDirection()));
 		stock.setName(bean.getName());
-		stock.setQuantity(Utils.getInteger(bean.getQuantity()));
+		stock.setQuantity(Utils.getFloat(bean.getQuantity()));
 		stock.setStrategy(EnumUtils.getEnum(StrategyEnum.class,
 				bean.getStrategy()));
 		stock.setType(EnumUtils.getEnum(OrdreTypeEnum.class,

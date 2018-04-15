@@ -30,5 +30,5 @@ public interface IDetailStockMService {
 	 * @param stockListBean
 	 * @param quantity
 	 */
-	void updateQuantity(StockListBean stockListBean, Integer quantity);
+	void updateQuantity(StockListBean stockListBean, Float quantity);
 }

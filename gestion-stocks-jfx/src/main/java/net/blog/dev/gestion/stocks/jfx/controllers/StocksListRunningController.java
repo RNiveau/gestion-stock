@@ -24,6 +24,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
+import javafx.util.converter.FloatStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import net.blog.dev.gestion.stocks.jfx.IFrontManager;
 import net.blog.dev.gestion.stocks.jfx.PoolThreadManager;
@@ -145,24 +146,24 @@ public class StocksListRunningController extends ScrollPane implements
      *
      */
     private void setColumnQuantity() {
-        final TableColumn<StockListBean, Integer> quantityColumn = tableListStockController
+        final TableColumn<StockListBean, Float> quantityColumn = tableListStockController
                 .getQuantityColumn();
         quantityColumn
-                .setCellFactory(new Callback<TableColumn<StockListBean, Integer>, TableCell<StockListBean, Integer>>() {
+                .setCellFactory(new Callback<TableColumn<StockListBean, Float>, TableCell<StockListBean, Float>>() {
 
                     @Override
-                    public TableCell<StockListBean, Integer> call(
-                            TableColumn<StockListBean, Integer> arg0) {
+                    public TableCell<StockListBean, Float> call(
+                            TableColumn<StockListBean, Float> arg0) {
                         return new TextFieldTableCell<>(
-                                new IntegerStringConverter());
+                                new FloatStringConverter());
                     }
                 });
         quantityColumn
-                .setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<StockListBean, Integer>>() {
+                .setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<StockListBean, Float>>() {
 
                     @Override
                     public void handle(
-                            CellEditEvent<StockListBean, Integer> arg0) {
+                            CellEditEvent<StockListBean, Float> arg0) {
                         if (arg0.getNewValue() != null
                                 && arg0.getNewValue() > 0) {
                             detailStockMService.updateQuantity(

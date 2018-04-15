@@ -19,7 +19,7 @@ public class StockListBean {
 
 	private Float unitPrice;
 
-	private Integer quantity;
+	private Float quantity;
 
 	private Date date;
 
@@ -75,7 +75,7 @@ public class StockListBean {
 	/**
 	 * @return the quantity
 	 */
-	public Integer getQuantity() {
+	public Float getQuantity() {
 		return quantity;
 	}
 
@@ -83,7 +83,7 @@ public class StockListBean {
 	 * @param quantity
 	 *            the quantity to set
 	 */
-	public void setQuantity(Integer quantity) {
+	public void setQuantity(Float quantity) {
 		this.quantity = quantity;
 	}
 

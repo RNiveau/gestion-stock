@@ -47,7 +47,7 @@ public class StockListTableController extends VBox implements Initializable {
     private TableView<StockListBean> stocksList;
 
     @FXML
-    private TableColumn<StockListBean, Integer> quantityColumn;
+    private TableColumn<StockListBean, Float> quantityColumn;
 
     @FXML
     private TextField filter;
@@ -143,7 +143,7 @@ public class StockListTableController extends VBox implements Initializable {
     /**
      * @return the quantityColumn
      */
-    public TableColumn<StockListBean, Integer> getQuantityColumn() {
+    public TableColumn<StockListBean, Float> getQuantityColumn() {
         return quantityColumn;
     }
 

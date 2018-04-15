@@ -36,7 +36,7 @@
 			<xs:element name="code" type="xs:string" maxOccurs="1"
 				minOccurs="1">
 			</xs:element>
-			<xs:element name="quantity" type="xs:int" maxOccurs="1"
+			<xs:element name="quantity" type="xs:float" maxOccurs="1"
 				minOccurs="1">
 			</xs:element>
 			<xs:element name="buyOrdre" type="dtoOrder" maxOccurs="1"

@@ -23,7 +23,7 @@ public class AddStockBean {
 	private String code;
 
 	@NotNull(message = "error.null")
-	@Pattern(regexp = "^[0-9]+$", message = "error.integer.wrongFormat")
+	@Pattern(regexp = "^[0-9]+[.,]?[0-9]*$", message = "error.float.wrongFormat")
 	private String quantity;
 
 	@NotNull(message = "error.null")

@@ -67,7 +67,7 @@ public class StocksListMServiceImpl extends AbstractMService implements
                                 StockListRunningBean stockListRunningBean = new StockListRunningBean();
                                 stockListRunningBean.setCode(stock.getCode());
                                 stockListRunningBean.setTitle(stock.getTitle());
-                                stockListRunningBean.setQuantity(0);
+                                stockListRunningBean.setQuantity(0f);
                                 stockListRunningBean.setPrice(0f);
                                 stockListRunningBean.setDirection(stock.getDirection());
                                 grouped.add(stockListRunningBean);
@@ -109,7 +109,7 @@ public class StocksListMServiceImpl extends AbstractMService implements
                                 StockListCloseBean stockListCloseBean = new StockListCloseBean();
                                 stockListCloseBean.setCode(stock.getCode());
                                 stockListCloseBean.setTitle(stock.getTitle());
-                                stockListCloseBean.setQuantity(0);
+                                stockListCloseBean.setQuantity(0f);
                                 stockListCloseBean.setPrice(0f);
                                 stockListCloseBean.setGain(0f);
                                 stockListCloseBean.setGainLessTaxes(0f);

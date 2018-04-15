@@ -113,7 +113,7 @@ public class DetailStockMServiceImpl implements IDetailStockMService {
     }
 
     @Override
-    public void updateQuantity(StockListBean stockListBean, Integer quantity) {
+    public void updateQuantity(StockListBean stockListBean, Float quantity) {
         if (quantity != null && quantity > 0) {
             final DtoStock stock = stockDao.getStock(generateId(stockListBean));
             stock.setQuantity(quantity);
