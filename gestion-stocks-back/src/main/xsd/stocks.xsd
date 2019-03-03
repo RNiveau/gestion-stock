@@ -135,6 +135,7 @@
 			<xs:enumeration value="DIVIDEND" />
             <xs:enumeration value="RSI_DYNAMIC" />
             <xs:enumeration value="VOLATILITY" />
+			<xs:enumeration value="TRADINGSAT" />
 		</xs:restriction>
 	</xs:simpleType>
 
