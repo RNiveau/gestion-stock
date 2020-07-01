@@ -136,6 +136,8 @@
             <xs:enumeration value="RSI_DYNAMIC" />
             <xs:enumeration value="VOLATILITY" />
 			<xs:enumeration value="TRADINGSAT" />
+			<xs:enumeration value="TRENDFOLLOWING" />
+			<xs:enumeration value="RANGE" />
 		</xs:restriction>
 	</xs:simpleType>
 
