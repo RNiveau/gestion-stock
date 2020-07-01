@@ -19,7 +19,7 @@ public class AddStockBean {
 	private String name;
 
 	@NotNull(message = "error.null")
-	@Pattern(regexp = "^[a-zA-Z]+$", message = "error.code.wrongFormat")
+	@Pattern(regexp = "^[a-zA-Z0-9]+$", message = "error.code.wrongFormat")
 	private String code;
 
 	@NotNull(message = "error.null")
